@@ -1,0 +1,10 @@
+﻿{
+  "NINESOLSMOD-TAILSMAN.title": "Tailsman",
+  "NINESOLSMOD-TAILSMAN.description": "Tailsman",
+  "NINESOLSMOD-STRIKE_YI.title": "Strike",
+  "NINESOLSMOD-STRIKE_YI.description": "Deal {Damage:diff()} damage.",
+  "NINESOLSMOD-DEFEND_YI.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "NINESOLSMOD-DEFEND_YI.title": "Defend",
+  "NINESOLSMOD-PARRY.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "NINESOLSMOD-PARRY.title": "Parry"
+}

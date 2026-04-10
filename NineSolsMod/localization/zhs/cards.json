@@ -1,0 +1,18 @@
+﻿{
+  "NINESOLSMOD-TAILSMAN.title": "符咒",
+  "NINESOLSMOD-TAILSMAN.description": "抽{Cards}张牌。\n[gold]终结[/gold]{NineSolsMod-Finish:diff()}。",
+  "NINESOLSMOD-STRIKE_YI.title": "打击",
+  "NINESOLSMOD-STRIKE_YI.description": "造成{Damage:diff()}点伤害。",
+  "NINESOLSMOD-DEFEND_YI.description": "获得{Block:diff()}点[gold]格挡[/gold]。",
+  "NINESOLSMOD-DEFEND_YI.title": "防御",
+  "NINESOLSMOD-PARRY.description": "获得{Block:diff()}点[gold]格挡[/gold]。\n获得{ParryPower}层[gold]弹反[/gold]。",
+  "NINESOLSMOD-PARRY.title": "弹反",
+  "NINESOLSMOD-TRIPLE_SLASH.description": "造成{Damage:diff()}点伤害3次。最后一次伤害[gold]终结[/gold]{NineSolsMod-Finish:diff()}。",
+  "NINESOLSMOD-TRIPLE_SLASH.title": "三元剑",
+  "NINESOLSMOD-IMMORTAL_DASH.description": "",
+  "NINESOLSMOD-IMMORTAL_DASH.title": "仙步",
+  "NINESOLSMOD-INSIGHT.description": "",
+  "NINESOLSMOD-INSIGHT.title": "洞察",
+  "NINESOLSMOD-HACK.description": "",
+  "NINESOLSMOD-HACK.title": "骇入"
+}

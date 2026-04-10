@@ -1,0 +1,326 @@
+[gd_scene load_steps=61 format=3 uid="uid://bg02i77hqqh6o"]
+
+[ext_resource type="Texture2D" uid="uid://dvttfvwnry242" path="res://NineSolsMod/resources/animations/yi/HoHoYee_AttackABC0.png" id="1_4dvvs"]
+[ext_resource type="Texture2D" uid="uid://co4laq2egs1ps" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Standingidle0.png" id="1_xu2a8"]
+[ext_resource type="Texture2D" uid="uid://njtp68mnrttb" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Standingidle1.png" id="2_bjhek"]
+[ext_resource type="Texture2D" uid="uid://bwql8uyervvn5" path="res://NineSolsMod/resources/animations/yi/HoHoYee_AttackABC1.png" id="2_sm0q3"]
+[ext_resource type="Texture2D" uid="uid://bge1wigiph8g8" path="res://NineSolsMod/resources/animations/yi/HoHoYee_AttackABC2.png" id="3_h4ahl"]
+[ext_resource type="Texture2D" uid="uid://bb7j2u7ui0wo7" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Standingidle2.png" id="3_nhdb3"]
+[ext_resource type="Texture2D" uid="uid://iypimt67o7ry" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Standingidle3.png" id="4_7on27"]
+[ext_resource type="Texture2D" uid="uid://bf26obgdalie3" path="res://NineSolsMod/resources/animations/yi/HoHoYee_AttackABC3.png" id="4_pvuri"]
+[ext_resource type="Texture2D" uid="uid://d34fm3t5uf4vi" path="res://NineSolsMod/resources/animations/yi/HoHoYee_AttackABC4.png" id="5_hiqbb"]
+[ext_resource type="Texture2D" uid="uid://blyr4i4q5b25q" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Standingidle4.png" id="5_k6oic"]
+[ext_resource type="Texture2D" uid="uid://bn6vpy7tpfw1i" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Standingidle5.png" id="6_04x1d"]
+[ext_resource type="Texture2D" uid="uid://bi30r0khcec1m" path="res://NineSolsMod/resources/animations/yi/HoHoYee_AttackABC5.png" id="6_p8jab"]
+[ext_resource type="Texture2D" uid="uid://3rhvvkurbpr8" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Standingidle6.png" id="7_qbyxg"]
+[ext_resource type="Texture2D" uid="uid://f5dtac2e5u4l" path="res://NineSolsMod/resources/animations/yi/HoHoYee_AttackABC6.png" id="7_r62l1"]
+[ext_resource type="Texture2D" uid="uid://cysq2o3bi0w8y" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Standingidle7.png" id="8_hkgqh"]
+[ext_resource type="Texture2D" uid="uid://edyycia4000m" path="res://NineSolsMod/resources/animations/yi/HoHoYee_AttackABC7.png" id="8_yjten"]
+[ext_resource type="Texture2D" uid="uid://crb5i7odiujt3" path="res://NineSolsMod/resources/animations/yi/HoHoYee_AttackABC8.png" id="9_em2q7"]
+[ext_resource type="Texture2D" uid="uid://coe1cnqtgrb8u" path="res://NineSolsMod/resources/animations/yi/HoHoYee_AttackABC9.png" id="10_2q7bh"]
+[ext_resource type="Texture2D" uid="uid://b4ufaj4y3sjts" path="res://NineSolsMod/resources/animations/yi/HoHoYee_DrawFu0.png" id="11_ktvoo"]
+[ext_resource type="Texture2D" uid="uid://ij7igr2c3vjq" path="res://NineSolsMod/resources/animations/yi/HoHoYee_DrawFu1.png" id="12_p5bn2"]
+[ext_resource type="Texture2D" uid="uid://b6v81hdav6u36" path="res://NineSolsMod/resources/animations/yi/HoHoYee_DrawFu2.png" id="13_ehh0y"]
+[ext_resource type="Texture2D" uid="uid://xs11r3fdgerp" path="res://NineSolsMod/resources/animations/yi/HoHoYee_DrawFu3.png" id="14_ukt7o"]
+[ext_resource type="Texture2D" uid="uid://b42bje5rbhm0n" path="res://NineSolsMod/resources/animations/yi/HoHoYee_DrawFu4.png" id="15_vst1f"]
+[ext_resource type="Texture2D" uid="uid://db1obxaptxmms" path="res://NineSolsMod/resources/animations/yi/HoHoYee_DrawFu5.png" id="16_inlwu"]
+[ext_resource type="Texture2D" uid="uid://23fb2l7b5p15" path="res://NineSolsMod/resources/animations/yi/HoHoYee_DrawFu6.png" id="17_0efsr"]
+[ext_resource type="Texture2D" uid="uid://tj1kbvw0ttyk" path="res://NineSolsMod/resources/animations/yi/HoHoYee_DrawFu7.png" id="18_0utw6"]
+[ext_resource type="Texture2D" uid="uid://cgms7dyqa7m5r" path="res://NineSolsMod/resources/animations/yi/HoHoYee_DrawFu8.png" id="19_gt1xe"]
+[ext_resource type="Texture2D" uid="uid://bbna0c0mpwin" path="res://NineSolsMod/resources/animations/yi/HoHoYee_DrawFu9.png" id="20_851wf"]
+[ext_resource type="Texture2D" uid="uid://c1lpdyjd7mh6s" path="res://NineSolsMod/resources/animations/yi/HoHoYee_DrawFu10.png" id="21_8p8ya"]
+[ext_resource type="Texture2D" uid="uid://bpwq74w7fyqc2" path="res://NineSolsMod/resources/animations/yi/HoHoYee_DrawFu11.png" id="22_x5ajo"]
+[ext_resource type="Texture2D" uid="uid://dfxgw2xn85rst" path="res://NineSolsMod/resources/animations/yi/HoHoYee_DrawFu12.png" id="23_ojbxu"]
+[ext_resource type="Texture2D" uid="uid://dbmwkapft526f" path="res://NineSolsMod/resources/animations/yi/HoHoYee_DrawFu13.png" id="24_mwqs7"]
+[ext_resource type="Texture2D" uid="uid://wvpq0cw7l55g" path="res://NineSolsMod/resources/animations/yi/HoHoYee_DrawFu14.png" id="25_cjinm"]
+[ext_resource type="Texture2D" uid="uid://0mnf67qp6bda" path="res://NineSolsMod/resources/animations/yi/HoHoYee_DrawFu15.png" id="26_8pys2"]
+[ext_resource type="Texture2D" uid="uid://u3nc3go8jgll" path="res://NineSolsMod/resources/animations/yi/HoHoYee_DrawFu16.png" id="27_mb8fi"]
+[ext_resource type="Texture2D" uid="uid://bqs88a3qit5h" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die0.png" id="28_n11a5"]
+[ext_resource type="Texture2D" uid="uid://yarfchfhha20" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die1.png" id="29_gjld6"]
+[ext_resource type="Texture2D" uid="uid://d1u0cifsr4ov8" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die2.png" id="30_vj4bi"]
+[ext_resource type="Texture2D" uid="uid://dc2rldowid5h" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die3.png" id="31_efwwk"]
+[ext_resource type="Texture2D" uid="uid://djookbtxflxri" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die4.png" id="32_1wpm7"]
+[ext_resource type="Texture2D" uid="uid://c2bjp6axrfbe2" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die5.png" id="33_mxefj"]
+[ext_resource type="Texture2D" uid="uid://23dh1t8k4p87" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die6.png" id="34_7ikbe"]
+[ext_resource type="Texture2D" uid="uid://digo7h5807ate" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die7.png" id="35_afwlf"]
+[ext_resource type="Texture2D" uid="uid://jgxmer2k86iq" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die8.png" id="36_apf1h"]
+[ext_resource type="Texture2D" uid="uid://bg3ap2afllxtm" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die9.png" id="37_v8ejn"]
+[ext_resource type="Texture2D" uid="uid://b712nvu7tyq5b" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die10.png" id="38_m4w1v"]
+[ext_resource type="Texture2D" uid="uid://b6eyfk2hn8dyv" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die11.png" id="39_wn8fc"]
+[ext_resource type="Texture2D" uid="uid://dd3in57g007vj" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die12.png" id="40_xhem4"]
+[ext_resource type="Texture2D" uid="uid://bj8fqv0prl7i1" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die13.png" id="41_tig6b"]
+[ext_resource type="Texture2D" uid="uid://dfis0r2s11sbn" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die14.png" id="42_p2klk"]
+[ext_resource type="Texture2D" uid="uid://fkh08sd02s5v" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die15.png" id="43_j56y8"]
+[ext_resource type="Texture2D" uid="uid://cmy1bl8kmc0yh" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die16.png" id="44_nqen1"]
+[ext_resource type="Texture2D" uid="uid://dlytjypw2rlpg" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die17.png" id="45_4uh3e"]
+[ext_resource type="Texture2D" uid="uid://d0hg87kue8xrg" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die18.png" id="46_k0xsi"]
+[ext_resource type="Texture2D" uid="uid://cj87uw3gjgv7i" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Die19.png" id="47_hwthv"]
+[ext_resource type="Texture2D" uid="uid://dlqocotdat7wj" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Hurt0.png" id="48_vst1f"]
+[ext_resource type="Texture2D" uid="uid://dtww7wcpim2n0" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Hurt1.png" id="49_inlwu"]
+[ext_resource type="Texture2D" uid="uid://x3qjhfbjxrsp" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Hurt2.png" id="50_0efsr"]
+[ext_resource type="Texture2D" uid="uid://b0s4l57rj7e24" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Hurt3.png" id="51_0utw6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_exbu4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4dvvs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_sm0q3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h4ahl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pvuri")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hiqbb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_p8jab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r62l1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_yjten")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_em2q7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2q7bh")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_ktvoo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_p5bn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ehh0y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ukt7o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_vst1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_inlwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_0efsr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_0utw6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_gt1xe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_851wf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_8p8ya")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_x5ajo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_ojbxu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_mwqs7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_cjinm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_8pys2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_mb8fi")
+}],
+"loop": false,
+"name": &"cast",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("28_n11a5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_gjld6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_vj4bi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_efwwk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_1wpm7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_mxefj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_7ikbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_afwlf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_apf1h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_v8ejn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_m4w1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_wn8fc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_xhem4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_tig6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_p2klk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_j56y8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_nqen1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_4uh3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_k0xsi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_hwthv")
+}],
+"loop": false,
+"name": &"die",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("48_vst1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_inlwu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_0efsr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_0utw6")
+}],
+"loop": false,
+"name": &"hurt",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xu2a8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bjhek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nhdb3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7on27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k6oic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_04x1d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qbyxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hkgqh")
+}],
+"loop": true,
+"name": &"idle_loop",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_xu2a8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_bjhek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_nhdb3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7on27")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_k6oic")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_04x1d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qbyxg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_hkgqh")
+}],
+"loop": true,
+"name": &"relaxed_loop",
+"speed": 10.0
+}]
+
+[node name="Yi" type="Node"]
+
+[node name="Visuals" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Visuals"]
+unique_name_in_owner = true
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_exbu4")
+animation = &"attack"
+autoplay = "idle_loop"
+frame = 9
+frame_progress = 1.0
+offset = Vector2(0, -150)
+
+[node name="Bounds" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -75.0
+offset_top = -214.0
+offset_right = 75.0
+
+[node name="IntentPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -214)
+
+[node name="CenterPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -106)
