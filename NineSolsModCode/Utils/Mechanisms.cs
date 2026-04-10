@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using NineSolsMod.NineSolsModCode.Powers;
+using NineSolsMod.NineSolsModCode.Variables;
 
 namespace NineSolsMod.NineSolsModCode.Utils;
 
@@ -11,7 +12,7 @@ public static class MechanismUtils
 {
     public static async Task Finish(decimal baseAttack, CardModel model, Creature target, PlayerChoiceContext choiceContext)
     {
-        await DamageCmd.Attack(model.DynamicVars["NineSolsMod-Finish"].BaseValue * baseAttack).FromCard(model).Targeting(target)
+        await DamageCmd.Attack(model.DynamicVars[FinishVar.Key].BaseValue * baseAttack).FromCard(model).Targeting(target)
             .WithHitFx("vfx/vfx_attack_slash", null, null)
             .Execute(choiceContext);
         await PowerCmd.Remove<InternalDamagePower>(target);

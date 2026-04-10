@@ -9,10 +9,12 @@
   "NINESOLSMOD-PARRY.title": "弹反",
   "NINESOLSMOD-TRIPLE_SLASH.description": "造成{Damage:diff()}点伤害3次。最后一次伤害[gold]终结[/gold]{NineSolsMod-Finish:diff()}。",
   "NINESOLSMOD-TRIPLE_SLASH.title": "三元剑",
-  "NINESOLSMOD-IMMORTAL_DASH.description": "",
+  "NINESOLSMOD-IMMORTAL_DASH.description": "获得{Block:diff()}点[gold]格挡[/gold]。抽{Cards}张牌。",
   "NINESOLSMOD-IMMORTAL_DASH.title": "仙步",
-  "NINESOLSMOD-INSIGHT.description": "",
+  "NINESOLSMOD-INSIGHT.description": "如果目标的意图为造成伤害，则获得与其造成伤害相同数值的[gold]格挡[/gold]。",
   "NINESOLSMOD-INSIGHT.title": "洞察",
-  "NINESOLSMOD-HACK.description": "",
-  "NINESOLSMOD-HACK.title": "骇入"
+  "NINESOLSMOD-HACK.description": "如果目标拥有[gold]人工制品[/gold]，则移除所有[gold]人工制品[/gold]，并使其[gold]眩晕[/gold]一回合。\n否则，获得{GainStrength}点临时力量，并给予{VulnerablePower}层[gold]易伤[/gold]。",
+  "NINESOLSMOD-HACK.title": "骇入",
+  "NINESOLSMOD-CHARGED_STRIKE.description": "造成{Damage}点伤害。震伤{NineSolsMod-InternalDamage:diff()}。",
+  "NINESOLSMOD-CHARGED_STRIKE.title": "乾坤剑"
 }

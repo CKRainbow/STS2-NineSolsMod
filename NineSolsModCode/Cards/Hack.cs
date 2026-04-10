@@ -26,7 +26,7 @@ public class Hack() : NineSolsModCard(2, CardType.Skill,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DynamicVar("VulnerablePower", 2m),
-        new DynamicVar("DarkShacklePower", 8m)
+        new DynamicVar("GainStrength", 4m)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
@@ -47,7 +47,7 @@ public class Hack() : NineSolsModCard(2, CardType.Skill,
         else
         {
             await PowerCmd.Apply<VulnerablePower>(target, DynamicVars["VulnerablePower"].IntValue, Owner.Creature, this, false);
-            await PowerCmd.Apply<DarkShacklesPower>(target, DynamicVars["DarkShacklesPower"].IntValue, Owner.Creature, this, false);
+            await PowerCmd.Apply<FeedingFrenzyPower>(Owner.Creature, DynamicVars["GainStrength"].IntValue, Owner.Creature, this, false);
         }
 
 
@@ -55,7 +55,7 @@ public class Hack() : NineSolsModCard(2, CardType.Skill,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["DarkShacklesPower"].UpgradeValueBy(3);
+        DynamicVars["GainStrength"].UpgradeValueBy(2);
         DynamicVars["VulnerablePower"].UpgradeValueBy(1);
     }
 

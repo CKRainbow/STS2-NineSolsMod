@@ -10,10 +10,10 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace NineSolsMod.NineSolsModCode.Powers;
 
-public class InternalDamagePower: NineSolsModPower
+public class InternalDamagePower : NineSolsModPower
 {
     private decimal _effectiveAmount = 0m;
-    
+
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
     public override Color AmountLabelColor => _normalAmountLabelColor;
