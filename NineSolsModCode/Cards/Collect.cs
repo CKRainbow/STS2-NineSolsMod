@@ -27,13 +27,20 @@ public class Collect() : NineSolsModCard(1, CardType.Skill,
             return;
         }
 
-        var card = CombatState.CreateCard<AzureSand>(Owner);
-        if (IsUpgraded)
+        List<CardModel> cards = [
+            CombatState.CreateCard<AzureSand>(Owner),
+            CombatState.CreateCard<AzureSand>(Owner),
+        ];
+
+        foreach (var card in cards)
         {
-            CardCmd.Upgrade(card, CardPreviewStyle.HorizontalLayout);
+            if (IsUpgraded)
+            {
+                CardCmd.Upgrade(card, CardPreviewStyle.HorizontalLayout);
+            }
         }
 
-        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, true, CardPilePosition.Random);
+        await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Draw, true, CardPilePosition.Random);
     }
 
     protected override void OnUpgrade() { }

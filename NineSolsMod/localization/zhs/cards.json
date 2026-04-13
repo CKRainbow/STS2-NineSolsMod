@@ -46,5 +46,7 @@
   "NINESOLSMOD-CLOUD_LEAP.description": "抽{Cards}张牌，在下个回合抽{DrawCardsNextTurn}张牌。",
   "NINESOLSMOD-CLOUD_LEAP.title": "纵云步",
   "NINESOLSMOD-TAO_FRUIT.description": "获得{StrengthPower:diff()}点[gold]力量[/gold]。获得{DexterityPower:diff()}点[gold]敏捷[/gold]。",
-  "NINESOLSMOD-TAO_FRUIT.title": "道果"
+  "NINESOLSMOD-TAO_FRUIT.title": "道果",
+  "NINESOLSMOD-FUSANG_NOURISH.description": "",
+  "NINESOLSMOD-FUSANG_NOURISH.title": "古树滋养"
 }
