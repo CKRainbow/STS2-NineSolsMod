@@ -6,7 +6,9 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
+using NineSolsMod.NineSolsModCode.Cards;
 using NineSolsMod.NineSolsModCode.Character;
+using NineSolsMod.NineSolsModCode.Extensions;
 using NineSolsMod.NineSolsModCode.Powers;
 using NineSolsMod.NineSolsModCode.Utils;
 using NineSolsMod.NineSolsModCode.Variables;
@@ -14,8 +16,8 @@ using NineSolsMod.NineSolsModCode.Variables;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [Pool(typeof(YiCardPool))]
-public class ChargedStrike() : NineSolsModCard(3, CardType.Attack,
-    CardRarity.Uncommon, TargetType.AnyEnemy)
+public class TaiChiKick() : NineSolsModCard(1, CardType.Attack,
+    CardRarity.Common, TargetType.AnyEnemy)
 {
 
     protected override async Task OnPlay(
@@ -24,26 +26,27 @@ public class ChargedStrike() : NineSolsModCard(3, CardType.Attack,
     {
         // 保证一定有目标
         ArgumentNullException.ThrowIfNull(play.Target, "cardPlay.Target");
+        // 通过链式调用，生成伤害命令
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
             .WithHitFx("vfx/vfx_attack_slash", null, null)
             .Execute(choiceContext);
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play, false);
         await PowerCmd.Apply<InternalDamagePower>(play.Target, DynamicVars[InternalDamageVar.Key].BaseValue, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(6m);
-        DynamicVars[InternalDamageVar.Key].UpgradeValueBy(4m);
+        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.Block.UpgradeValueBy(2m);
+        DynamicVars[InternalDamageVar.Key].UpgradeValueBy(2m);
     }
 
-    // TODO: 补充描述，视作打击
-    protected override HashSet<CardTag> CanonicalTags => [
-        CardTag.Strike
-    ];
+    public override bool GainsBlock => true;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
-    [
-        new DamageVar(30m, ValueProp.Move),
-        new InternalDamageVar(6m)
+    // 用处是？
+    protected override IEnumerable<DynamicVar> CanonicalVars => [
+        new DamageVar(4m, ValueProp.Move),
+        new BlockVar(4m, ValueProp.Move),
+        new InternalDamageVar(4m)
     ];
 }

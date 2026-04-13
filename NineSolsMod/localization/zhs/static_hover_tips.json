@@ -1,6 +1,6 @@
 {
-    "NINESOLSMOD-FINISH.description": "攻击命中时，移除所有[gold]内伤[/gold]，额外造成[gold]内伤[/gold]层数特定倍率的伤害。",
-    "NINESOLSMOD-FINISH.title": "引爆",
-    "NINESOLSMOD-INTERNALDAMAGE.description": "对目标施加特定层数的[gold]内伤[/gold]。",
+    "NINESOLSMOD-FINISH.description": "移除目标所有[gold]内伤[/gold]，额外造成[gold]内伤[/gold]层数{NineSolsMod-Finish:diff()}倍的伤害。",
+    "NINESOLSMOD-FINISH.title": "终结",
+    "NINESOLSMOD-INTERNALDAMAGE.description": "对目标施加{NineSolsMod-InternalDamage:diff()}层[gold]内伤[/gold]。",
     "NINESOLSMOD-INTERNALDAMAGE.title": "震伤"
 }

@@ -34,19 +34,23 @@ public class ParryPower : NineSolsModPower
     {
         if (dealer is null)
             return;
-        if (target != base.Owner)
-            return;
-        if (!result.WasFullyBlocked)
+        if (target != Owner)
             return;
 
-        var internalDamageAmount = base.Amount * base.DynamicVars["InternalDamagePerAmount"].BaseValue;
+        var hasUnboundedCounter = Owner.HasPower<UnboundedCounterPower>();
+
+        if (!result.WasFullyBlocked && !hasUnboundedCounter)
+            return;
+
+        var internalDamageAmount = Amount * DynamicVars["InternalDamagePerAmount"].BaseValue;
+
 
         MainFile.Logger.Info($"target.Block: {target.Block}, result.BlockedDamage: {result.BlockedDamage}");
 
-        if (target.Block == 0 && result.BlockedDamage == result.TotalDamage)
+        if ((target.Block == 0 && result.BlockedDamage == result.TotalDamage) || hasUnboundedCounter)
         {
-            internalDamageAmount *= base.DynamicVars["PerfectParryMult"].BaseValue;
-            await PowerCmd.Apply<InternalDamagePower>(base.CombatState.HittableEnemies, internalDamageAmount, target, null, false);
+            internalDamageAmount *= DynamicVars["PerfectParryMult"].BaseValue;
+            await PowerCmd.Apply<InternalDamagePower>(CombatState.HittableEnemies, internalDamageAmount, target, null, false);
         }
         else
         {

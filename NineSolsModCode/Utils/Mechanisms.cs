@@ -12,10 +12,11 @@ public static class MechanismUtils
 {
     public static async Task Finish(decimal baseAttack, CardModel model, Creature target, PlayerChoiceContext choiceContext)
     {
-        await DamageCmd.Attack(model.DynamicVars[FinishVar.Key].BaseValue * baseAttack).FromCard(model).Targeting(target)
+        var internalDamageAmount = target.GetPowerAmount<InternalDamagePower>();
+        await PowerCmd.Remove<InternalDamagePower>(target);
+        await DamageCmd.Attack(model.DynamicVars[FinishVar.Key].BaseValue * internalDamageAmount + baseAttack).FromCard(model).Targeting(target)
             .WithHitFx("vfx/vfx_attack_slash", null, null)
             .Execute(choiceContext);
-        await PowerCmd.Remove<InternalDamagePower>(target);
     }
 
     /// <summary>

@@ -13,5 +13,6 @@ public class FinishVar : DynamicVar
     public FinishVar(decimal baseValue) : base(Key, baseValue)
     {
         this.WithTooltip(LocKey);
+        // this.WithTooltip("NINESOLSMOD-INTERNAL_DAMAGE_POWER", "powers");
     }
 }

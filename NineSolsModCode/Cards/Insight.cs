@@ -50,7 +50,7 @@ public class Insight() : NineSolsModCard(2, CardType.Skill,
                 {
                     if (attackIntent.DamageCalc is not null)
                     {
-                        attackTotal += attackIntent.DamageCalc();
+                        attackTotal += attackIntent.GetTotalDamage([Owner.Creature], target);
                     }
                 }
             }

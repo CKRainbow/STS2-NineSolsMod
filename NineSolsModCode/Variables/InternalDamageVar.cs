@@ -13,5 +13,7 @@ public class InternalDamageVar : DynamicVar
     public InternalDamageVar(decimal baseValue) : base(Key, baseValue)
     {
         this.WithTooltip(LocKey);
+        // 不行，会覆盖描述
+        // this.WithTooltip("NINESOLSMOD-INTERNAL_DAMAGE_POWER", "powers");
     }
 }

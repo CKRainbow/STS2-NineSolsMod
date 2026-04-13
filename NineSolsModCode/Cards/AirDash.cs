@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
@@ -12,35 +13,33 @@ using NineSolsMod.NineSolsModCode.Variables;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [Pool(typeof(YiCardPool))]
-public class Parry() : NineSolsModCard(1, CardType.Skill,
-    CardRarity.Basic, TargetType.Self)
+public class AirDash() : NineSolsModCard(1, CardType.Skill,
+    CardRarity.Uncommon, TargetType.Self)
 {
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play, false);
-        await PowerCmd.Apply<ParryPower>(Owner.Creature, DynamicVars["ParryPower"].BaseValue,
+        await PowerCmd.Apply<AnticipatePower>(Owner.Creature, DynamicVars["AnticipatePower"].BaseValue,
             Owner.Creature, this, false);
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play, false);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(3m);
-        // 结果还是要这样调用吗
-        DynamicVars["ParryPower"].UpgradeValueBy(1m);
+        DynamicVars["AnticipatePower"].UpgradeValueBy(1m);
+        DynamicVars.Block.UpgradeValueBy(2m);
     }
 
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new BlockVar(8m, ValueProp.Move),
-        new PowerVar<ParryPower>(3m)
+        new PowerVar<AnticipatePower>(2m),
+        new BlockVar(5m, ValueProp.Move),
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<ParryPower>(),
-        HoverTipFactory.FromPower<InternalDamagePower>()
+        HoverTipFactory.FromPower<AnticipatePower>()
     ];
 }

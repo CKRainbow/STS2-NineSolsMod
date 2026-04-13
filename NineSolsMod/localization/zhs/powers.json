@@ -2,10 +2,19 @@
   "NINESOLSMOD-INTERNAL_DAMAGE_POWER.title": "内伤",
   "NINESOLSMOD-INTERNAL_DAMAGE_POWER.description": "受到攻击伤害时，每一点攻击伤害会消耗一层内伤，并额外造成1点伤害。",
   "NINESOLSMOD-INTERNAL_DAMAGE_POWER.smartDescription": "受到攻击伤害时，每一点攻击伤害会消耗一层内伤，并额外造成{DamagePerAmount}点伤害。",
-  "NINESOLSMOD-PARRY_POWER.title": "弹反",
-  "NINESOLSMOD-PARRY_POWER.description": "每次被格挡的命中对攻击者和被攻击者造成3层内伤。\n如果此次命中刚好被格挡，则对攻击方所有角色造成6层内伤，被攻击者不受到内伤。",
+  "NINESOLSMOD-PARRY_POWER.title": "反击",
+  "NINESOLSMOD-PARRY_POWER.description": "每次被格挡的命中对攻击者和被攻击者造成内伤。\n如果此次命中刚好被格挡，则对攻击方所有角色造成多倍内伤，被攻击者不受到内伤。",
   "NINESOLSMOD-PARRY_POWER.smartDescription":  "每次被格挡的命中对攻击者和被攻击者造成{Amount}层内伤。\n如果此次命中刚好被格挡，则对攻击方所有角色造成{PerfectParryMult}倍内伤，被攻击者不受到内伤。",
   "NINESOLSMOD-QI_POWER.description": "部分卡牌需要[gold]气[/gold]才能打出。",
   "NINESOLSMOD-QI_POWER.smartDescription": "部分卡牌需要[gold]气[/gold]才能打出。\n目前拥有{Amount}层[gold]气[/gold]。",
-  "NINESOLSMOD-QI_POWER.title": "气"
+  "NINESOLSMOD-QI_POWER.title": "气" ,
+  "NINESOLSMOD-QI_GATHERING_POWER.description": "在下个回合，在你的[gold]手牌[/gold]中加入一张[gold]无量反击[/gold]。",
+  "NINESOLSMOD-QI_GATHERING_POWER.smartDescription": "在接下来{Amount}个回合，在你的[gold]手牌[/gold]中加入一张[gold]无量反击[/gold]。",
+  "NINESOLSMOD-QI_GATHERING_POWER.title": "聚气凝神",
+  "NINESOLSMOD-UNBOUNDED_COUNTER_POWER.description": "将受到的所有攻击伤害降低为[blue]0[/blue]，必定完美[gold]反击[/gold]。持续[blue]{Amount}[/blue]回合。",
+  "NINESOLSMOD-UNBOUNDED_COUNTER_POWER.smartDescription": "将受到的所有攻击伤害降低为[blue]0[/blue]，必定完美[gold]反击[/gold]。持续[blue]{Amount}[/blue]回合。",
+  "NINESOLSMOD-UNBOUNDED_COUNTER_POWER.title": "无量反击",
+  "NINESOLSMOD-SHADOW_HUNTER_ARROW_POWER.description": "[gold]消耗牌堆[/gold]中的[gold]寻影箭[/gold]以其为目标。",
+  "NINESOLSMOD-SHADOW_HUNTER_ARROW_POWER.smartDescription": "[gold]消耗牌堆[/gold]中的[gold]寻影箭[/gold]以其为目标。",
+  "NINESOLSMOD-SHADOW_HUNTER_ARROW_POWER.title": "寻影箭"
 }
