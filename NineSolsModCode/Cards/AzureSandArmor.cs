@@ -30,6 +30,11 @@ public class AzureSandArmor() : NineSolsModCard(0, CardType.Skill,
         await PowerCmd.Apply<PlatingPower>(Owner.Creature, DynamicVars["PlatingPower"].IntValue, Owner.Creature, this, false);
     }
 
+    protected override void OnUpgrade()
+    {
+        DynamicVars["PlatingPower"].UpgradeValueBy(2);
+    }
+
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new PowerVar<PlatingPower>(6)
     ];

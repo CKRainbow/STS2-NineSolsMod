@@ -5,10 +5,8 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
-using NineSolsMod.NineSolsModCode.Variables;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
@@ -20,23 +18,23 @@ public class SwiftRun() : NineSolsModCard(0, CardType.Skill,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await PowerCmd.Apply<AnticipatePower>(Owner.Creature, DynamicVars["AnticipatePower"].BaseValue,
+        await PowerCmd.Apply<SwiftRunPower>(Owner.Creature, DynamicVars["DexterityPower"].BaseValue,
             Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["AnticipatePower"].UpgradeValueBy(1m);
+        DynamicVars["DexterityPower"].UpgradeValueBy(1m);
     }
 
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<AnticipatePower>(3m)
+        new PowerVar<DexterityPower>(3m)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<AnticipatePower>()
+        HoverTipFactory.FromPower<DexterityPower>()
     ];
 }

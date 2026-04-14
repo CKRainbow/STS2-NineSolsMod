@@ -33,6 +33,7 @@ public class AzureSand() : NineSolsModCard(1, CardType.Skill,
             CombatState.CreateCard<CloudPiercingArrow>(Owner),
             CombatState.CreateCard<ThunderBusterArrow>(Owner),
             CombatState.CreateCard<ShadowHunterArrow>(Owner),
+            CombatState.CreateCard<AzureSandArmor>(Owner)
         ];
 
         if (IsUpgraded)
@@ -57,6 +58,7 @@ public class AzureSand() : NineSolsModCard(1, CardType.Skill,
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [
         HoverTipFactory.FromCard<CloudPiercingArrow>(IsUpgraded),
         HoverTipFactory.FromCard<ThunderBusterArrow>(IsUpgraded),
-        HoverTipFactory.FromCard<ShadowHunterArrow>(IsUpgraded)
+        HoverTipFactory.FromCard<ShadowHunterArrow>(IsUpgraded),
+        HoverTipFactory.FromCard<AzureSandArmor>(IsUpgraded )
     ];
 }

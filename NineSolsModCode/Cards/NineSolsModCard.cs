@@ -5,6 +5,7 @@ using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Extensions;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Models.Cards;
+using Godot;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
@@ -20,7 +21,8 @@ public abstract class NineSolsModCard(int cost, CardType type, CardRarity rarity
         get
         {
             var path = $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigCardImagePath();
-            if (!Godot.FileAccess.FileExists(path))
+            // 用 resourceLoader 试试
+            if (!ResourceLoader.Exists(path))
             {
                 return "card.png".BigCardImagePath();
             }
@@ -38,7 +40,7 @@ public abstract class NineSolsModCard(int cost, CardType type, CardRarity rarity
         get
         {
             var path = $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-            if (!Godot.FileAccess.FileExists(path))
+            if (!ResourceLoader.Exists(path))
             {
                 return "card.png".CardImagePath();
             }
@@ -50,7 +52,7 @@ public abstract class NineSolsModCard(int cost, CardType type, CardRarity rarity
         get
         {
             var path = $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-            if (!Godot.FileAccess.FileExists(path))
+            if (!ResourceLoader.Exists(path))
             {
                 return "card.png".CardImagePath();
             }

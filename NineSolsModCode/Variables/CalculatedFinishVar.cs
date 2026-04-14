@@ -1,0 +1,20 @@
+using BaseLib.Extensions;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+
+namespace NineSolsMod.NineSolsModCode.Variables;
+
+public class CalculatedFinishVar : CalculatedVar
+{
+    // 在描述中用作占位符的键，推荐添加前缀避免撞车
+    public const string Key = "NineSolsMod-CalculatedFinish";
+    // 本地化键，这里设置为大写的Key
+    public static readonly string LocKey = Key.ToUpperInvariant();
+
+    public CalculatedFinishVar() : base(Key)
+    {
+        this.WithTooltip(LocKey);
+    }
+}

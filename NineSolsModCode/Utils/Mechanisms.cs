@@ -10,11 +10,21 @@ namespace NineSolsMod.NineSolsModCode.Utils;
 
 public static class MechanismUtils
 {
-    public static async Task Finish(decimal baseAttack, CardModel model, Creature target, PlayerChoiceContext choiceContext)
+    public static async Task Finish(decimal baseAttack, CardModel model, Creature target, PlayerChoiceContext choiceContext, bool calculated = false)
     {
         var internalDamageAmount = target.GetPowerAmount<InternalDamagePower>();
+        decimal finishMult;
+        if (calculated)
+        {
+            CalculatedFinishVar calculatedFinishVar = (model.DynamicVars[CalculatedFinishVar.Key] as CalculatedFinishVar)!;
+            finishMult = calculatedFinishVar.Calculate(target) / 100m;
+        }
+        else
+        {
+            finishMult = model.DynamicVars[FinishVar.Key].BaseValue / 100m;
+        }
         await PowerCmd.Remove<InternalDamagePower>(target);
-        await DamageCmd.Attack(model.DynamicVars[FinishVar.Key].BaseValue * internalDamageAmount + baseAttack).FromCard(model).Targeting(target)
+        await DamageCmd.Attack(finishMult * internalDamageAmount + baseAttack).FromCard(model).Targeting(target)
             .WithHitFx("vfx/vfx_attack_slash", null, null)
             .Execute(choiceContext);
     }

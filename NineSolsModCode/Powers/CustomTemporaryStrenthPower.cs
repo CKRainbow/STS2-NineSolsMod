@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace NineSolsMod.NineSolsModCode.Powers;
 
-public abstract class CustomTemporaryStrenth : NineSolsModPower, ITemporaryPower
+public abstract class CustomTemporaryStrenthPower : NineSolsModPower, ITemporaryPower
 {
     private bool _shouldIgnoreNextInstance;
 

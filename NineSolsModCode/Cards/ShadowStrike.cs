@@ -26,9 +26,6 @@ public class ShadowStrike() : NineSolsModCard(1, CardType.Attack,
         // 保证一定有目标
         ArgumentNullException.ThrowIfNull(play.Target, "cardPlay.Target");
         // 通过链式调用，生成伤害命令
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
-            .WithHitFx("vfx/vfx_attack_slash", null, null)
-            .Execute(choiceContext);
         await MechanismUtils.Finish(DynamicVars.Damage.BaseValue, this, play.Target, choiceContext);
     }
 
@@ -43,6 +40,6 @@ public class ShadowStrike() : NineSolsModCard(1, CardType.Attack,
     // 用处是？
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DamageVar(6m, ValueProp.Move),
-        new FinishVar(1.5m)
+        new FinishVar(150m)
     ];
 }

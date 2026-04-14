@@ -20,9 +20,9 @@ public class TaoFruit() : NineSolsModCard(2, CardType.Power,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await PowerCmd.Apply<AnticipatePower>(Owner.Creature, DynamicVars["StrengthPower"].BaseValue,
+        await PowerCmd.Apply<StrengthPower>(Owner.Creature, DynamicVars["StrengthPower"].BaseValue,
             Owner.Creature, this, false);
-        await PowerCmd.Apply<AnticipatePower>(Owner.Creature, DynamicVars["DexterityPower"].BaseValue,
+        await PowerCmd.Apply<DexterityPower>(Owner.Creature, DynamicVars["DexterityPower"].BaseValue,
             Owner.Creature, this, false);
     }
 

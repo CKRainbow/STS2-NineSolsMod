@@ -2,8 +2,10 @@
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
 using NineSolsMod.NineSolsModCode.Utils;
@@ -12,7 +14,7 @@ using NineSolsMod.NineSolsModCode.Variables;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [Pool(typeof(YiCardPool))]
-public class Tailsman() : NineSolsModCard(0, CardType.Skill,
+public class TailsmanFlowWater() : NineSolsModCard(0, CardType.Skill,
     CardRarity.Basic, TargetType.AnyEnemy)
 {
     // 只是颜色，并不影响能否被打出
@@ -24,24 +26,37 @@ public class Tailsman() : NineSolsModCard(0, CardType.Skill,
         CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target);
-        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner, false);
         var internalDamageAmount = play.Target.GetPower<InternalDamagePower>();
         if (internalDamageAmount is null)
         {
             return;
         }
-        await MechanismUtils.Finish(internalDamageAmount.Amount, this, play.Target, choiceContext);
-        await MechanismUtils.CostQi(3, this, choiceContext, false);
+        await MechanismUtils.Finish(0, this, play.Target, choiceContext, calculated: true);
+        await MechanismUtils.CostQi(1, this, choiceContext, true);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["NineSolsMod-Finish"].UpgradeValueBy(0.5m);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar(1),
-        new FinishVar(150m),
+        new CalculationBaseVar(100m),
+        new CalculationExtraVar(100m),
+        new CalculatedFinishVar().WithMultiplier((CardModel card, Creature? _)=>
+        {
+            var qiPower = card.Owner.Creature.GetPower<QiPower>();
+            if (qiPower is null)
+            {
+                return 0;
+            }
+            var multiplier = 0m;
+            for(int i = 0; i < qiPower?.Amount; i++)
+            {
+                multiplier += 0.5m;
+                multiplier *= 1.2m;
+            }
+            return multiplier;
+        })
     ];
 }

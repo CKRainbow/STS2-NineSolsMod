@@ -20,26 +20,26 @@ public class AirDash() : NineSolsModCard(1, CardType.Skill,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await PowerCmd.Apply<AnticipatePower>(Owner.Creature, DynamicVars["AnticipatePower"].BaseValue,
+        await PowerCmd.Apply<AirDashPower>(Owner.Creature, DynamicVars["DexterityPower"].BaseValue,
             Owner.Creature, this, false);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play, false);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["AnticipatePower"].UpgradeValueBy(1m);
+        DynamicVars["DexterityPower"].UpgradeValueBy(1m);
         DynamicVars.Block.UpgradeValueBy(2m);
     }
 
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<AnticipatePower>(2m),
+        new PowerVar<DexterityPower>(2m),
         new BlockVar(5m, ValueProp.Move),
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<AnticipatePower>()
+        HoverTipFactory.FromPower<DexterityPower>()
     ];
 }
