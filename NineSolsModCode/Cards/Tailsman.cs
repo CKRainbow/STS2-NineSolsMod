@@ -30,8 +30,8 @@ public class Tailsman() : NineSolsModCard(0, CardType.Skill,
         {
             return;
         }
-        await MechanismUtils.Finish(internalDamageAmount.Amount, this, play.Target, choiceContext);
-        await MechanismUtils.CostQi(3, this, choiceContext, false);
+        await NineSolsModCmd.Finish(internalDamageAmount.Amount, this, play.Target, choiceContext);
+        await NineSolsModCmd.CostQi(3, this, choiceContext, false);
     }
 
     protected override void OnUpgrade()

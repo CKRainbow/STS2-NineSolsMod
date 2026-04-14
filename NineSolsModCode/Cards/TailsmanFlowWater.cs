@@ -14,7 +14,7 @@ using NineSolsMod.NineSolsModCode.Variables;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [Pool(typeof(YiCardPool))]
-public class TailsmanFlowWater() : NineSolsModCard(0, CardType.Skill,
+public class TailsmanFlowWater() : NineSolsModCard(1, CardType.Skill,
     CardRarity.Basic, TargetType.AnyEnemy)
 {
     // 只是颜色，并不影响能否被打出
@@ -31,32 +31,32 @@ public class TailsmanFlowWater() : NineSolsModCard(0, CardType.Skill,
         {
             return;
         }
-        await MechanismUtils.Finish(0, this, play.Target, choiceContext, calculated: true);
-        await MechanismUtils.CostQi(1, this, choiceContext, true);
+        await NineSolsModCmd.Finish(0, this, play.Target, choiceContext, calculated: true);
+        await NineSolsModCmd.CostQi(1, this, choiceContext, true);
+    }
+
+    protected override PileType GetResultPileType()
+    {
+        PileType resultPileType = base.GetResultPileType();
+        if (resultPileType != PileType.Discard)
+        {
+            return resultPileType;
+        }
+
+        return PileType.Hand;
     }
 
     protected override void OnUpgrade()
     {
+        DynamicVars[FinishVar.Key].UpgradeValueBy(50m);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CalculationBaseVar(100m),
-        new CalculationExtraVar(100m),
-        new CalculatedFinishVar().WithMultiplier((CardModel card, Creature? _)=>
-        {
-            var qiPower = card.Owner.Creature.GetPower<QiPower>();
-            if (qiPower is null)
-            {
-                return 0;
-            }
-            var multiplier = 0m;
-            for(int i = 0; i < qiPower?.Amount; i++)
-            {
-                multiplier += 0.5m;
-                multiplier *= 1.2m;
-            }
-            return multiplier;
-        })
+        new FinishVar(150m),
+    ];
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [
+        CardKeyword.Retain
     ];
 }

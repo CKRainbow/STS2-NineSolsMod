@@ -16,5 +16,8 @@
   "NINESOLSMOD-UNBOUNDED_COUNTER_POWER.title": "无量反击",
   "NINESOLSMOD-SHADOW_HUNTER_ARROW_POWER.description": "[gold]消耗牌堆[/gold]中的[gold]寻影箭[/gold]以其为目标。",
   "NINESOLSMOD-SHADOW_HUNTER_ARROW_POWER.smartDescription": "[gold]消耗牌堆[/gold]中的[gold]寻影箭[/gold]以其为目标。",
-  "NINESOLSMOD-SHADOW_HUNTER_ARROW_POWER.title": "寻影箭"
+  "NINESOLSMOD-SHADOW_HUNTER_ARROW_POWER.title": "寻影箭",
+  "NINESOLSMOD-COMPUTING_POWER_OVERCLOCK_POWER.description": "",
+  "NINESOLSMOD-COMPUTING_POWER_OVERCLOCK_POWER.smartDescription": "",
+  "NINESOLSMOD-COMPUTING_POWER_OVERCLOCK_POWER.title": "算力超频"
 }

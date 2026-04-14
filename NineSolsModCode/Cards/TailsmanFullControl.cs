@@ -31,8 +31,8 @@ public class TailsmanFullControl() : NineSolsModCard(0, CardType.Skill,
         {
             return;
         }
-        await MechanismUtils.Finish(0, this, play.Target, choiceContext, calculated: true);
-        await MechanismUtils.CostQi(5, this, choiceContext, false);
+        await NineSolsModCmd.Finish(0, this, play.Target, choiceContext, calculated: true);
+        await NineSolsModCmd.CostQi(5, this, choiceContext, false);
     }
 
     protected override void OnUpgrade()

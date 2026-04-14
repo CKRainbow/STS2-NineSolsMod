@@ -7,7 +7,7 @@
   "NINESOLSMOD-DEFEND_YI.title": "防御",
   "NINESOLSMOD-PARRY.description": "获得{Block:diff()}点[gold]格挡[/gold]。\n[gold]反击[/gold]{ParryPower}。",
   "NINESOLSMOD-PARRY.title": "化力格挡",
-  "NINESOLSMOD-TRIPLE_SLASH.description": "造成{Damage:diff()}点伤害3次。最后一次伤害[gold]终结[/gold]{NineSolsMod-Finish:diff()}。",
+  "NINESOLSMOD-TRIPLE_SLASH.description": "造成{Damage:diff()}点伤害{Repeat:diff()}次。最后一次伤害[gold]终结[/gold]{NineSolsMod-Finish:diff()}。",
   "NINESOLSMOD-TRIPLE_SLASH.title": "三元剑",
   "NINESOLSMOD-IMMORTAL_DASH.description": "获得{Block:diff()}点[gold]格挡[/gold]。抽{Cards}张牌。",
   "NINESOLSMOD-IMMORTAL_DASH.title": "仙步",
@@ -51,6 +51,12 @@
   "NINESOLSMOD-FUSANG_NOURISH.title": "古树滋养",
   "NINESOLSMOD-TAILSMAN_FULL_CONTROL.description": "消耗所有[gold]气[/gold]，每消耗一点，提高[gold]终结[/gold]倍率0.5，并增加20%。\n[gold]终结[/gold]{NineSolsMod-CalculatedFinish:diff()}。",
   "NINESOLSMOD-TAILSMAN_FULL_CONTROL.title": "收放自如",
-  "NINESOLSMOD-TAILSMAN_FLOW_WATER.description": "",
-  "NINESOLSMOD-TAILSMAN_FLOW_WATER.title": "行云流水"
+  "NINESOLSMOD-TAILSMAN_FLOW_WATER.description": "[gold]终结[/gold]{NineSolsMod-Finish:diff()}。将此牌返回你的手牌。",
+  "NINESOLSMOD-TAILSMAN_FLOW_WATER.title": "行云流水",
+  "NINESOLSMOD-SWIFT_BLADE.description": "造成{Damage:diff()}点伤害{Repeat:diff()}次。\n[gold]内息紊乱[/gold]{NineSolsMod-Deviation:diff()}。",
+  "NINESOLSMOD-SWIFT_BLADE.title": "速攻斩",
+  "NINESOLSMOD-SKULL_KICK.description": "",
+  "NINESOLSMOD-SKULL_KICK.title": "踢颅击",
+  "NINESOLSMOD-COMPUTING_POWER_OVERCLOCK.description": "",
+  "NINESOLSMOD-COMPUTING_POWER_OVERCLOCK.title": "算力超频"
 }

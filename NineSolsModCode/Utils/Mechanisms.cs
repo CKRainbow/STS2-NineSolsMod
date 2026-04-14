@@ -8,7 +8,7 @@ using NineSolsMod.NineSolsModCode.Variables;
 
 namespace NineSolsMod.NineSolsModCode.Utils;
 
-public static class MechanismUtils
+public static class NineSolsModCmd
 {
     public static async Task Finish(decimal baseAttack, CardModel model, Creature target, PlayerChoiceContext choiceContext, bool calculated = false)
     {
@@ -27,6 +27,12 @@ public static class MechanismUtils
         await DamageCmd.Attack(finishMult * internalDamageAmount + baseAttack).FromCard(model).Targeting(target)
             .WithHitFx("vfx/vfx_attack_slash", null, null)
             .Execute(choiceContext);
+    }
+
+    public static async Task Deviation(CardModel model, Creature target, PlayerChoiceContext choiceContext)
+    {
+        var deviationAmount = model.DynamicVars[DeviationVar.Key].BaseValue;
+        await PowerCmd.Apply<InternalDamagePower>(target, deviationAmount, model.Owner.Creature, model, false);
     }
 
     /// <summary>
