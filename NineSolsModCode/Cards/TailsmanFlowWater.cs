@@ -15,11 +15,11 @@ namespace NineSolsMod.NineSolsModCode.Cards;
 
 [Pool(typeof(YiCardPool))]
 public class TailsmanFlowWater() : NineSolsModCard(1, CardType.Skill,
-    CardRarity.Basic, TargetType.AnyEnemy)
+    CardRarity.Uncommon, TargetType.AnyEnemy)
 {
     // 只是颜色，并不影响能否被打出
     protected override bool ShouldGlowRedInternal => !Owner.Creature.HasPower<QiPower>();
-    protected override bool IsPlayable => !Owner.Creature.HasPower<QiPower>();
+    protected override bool IsPlayable => Owner.Creature.HasPower<QiPower>();
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
