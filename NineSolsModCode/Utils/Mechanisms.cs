@@ -1,8 +1,10 @@
 
+using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 using NineSolsMod.NineSolsModCode.Powers;
 using NineSolsMod.NineSolsModCode.Variables;
 
@@ -10,6 +12,15 @@ namespace NineSolsMod.NineSolsModCode.Utils;
 
 public static class NineSolsModCmd
 {
+    /// <summary>
+    /// “终结”机制的统一方法，先移除InternalDamagePower，再造成伤害
+    /// </summary>
+    /// <param name="baseAttack"></param>
+    /// <param name="model"></param>
+    /// <param name="target"></param>
+    /// <param name="choiceContext"></param>
+    /// <param name="calculated">是否使用CalculatedFinishVar</param>
+    /// <returns></returns>
     public static async Task Finish(decimal baseAttack, CardModel model, Creature target, PlayerChoiceContext choiceContext, bool calculated = false)
     {
         var internalDamageAmount = target.GetPowerAmount<InternalDamagePower>();
@@ -27,6 +38,12 @@ public static class NineSolsModCmd
         await DamageCmd.Attack(finishMult * internalDamageAmount + baseAttack).FromCard(model).Targeting(target)
             .WithHitFx("vfx/vfx_attack_slash", null, null)
             .Execute(choiceContext);
+
+        var statisJadePower = model.Owner.Creature.GetPower<StatisJadePower>();
+        if (statisJadePower is not null)
+        {
+            await PowerCmd.Apply<WeakPower>(target, statisJadePower.Amount, model.Owner.Creature, model, false);
+        }
     }
 
     public static async Task Deviation(CardModel model, Creature target, PlayerChoiceContext choiceContext)

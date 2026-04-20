@@ -57,7 +57,7 @@
   "NINESOLSMOD-SWIFT_BLADE.title": "速攻斩",
   "NINESOLSMOD-SKULL_KICK.description": "造成{Damage:diff()}点伤害。[gold]震伤[/gold]{NineSolsMod-InternalDamage:diff()}。\n在下个回合，获得{Energy:energyIcons()}。",
   "NINESOLSMOD-SKULL_KICK.title": "踢颅击",
-  "NINESOLSMOD-COMPUTING_POWER_OVERCLOCK.description": "能力牌的耗能减少{CuriousReduction:diff()}{energyPrefix:energyIcons(1)}。",
+  "NINESOLSMOD-COMPUTING_POWER_OVERCLOCK.description": "能力牌的耗能减少{Energy:diff()}{Energy:energyIcons(1)}。",
   "NINESOLSMOD-COMPUTING_POWER_OVERCLOCK.title": "算力超频",
   "NINESOLSMOD-BIOLOGICAL_CALCULATION.description": "获得{Energy:energyIcons()}。\n[gold]内息紊乱[/gold]{NineSolsMod-Deviation:diff()}。",
   "NINESOLSMOD-BIOLOGICAL_CALCULATION.title": "生物运算",
@@ -65,5 +65,13 @@
   "NINESOLSMOD-GUTWRENCH_FRUIT.title": "断肠果",
   "NINESOLSMOD-EMBRACE_THE_ONE.description": "获得{Block:diff()}点[gold]格挡[/gold]。\n给[gold]手牌[/gold]中的一张牌添加[gold]保留[/gold]。",
   "NINESOLSMOD-EMBRACE_THE_ONE.selectionScreenPrompt": "选择要添加[gold]保留[/gold]的卡牌。",
-  "NINESOLSMOD-EMBRACE_THE_ONE.title": "抱元守一"
+  "NINESOLSMOD-EMBRACE_THE_ONE.title": "抱元守一",
+  "NINESOLSMOD-QI_SWIPE_JADE.description": "",
+  "NINESOLSMOD-QI_SWIPE_JADE.title": "七伤玉",
+  "NINESOLSMOD-STATIS_JADE.description": "",
+  "NINESOLSMOD-STATIS_JADE.title": "定身玉",
+  "NINESOLSMOD-MEDICAL_JADE.description": "",
+  "NINESOLSMOD-MEDICAL_JADE.title": "药学玉",
+  "NINESOLSMOD-HEALTH_THIEF_JADE.description": "",
+  "NINESOLSMOD-HEALTH_THIEF_JADE.title": "窃命玉"
 }
