@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Cards;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Cards;
 using NineSolsMod.NineSolsModCode.Character;
@@ -32,6 +33,7 @@ public class SkullKick() : NineSolsModCard(2, CardType.Attack,
             .WithHitFx("vfx/vfx_attack_slash", null, null)
             .Execute(choiceContext);
         await PowerCmd.Apply<InternalDamagePower>(play.Target, DynamicVars[InternalDamageVar.Key].BaseValue, Owner.Creature, this, false);
+        await PowerCmd.Apply<EnergyNextTurnPower>(Owner.Creature, DynamicVars.Energy.BaseValue, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()

@@ -15,7 +15,7 @@ using NineSolsMod.NineSolsModCode.Tags;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [Pool(typeof(TokenCardPool))]
-public class CloudPiercingArrow() : NineSolsModCard(0, CardType.Attack,
+public class CloudPiercingArrow() : NineSolsModCard(1, CardType.Attack,
     CardRarity.Token, TargetType.AllEnemies)
 {
     protected override async Task OnPlay(

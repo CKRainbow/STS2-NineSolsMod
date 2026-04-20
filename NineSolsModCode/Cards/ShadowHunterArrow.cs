@@ -23,7 +23,7 @@ using NineSolsMod.NineSolsModCode.Tags;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [Pool(typeof(TokenCardPool))]
-public class ShadowHunterArrow() : NineSolsModCard(0, CardType.Attack,
+public class ShadowHunterArrow() : NineSolsModCard(1, CardType.Attack,
     CardRarity.Token, TargetType.AnyEnemy)
 {
     private bool _exhaustedPlay = false;

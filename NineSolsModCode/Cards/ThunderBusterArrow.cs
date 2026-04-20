@@ -16,7 +16,7 @@ using NineSolsMod.NineSolsModCode.Variables;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [Pool(typeof(TokenCardPool))]
-public class ThunderBusterArrow() : NineSolsModCard(0, CardType.Attack,
+public class ThunderBusterArrow() : NineSolsModCard(1, CardType.Attack,
     CardRarity.Token, TargetType.AllEnemies)
 {
     protected override async Task OnPlay(

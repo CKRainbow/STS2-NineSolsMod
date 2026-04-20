@@ -55,8 +55,15 @@
   "NINESOLSMOD-TAILSMAN_FLOW_WATER.title": "行云流水",
   "NINESOLSMOD-SWIFT_BLADE.description": "造成{Damage:diff()}点伤害{Repeat:diff()}次。\n[gold]内息紊乱[/gold]{NineSolsMod-Deviation:diff()}。",
   "NINESOLSMOD-SWIFT_BLADE.title": "速攻斩",
-  "NINESOLSMOD-SKULL_KICK.description": "",
+  "NINESOLSMOD-SKULL_KICK.description": "造成{Damage:diff()}点伤害。[gold]震伤[/gold]{NineSolsMod-InternalDamage:diff()}。\n在下个回合，获得{Energy:energyIcons()}。",
   "NINESOLSMOD-SKULL_KICK.title": "踢颅击",
-  "NINESOLSMOD-COMPUTING_POWER_OVERCLOCK.description": "",
-  "NINESOLSMOD-COMPUTING_POWER_OVERCLOCK.title": "算力超频"
+  "NINESOLSMOD-COMPUTING_POWER_OVERCLOCK.description": "能力牌的耗能减少{CuriousReduction:diff()}{energyPrefix:energyIcons(1)}。",
+  "NINESOLSMOD-COMPUTING_POWER_OVERCLOCK.title": "算力超频",
+  "NINESOLSMOD-BIOLOGICAL_CALCULATION.description": "获得{Energy:energyIcons()}。\n[gold]内息紊乱[/gold]{NineSolsMod-Deviation:diff()}。",
+  "NINESOLSMOD-BIOLOGICAL_CALCULATION.title": "生物运算",
+  "NINESOLSMOD-GUTWRENCH_FRUIT.description": "给予{VulnerablePower:diff()}层[gold]易伤[/gold]。\n给予{WeakPower:diff()}层[gold]虚弱[/gold]。",
+  "NINESOLSMOD-GUTWRENCH_FRUIT.title": "断肠果",
+  "NINESOLSMOD-EMBRACE_THE_ONE.description": "获得{Block:diff()}点[gold]格挡[/gold]。\n给[gold]手牌[/gold]中的一张牌添加[gold]保留[/gold]。",
+  "NINESOLSMOD-EMBRACE_THE_ONE.selectionScreenPrompt": "选择要添加[gold]保留[/gold]的卡牌。",
+  "NINESOLSMOD-EMBRACE_THE_ONE.title": "抱元守一"
 }

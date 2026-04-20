@@ -19,7 +19,7 @@ using NineSolsMod.NineSolsModCode.Tags;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [Pool(typeof(TokenCardPool))]
-public class AzureSand() : NineSolsModCard(1, CardType.Skill,
+public class AzureSand() : NineSolsModCard(0, CardType.Skill,
     CardRarity.Token, TargetType.Self)
 {
     protected override async Task OnPlay(
