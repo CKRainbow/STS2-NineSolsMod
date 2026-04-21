@@ -22,9 +22,14 @@ public class HealthThiefJadePower : NineSolsModPower
     public override PowerStackType StackType => PowerStackType.Counter;
     public override Color AmountLabelColor => _normalAmountLabelColor;
 
+    protected override IEnumerable<DynamicVar> CanonicalVars => [
+        new FinishVar(100)
+    ];
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [
         new HoverTip(
-            new LocString("static_hover_tips", "NINESOLSMOD-FINISH")
+            new LocString("static_hover_tips", "NINESOLSMOD-FINISH.title"),
+            new LocString("static_hover_tips", "NINESOLSMOD-FINISH.description")
         )
     ];
 }

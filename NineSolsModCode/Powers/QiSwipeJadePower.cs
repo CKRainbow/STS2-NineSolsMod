@@ -1,13 +1,11 @@
-﻿using BaseLib.Abstracts;
-using Godot;
-using MegaCrit.Sts2.Core.Commands;
+﻿using Godot;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Utils;
@@ -31,7 +29,7 @@ public class QiSwipeJadePower : NineSolsModPower
     /// </summary>
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new InternalDamageVar(2m)
+        new DeviationVar(2m)
     ];
 
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
@@ -61,7 +59,7 @@ public class QiSwipeJadePower : NineSolsModPower
             return 1m;
         }
 
-        return (100 + Amount) / 100;
+        return (100m + Amount) / 100m;
     }
 
     protected override object InitInternalData()
@@ -80,7 +78,7 @@ public class QiSwipeJadePower : NineSolsModPower
             return Task.CompletedTask;
         }
 
-        GetInternalData<Data>().amountsForPlayedCards.Add(cardPlay.Card, base.Amount);
+        GetInternalData<Data>().amountsForPlayedCards.Add(cardPlay.Card, Amount);
         return Task.CompletedTask;
     }
 
@@ -90,7 +88,7 @@ public class QiSwipeJadePower : NineSolsModPower
         if (GetInternalData<Data>().amountsForPlayedCards.Remove(cardPlay.Card, out var value))
         {
             Flash();
-            await NineSolsModCmd.Deviation(cardPlay.Card, Owner, context);
+            await NineSolsModCmd.Deviation(Owner, DynamicVars[DeviationVar.Key].IntValue);
         }
     }
 

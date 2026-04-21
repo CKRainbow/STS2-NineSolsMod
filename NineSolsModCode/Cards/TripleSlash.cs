@@ -53,7 +53,7 @@ public class TripleSlash() : NineSolsModCard(2, CardType.Attack,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(6m, ValueProp.Move),
-        new FinishVar(200m),
+        new FinishVar(140m),
         new RepeatVar(3)
     ];
 }

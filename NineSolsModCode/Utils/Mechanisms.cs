@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Powers;
 using NineSolsMod.NineSolsModCode.Variables;
 
@@ -35,14 +36,32 @@ public static class NineSolsModCmd
             finishMult = model.DynamicVars[FinishVar.Key].BaseValue / 100m;
         }
         await PowerCmd.Remove<InternalDamagePower>(target);
-        await DamageCmd.Attack(finishMult * internalDamageAmount + baseAttack).FromCard(model).Targeting(target)
+        await DamageCmd.Attack(baseAttack).FromCard(model).Targeting(target)
             .WithHitFx("vfx/vfx_attack_slash", null, null)
             .Execute(choiceContext);
+        // // 不受任何加成影响的伤害
+        // VfxCmd.PlayOnCreatureCenter(target, "vfx/vfx_attack_blunt");
+        // await CreatureCmd.Damage(choiceContext, target, finishMult * internalDamageAmount, ValueProp.Unpowered, model.Owner.Creature, model);
+        // 额外一段受加成影响的伤害
+        await DamageCmd.Attack(finishMult * internalDamageAmount).FromCard(model).Targeting(target)
+            .WithHitFx("vfx/vfx_attack_blunt", null, null)
+            .Execute(choiceContext);
+
+        if (internalDamageAmount <= 0)
+        {
+            return;
+        }
 
         var statisJadePower = model.Owner.Creature.GetPower<StatisJadePower>();
         if (statisJadePower is not null)
         {
             await PowerCmd.Apply<WeakPower>(target, statisJadePower.Amount, model.Owner.Creature, model, false);
+        }
+
+        var healthThiefJadePower = model.Owner.Creature.GetPower<HealthThiefJadePower>();
+        if (healthThiefJadePower is not null)
+        {
+            await CreatureCmd.Heal(model.Owner.Creature, healthThiefJadePower.Amount);
         }
     }
 
@@ -50,6 +69,11 @@ public static class NineSolsModCmd
     {
         var deviationAmount = model.DynamicVars[DeviationVar.Key].BaseValue;
         await PowerCmd.Apply<InternalDamagePower>(target, deviationAmount, model.Owner.Creature, model, false);
+    }
+
+    public static async Task Deviation(Creature target, decimal amount)
+    {
+        await PowerCmd.Apply<InternalDamagePower>(target, amount, target, null, false);
     }
 
     /// <summary>

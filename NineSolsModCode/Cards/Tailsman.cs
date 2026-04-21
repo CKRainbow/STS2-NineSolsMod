@@ -42,6 +42,6 @@ public class Tailsman() : NineSolsModCard(0, CardType.Skill,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(1),
-        new FinishVar(150m),
+        new FinishVar(100m),
     ];
 }

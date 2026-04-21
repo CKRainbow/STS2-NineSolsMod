@@ -32,4 +32,8 @@ public class QiSwipeJade() : NineSolsModCard(2, CardType.Power,
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new PowerVar<QiSwipeJadePower>(50)
     ];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+        HoverTipFactory.FromPower<QiSwipeJadePower>(),
+    ];
 }

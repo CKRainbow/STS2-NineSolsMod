@@ -21,15 +21,19 @@ public class MedicalJade() : NineSolsModCard(1, CardType.Power,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await PowerCmd.Apply<StatisJadePower>(Owner.Creature, DynamicVars["StatisJadePower"].IntValue, Owner.Creature, this, false);
+        await PowerCmd.Apply<MedicalJadePower>(Owner.Creature, DynamicVars["MedicalJadePower"].IntValue, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["StatisJadePower"].UpgradeValueBy(1);
+        EnergyCost.UpgradeBy(-1);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<StatisJadePower>(2)
+        new PowerVar<MedicalJadePower>(50)
+    ];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+        HoverTipFactory.FromPower<MedicalJadePower>(),
     ];
 }

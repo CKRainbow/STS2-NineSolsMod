@@ -32,4 +32,9 @@ public class ComputingPowerOverclock() : NineSolsModCard(1, CardType.Power,
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new PowerVar<ComputingPowerOverclockPower>(1)
     ];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+        HoverTipFactory.FromPower<ComputingPowerOverclockPower>()
+    ];
+
 }

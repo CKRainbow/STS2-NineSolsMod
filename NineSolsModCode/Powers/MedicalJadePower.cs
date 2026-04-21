@@ -1,39 +1,23 @@
-﻿using BaseLib.Abstracts;
+﻿using BaseLib.Hooks;
 using Godot;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
-using NineSolsMod.NineSolsModCode.Utils;
-using NineSolsMod.NineSolsModCode.Variables;
 
 namespace NineSolsMod.NineSolsModCode.Powers;
 
-public class MedicalJadePower : NineSolsModPower
+public class MedicalJadePower : NineSolsModPower, IHealAmountModifier
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
     public override Color AmountLabelColor => _normalAmountLabelColor;
 
-    public override async Task AfterCurrentHpChanged(Creature creature, decimal delta)
+    public decimal ModifyHealMultiplicative(Creature creature, decimal amount)
     {
         if (creature != Owner)
         {
-            return;
+            return 1m;
         }
-        if (delta <= 0)
-        {
-            return;
-        }
-
-        // 不播放动画
-        await CreatureCmd.Heal(creature, delta * Amount / 100m, false);
+        return 1m + Amount / 100m;
     }
 
 }

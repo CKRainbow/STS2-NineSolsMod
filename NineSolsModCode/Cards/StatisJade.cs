@@ -32,4 +32,8 @@ public class StatisJade() : NineSolsModCard(1, CardType.Power,
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new PowerVar<StatisJadePower>(2)
     ];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+        HoverTipFactory.FromPower<StatisJadePower>(),
+    ];
 }

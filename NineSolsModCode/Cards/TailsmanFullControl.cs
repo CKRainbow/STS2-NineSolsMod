@@ -53,7 +53,7 @@ public class TailsmanFullControl() : NineSolsModCard(0, CardType.Skill,
             var multiplier = 0m;
             for(int i = 0; i < qiPower?.Amount; i++)
             {
-                multiplier += 0.5m;
+                multiplier += 0.2m;
                 multiplier *= 1.2m;
             }
             return multiplier;
