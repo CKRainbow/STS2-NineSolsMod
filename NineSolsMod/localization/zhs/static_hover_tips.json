@@ -6,5 +6,7 @@
     "NINESOLSMOD-INTERNALDAMAGE.description": "对目标施加{NineSolsMod-InternalDamage:diff()}层[gold]内伤[/gold]。",
     "NINESOLSMOD-INTERNALDAMAGE.title": "震伤",
     "NINESOLSMOD-DEVIATION.description": "对自身造成{NineSolsMod-Deviation:diff()}层[gold]内伤[/gold]。",
-    "NINESOLSMOD-DEVIATION.title": "内息紊乱"
+    "NINESOLSMOD-DEVIATION.title": "内息紊乱",
+    "NINESOLSMOD-ABUNDANCE.description": "当手牌大于等于{NineSolsMod-Abundance:diff()}张时，触发额外效果。",
+    "NINESOLSMOD-ABUNDANCE.title": "充盈"
 }

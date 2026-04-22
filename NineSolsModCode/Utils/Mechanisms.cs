@@ -101,4 +101,9 @@ public static class NineSolsModCmd
         await PowerCmd.ModifyAmount(qiPower, -finalCost, model.Owner.Creature, model);
         return cost;
     }
+
+    public static async Task GainQi(decimal amount, Creature source, CardModel? model = null)
+    {
+        await PowerCmd.Apply<QiPower>(source, amount, source, model, false);
+    }
 }

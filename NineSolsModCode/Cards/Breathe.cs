@@ -13,26 +13,33 @@ using NineSolsMod.NineSolsModCode.Variables;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [Pool(typeof(YiCardPool))]
-public class CloudLeap() : NineSolsModCard(1, CardType.Skill,
+public class Breathe() : NineSolsModCard(1, CardType.Skill,
     CardRarity.Uncommon, TargetType.Self)
 {
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.IntValue, Owner, false);
-        await PowerCmd.Apply<DrawCardsNextTurnPower>(Owner.Creature, DynamicVars["DrawCardsNextTurnPower"].BaseValue, Owner.Creature, this);
+        await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
+        await PowerCmd.Apply<RetainHandPower>(Owner.Creature, 1m, Owner.Creature, this);
+        await PowerCmd.Apply<EnergyNextTurnPower>(Owner.Creature, DynamicVars.Energy.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<QiNextTurnPower>(Owner.Creature, DynamicVars.Stars.BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Cards.UpgradeValueBy(1);
+        DynamicVars["Qi"].UpgradeValueBy(1);
     }
 
-    public override bool GainsBlock => true;
-
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new CardsVar(2),
-        new PowerVar<DrawCardsNextTurnPower>(2)
+        new EnergyVar(1),
+        new DynamicVar("Qi", 1)
+    ];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        EnergyHoverTip,
+        HoverTipFactory.FromKeyword(CardKeyword.Retain),
+        HoverTipFactory.FromPower<QiPower>()
     ];
 }

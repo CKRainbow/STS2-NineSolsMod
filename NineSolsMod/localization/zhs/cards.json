@@ -31,7 +31,7 @@
   "NINESOLSMOD-THUNDER_BUSTER_ARROW.title": "破雷箭",
   "NINESOLSMOD-SHADOW_HUNTER_ARROW.description": "造成{Damage:diff()}点伤害。\n在你的回合开始时，从[gold]消耗牌堆[/gold]对目标打出这张牌。",
   "NINESOLSMOD-SHADOW_HUNTER_ARROW.title": "寻影箭",
-  "NINESOLSMOD-SWIFT_RUN.description": "获得{DexterityPower:diff()}[gold]临时敏捷[/gold]。",
+  "NINESOLSMOD-SWIFT_RUN.description": "获得{DexterityPower:diff()}[gold]临时敏捷[/gold]。抽{Cards:diff()}张牌。",
   "NINESOLSMOD-SWIFT_RUN.title": "神速",
   "NINESOLSMOD-SWIFT_RISE.description": "获得{Block:diff()}[gold]格挡[/gold]。如果你在上回合失去过生命值，则额外获得1次[gold]格挡[/gold]。",
   "NINESOLSMOD-SWIFT_RISE.title": "瞬起",
@@ -73,5 +73,11 @@
   "NINESOLSMOD-MEDICAL_JADE.description": "你所有的生命恢复效果提升50%。",
   "NINESOLSMOD-MEDICAL_JADE.title": "药学玉",
   "NINESOLSMOD-HEALTH_THIEF_JADE.description": "每当触发[gold]终结[/gold]时，治疗你{HealthThiefJadePower:diff()}点生命值。",
-  "NINESOLSMOD-HEALTH_THIEF_JADE.title": "窃命玉"
+  "NINESOLSMOD-HEALTH_THIEF_JADE.title": "窃命玉",
+  "NINESOLSMOD-BREATHE.description": "",
+  "NINESOLSMOD-BREATHE.title": "吐纳",
+  "NINESOLSMOD-YIN_YANG.description": "",
+  "NINESOLSMOD-YIN_YANG.title": "阴阳两仪",
+  "NINESOLSMOD-REVIVAL_JADE.description": "",
+  "NINESOLSMOD-REVIVAL_JADE.title": "替死玉"
 }

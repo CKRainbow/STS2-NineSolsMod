@@ -31,5 +31,11 @@
   "NINESOLSMOD-MEDICAL_JADE_POWER.title": "药学玉",
   "NINESOLSMOD-HEALTH_THIEF_JADE_POWER.description": "每当触发[gold]终结[/gold]时，治疗你2点生命值。",
   "NINESOLSMOD-HEALTH_THIEF_JADE_POWER.smartDescription": "每当触发[gold]终结[/gold]时，治疗你{Amount}点生命值。",
-  "NINESOLSMOD-HEALTH_THIEF_JADE_POWER.title": "窃命玉"
+  "NINESOLSMOD-HEALTH_THIEF_JADE_POWER.title": "窃命玉",
+  "NINESOLSMOD-QI_NEXT_TURN_POWER.description": "",
+  "NINESOLSMOD-QI_NEXT_TURN_POWER.smartDescription": "",
+  "NINESOLSMOD-QI_NEXT_TURN_POWER.title": "QiNextTurnPower",
+  "NINESOLSMOD-REVIVAL_JADE_POWER.description": "",
+  "NINESOLSMOD-REVIVAL_JADE_POWER.smartDescription": "",
+  "NINESOLSMOD-REVIVAL_JADE_POWER.title": "替死玉"
 }
