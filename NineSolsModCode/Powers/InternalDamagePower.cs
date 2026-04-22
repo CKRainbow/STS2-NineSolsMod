@@ -12,41 +12,48 @@ namespace NineSolsMod.NineSolsModCode.Powers;
 
 public class InternalDamagePower : NineSolsModPower
 {
-    private decimal _effectiveAmount = 0m;
+    private class Data
+    {
+        public decimal effectiveAmount = 0m;
+    }
 
     public override PowerType Type => PowerType.Debuff;
     public override PowerStackType StackType => PowerStackType.Counter;
     public override Color AmountLabelColor => _normalAmountLabelColor;
+
+    protected override object? InitInternalData()
+    {
+        return new Data();
+    }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DynamicVar("DamagePerAmount", 1m)
     ];
 
-    public override decimal ModifyHpLostAfterOsty(Creature target, decimal amount, ValueProp props, Creature? dealer,
-        CardModel? cardSource)
+    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        ArgumentNullException.ThrowIfNull(target);
-        if (target != base.Owner)
+        if (target != Owner)
         {
-            return amount;
+            return 0m;
         }
-        // TODO: 我们是否需要在乎这个？这个是说是否是任何伤害都可触发吗？
-        // if (!props.IsPoweredAttack())
-        // {
-        //     return 1m;
-        // }
-        var damagePerAmount = base.DynamicVars["DamagePerAmount"].BaseValue;
-        var internalDamageAmount = base.Amount;
-        _effectiveAmount = Math.Min(internalDamageAmount, amount);
-        return _effectiveAmount * damagePerAmount + amount;
+        var damagePerAmount = DynamicVars["DamagePerAmount"].BaseValue;
+        var internalDamageAmount = Amount;
+        GetInternalData<Data>().effectiveAmount = Math.Min(internalDamageAmount, amount);
+        return GetInternalData<Data>().effectiveAmount * damagePerAmount;
     }
 
-    public override async Task AfterModifyingHpLostAfterOsty()
+    public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
-        // 受到攻击后，减去对应数量的层数，但好像不应该在这写
-        await PowerCmd.ModifyAmount(this, -_effectiveAmount, null, null);
-        _effectiveAmount = 0m;
+        if (target == Owner)
+        {
+            if (result.TotalDamage != 0)
+            {
+                Flash();
+                await PowerCmd.ModifyAmount(this, -GetInternalData<Data>().effectiveAmount, null, null);
+                GetInternalData<Data>().effectiveAmount = 0m;
+            }
+        }
     }
 
 }
