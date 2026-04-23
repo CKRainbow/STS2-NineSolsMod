@@ -55,7 +55,7 @@ public class Yi : PlaceholderCharacterModel
         These are just some of the simplest assets, given some placeholders to differentiate your character with.
         You don't have to, but you're suggested to rename these images. */
     public override string CustomIconTexturePath => "character_icon_yi.png".CharacterUiPath();
-    public override string CustomIconPath => 
+    public override string CustomIconPath =>
         "res://NineSolsMod/scenes/ui/character_icons/yi_icon.tscn";
 
     public override string CustomEnergyCounterPath =>
@@ -66,7 +66,7 @@ public class Yi : PlaceholderCharacterModel
 
     // 这个应该比较容易做，要不用一个树的根须？
     public override string CustomMapMarkerPath => ImageHelper.GetImagePath("packed/map/icons/map_marker_necrobinder.png");
-    
+
     public override string CharacterSelectSfx => "event:/sfx/characters/necrobinder/necrobinder_select";
     // public override string CustomVisualPath => SceneHelper.GetScenePath("creature_visuals/necrobinder");
     public override string CustomVisualPath => "res://NineSolsMod/scenes/creature_visuals/yi.tscn";
