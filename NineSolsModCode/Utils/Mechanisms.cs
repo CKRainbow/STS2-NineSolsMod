@@ -1,11 +1,8 @@
-
-using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Powers;
 using NineSolsMod.NineSolsModCode.Variables;
 
@@ -22,7 +19,7 @@ public static class NineSolsModCmd
     /// <param name="choiceContext"></param>
     /// <param name="calculated">是否使用CalculatedFinishVar</param>
     /// <returns></returns>
-    public static async Task Finish(decimal baseAttack, CardModel model, Creature target, PlayerChoiceContext choiceContext, bool calculated = false)
+    public static async Task Finish(decimal baseAttack, CardModel model, Creature target, PlayerChoiceContext? choiceContext = null, bool calculated = false)
     {
         var internalDamageAmount = target.GetPowerAmount<InternalDamagePower>();
         decimal finishMult;
@@ -36,9 +33,12 @@ public static class NineSolsModCmd
             finishMult = model.DynamicVars[FinishVar.Key].BaseValue / 100m;
         }
         await PowerCmd.Remove<InternalDamagePower>(target);
-        await DamageCmd.Attack(baseAttack).FromCard(model).Targeting(target)
-            .WithHitFx("vfx/vfx_attack_slash", null, null)
-            .Execute(choiceContext);
+        if (baseAttack > 0)
+        {
+            await DamageCmd.Attack(baseAttack).FromCard(model).Targeting(target)
+                .WithHitFx("vfx/vfx_attack_slash", null, null)
+                .Execute(choiceContext);
+        }
         // // 不受任何加成影响的伤害
         // VfxCmd.PlayOnCreatureCenter(target, "vfx/vfx_attack_blunt");
         // await CreatureCmd.Damage(choiceContext, target, finishMult * internalDamageAmount, ValueProp.Unpowered, model.Owner.Creature, model);
@@ -55,7 +55,8 @@ public static class NineSolsModCmd
         var statisJadePower = model.Owner.Creature.GetPower<StatisJadePower>();
         if (statisJadePower is not null)
         {
-            await PowerCmd.Apply<WeakPower>(target, statisJadePower.Amount, model.Owner.Creature, model, false);
+            var context = choiceContext ?? new ThrowingPlayerChoiceContext();
+            await PowerCmd.Apply<WeakPower>(context, target, statisJadePower.Amount, model.Owner.Creature, model, false);
         }
 
         var healthThiefJadePower = model.Owner.Creature.GetPower<HealthThiefJadePower>();
@@ -65,15 +66,17 @@ public static class NineSolsModCmd
         }
     }
 
-    public static async Task Deviation(CardModel model, Creature target, PlayerChoiceContext choiceContext)
+    public static async Task Deviation(CardModel model, Creature target, PlayerChoiceContext? choiceContext = null)
     {
         var deviationAmount = model.DynamicVars[DeviationVar.Key].BaseValue;
-        await PowerCmd.Apply<InternalDamagePower>(target, deviationAmount, model.Owner.Creature, model, false);
+        var context = choiceContext ?? new ThrowingPlayerChoiceContext();
+        await PowerCmd.Apply<InternalDamagePower>(context, target, deviationAmount, model.Owner.Creature, model, false);
     }
 
-    public static async Task Deviation(Creature target, decimal amount)
+    public static async Task Deviation(Creature target, decimal amount, PlayerChoiceContext? choiceContext = null)
     {
-        await PowerCmd.Apply<InternalDamagePower>(target, amount, target, null, false);
+        var context = choiceContext ?? new ThrowingPlayerChoiceContext();
+        await PowerCmd.Apply<InternalDamagePower>(context, target, amount, target, null, false);
     }
 
     /// <summary>
@@ -98,12 +101,12 @@ public static class NineSolsModCmd
 
         var finalCost = Math.Min(qiPower.Amount, cost);
 
-        await PowerCmd.ModifyAmount(qiPower, -finalCost, model.Owner.Creature, model);
+        await PowerCmd.ModifyAmount(choiceContext, qiPower, -finalCost, model.Owner.Creature, model);
         return cost;
     }
 
     public static async Task GainQi(decimal amount, Creature source, CardModel? model = null)
     {
-        await PowerCmd.Apply<QiPower>(source, amount, source, model, false);
+        await PowerCmd.Apply<QiPower>(new ThrowingPlayerChoiceContext(), source, amount, source, model, false);
     }
 }

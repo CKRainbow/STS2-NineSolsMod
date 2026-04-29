@@ -1,18 +1,14 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
-using NineSolsMod.NineSolsModCode.Cards;
 using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
-[Pool(typeof(YiCardPool))]
+[RegisterCard(typeof(YiCardPool))]
 public class QiGathering() : NineSolsModCard(2, CardType.Skill,
     CardRarity.Rare, TargetType.Self)
 {
@@ -21,7 +17,7 @@ public class QiGathering() : NineSolsModCard(2, CardType.Skill,
         CardPlay play)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
-        await PowerCmd.Apply<QiGatheringPower>(Owner.Creature, 1m, Owner.Creature, this, false);
+        await PowerCmd.Apply<QiGatheringPower>(choiceContext, Owner.Creature, 1m, Owner.Creature, this, false);
 
     }
 
@@ -34,7 +30,7 @@ public class QiGathering() : NineSolsModCard(2, CardType.Skill,
         CardKeyword.Exhaust
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
         HoverTipFactory.FromCard<UnboundedCounter>()
     ];
 }

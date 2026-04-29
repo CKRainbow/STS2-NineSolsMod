@@ -1,39 +1,40 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Extensions;
-using BaseLib.Utils;
-using NineSolsMod.NineSolsModCode.Character;
-using NineSolsMod.NineSolsModCode.Extensions;
-using Godot;
+﻿using Godot;
+using STS2RitsuLib.Scaffolding.Content;
 
 namespace NineSolsMod.NineSolsModCode.Relics;
 
-[Pool(typeof(YiRelicPool))]
-public abstract class NineSolsModRelic : CustomRelicModel
+public abstract class NineSolsModRelic : ModRelicTemplate
 {
-    public override string PackedIconPath
+    public override RelicAssetProfile AssetProfile => new(
+        IconPath: _PackedIconPath,
+        IconOutlinePath: _PackedIconOutlinePath,
+        BigIconPath: _BigIconPath
+    );
+
+    private string _PackedIconPath
     {
         get
         {
-            var path = $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".RelicImagePath();
-            return ResourceLoader.Exists(path) ? path : "relic.png".RelicImagePath();
+            var path = $"res://{MainFile.ModId}/images/relics/{GetType().Name}.png";
+            return ResourceLoader.Exists(path) ? path : $"res://{MainFile.ModId}/images/relics/relic.png";
         }
     }
 
-    protected override string PackedIconOutlinePath
+    private string _PackedIconOutlinePath
     {
         get
         {
-            var path = $"{Id.Entry.RemovePrefix().ToLowerInvariant()}_outline.png".RelicImagePath();
-            return ResourceLoader.Exists(path) ? path : "relic_outline.png".RelicImagePath();
+            var path = $"res://{MainFile.ModId}/images/relics/{GetType().Name}_outline.png";
+            return ResourceLoader.Exists(path) ? path : $"res://{MainFile.ModId}/images/relics/relic_outline.png";
         }
     }
 
-    protected override string BigIconPath
+    private string _BigIconPath
     {
         get
         {
-            var path = $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigRelicImagePath();
-            return ResourceLoader.Exists(path) ? path : "relic.png".BigRelicImagePath();
+            var path = $"res://{MainFile.ModId}/images/relics/big/{GetType().Name}.png";
+            return ResourceLoader.Exists(path) ? path : $"res://{MainFile.ModId}/images/relics/relic.png";
         }
     }
 }

@@ -1,5 +1,5 @@
 ﻿{
-  "NINESOLSMOD-PIPE.flavor": "一支药斗。",
-  "NINESOLSMOD-PIPE.description": "回合开始时，减少3层[gold]内伤[/gold]。",
-  "NINESOLSMOD-PIPE.title": "药斗"
+  "NINE_SOLS_MOD_RELIC_PIPE.description": "回合开始时，减少3层[gold]内伤[/gold]。",
+  "NINE_SOLS_MOD_RELIC_PIPE.flavor": "一支药斗。",
+  "NINE_SOLS_MOD_RELIC_PIPE.title": "药斗"
 }

@@ -1,19 +1,15 @@
-﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Cards;
-using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
-using NineSolsMod.NineSolsModCode.Variables;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
-[Pool(typeof(YiCardPool))]
+[RegisterCard(typeof(YiCardPool))]
 public class HealthThiefJade() : NineSolsModCard(1, CardType.Power,
     CardRarity.Uncommon, TargetType.Self)
 {
@@ -21,7 +17,7 @@ public class HealthThiefJade() : NineSolsModCard(1, CardType.Power,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await PowerCmd.Apply<HealthThiefJadePower>(Owner.Creature, DynamicVars["HealthThiefJadePower"].IntValue, Owner.Creature, this, false);
+        await PowerCmd.Apply<HealthThiefJadePower>(choiceContext, Owner.Creature, DynamicVars["HealthThiefJadePower"].IntValue, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()
@@ -33,7 +29,7 @@ public class HealthThiefJade() : NineSolsModCard(1, CardType.Power,
         new PowerVar<HealthThiefJadePower>(1)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
         HoverTipFactory.FromPower<HealthThiefJadePower>(),
     ];
 

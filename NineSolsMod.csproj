@@ -76,9 +76,13 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.0.7" PrivateAssets="All" />
-        <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
+        <PackageReference Include="STS2.ModAnalyzers.RitsuLib" Version="0.1.0">
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+          <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+        <AdditionalFiles Include="mod_manifest.json" />
         <AdditionalFiles Include="NineSolsMod/localization/**/*.json" />
+        <PackageReference Include="STS2.RitsuLib" Version="0.2.11" />
     </ItemGroup>
 
     <ItemGroup>
@@ -99,7 +103,7 @@
         <None Include="NineSolsMod/**" />
     </ItemGroup>
 
-    <ItemGroup>
+    <!-- <ItemGroup>
         <Folder Include="NineSolsModCode\Utils\" />
         <Folder Include="NineSolsMod\images\powers\big\" />
     </ItemGroup>
@@ -112,7 +116,7 @@
       <Content Include="NineSolsModCode\Powers\InternalDamagePower.cs.uid" />
       <Content Include="NineSolsModCode\Powers\ParryPower.cs.uid" />
       <Content Include="NineSolsModCode\Relics\Pipe.cs.uid" />
-    </ItemGroup>
+    </ItemGroup> -->
 
     <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
         <Optimize>false</Optimize>
@@ -141,11 +145,11 @@
         <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/" />
         <Copy SourceFiles="NineSolsMod.json" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/" />
         <Copy SourceFiles="$(TargetDir)$(TargetName).pdb" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/" Condition="Exists('$(TargetDir)$(TargetName).pdb')" />
-        <Message Text="Copying BaseLib to mods folder." Importance="high" />
+        <Message Text="Copying RitsuLib to mods folder." Importance="high" />
         <ItemGroup>
-            <BaseLibFiles Include="$(NuGetPackageRoot)/alchyr.sts2.baselib/**/lib/**/BaseLib.dll;$(NuGetPackageRoot)/alchyr.sts2.baselib/**/Content/BaseLib.pck;$(NuGetPackageRoot)/alchyr.sts2.baselib/**/Content/BaseLib.json;" />
+            <RitsuLibFiles Include="$(NuGetPackageRoot)/sts2.ritsulib/**/lib/**/STS2-RitsuLib.dll;$(NuGetPackageRoot)/sts2.ritsulib/**/content/mod_manifest.json;" />
         </ItemGroup>
-        <Copy SourceFiles="@(BaseLibFiles)" DestinationFolder="$(ModsPath)BaseLib/" />
+        <Copy SourceFiles="@(RitsuLibFiles)" DestinationFolder="$(ModsPath)STS2-RitsuLib/" />
     </Target>
 
     <Target Name="GodotPublish" AfterTargets="Publish" Condition="'$(GodotPath)' != '' and Exists('$(GodotPath)') and '$(IsInnerGodotExport)' != 'true'">

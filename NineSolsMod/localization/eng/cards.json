@@ -1,10 +1,10 @@
 ﻿{
-  "NINESOLSMOD-TAILSMAN.title": "Tailsman",
-  "NINESOLSMOD-TAILSMAN.description": "Tailsman",
-  "NINESOLSMOD-STRIKE_YI.title": "Strike",
-  "NINESOLSMOD-STRIKE_YI.description": "Deal {Damage:diff()} damage.",
-  "NINESOLSMOD-DEFEND_YI.description": "Gain {Block:diff()} [gold]Block[/gold].",
-  "NINESOLSMOD-DEFEND_YI.title": "Defend",
-  "NINESOLSMOD-PARRY.description": "Gain {Block:diff()} [gold]Block[/gold].",
-  "NINESOLSMOD-PARRY.title": "Parry"
+  "NINE_SOLS_MOD_CARD_TAILSMAN.title": "Tailsman",
+  "NINE_SOLS_MOD_CARD_TAILSMAN.description": "Tailsman",
+  "NINE_SOLS_MOD_CARD_STRIKE_YI.title": "Strike",
+  "NINE_SOLS_MOD_CARD_STRIKE_YI.description": "Deal {Damage:diff()} damage.",
+  "NINE_SOLS_MOD_CARD_DEFEND_YI.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "NINE_SOLS_MOD_CARD_DEFEND_YI.title": "Defend",
+  "NINE_SOLS_MOD_CARD_PARRY.description": "Gain {Block:diff()} [gold]Block[/gold].",
+  "NINE_SOLS_MOD_CARD_PARRY.title": "Parry"
 }

@@ -1,8 +1,5 @@
-using BaseLib.Extensions;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
+using STS2RitsuLib.Cards.DynamicVars;
 
 namespace NineSolsMod.NineSolsModCode.Variables;
 
@@ -15,6 +12,6 @@ public class CalculatedFinishVar : CalculatedVar
 
     public CalculatedFinishVar() : base(Key)
     {
-        this.WithTooltip(LocKey);
+        this.WithSharedTooltip(LocKey);
     }
 }

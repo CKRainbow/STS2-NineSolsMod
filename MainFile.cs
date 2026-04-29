@@ -2,6 +2,8 @@ using System.Reflection;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
+using STS2RitsuLib;
+using STS2RitsuLib.Interop;
 
 namespace NineSolsMod;
 
@@ -16,8 +18,9 @@ public partial class MainFile : Node
     public static void Initialize()
     {
         var assembly = Assembly.GetExecutingAssembly();
-        Godot.Bridge.ScriptManagerBridge.LookupScriptsInAssembly(assembly);
-        
+        RitsuLibFramework.EnsureGodotScriptsRegistered(assembly, Logger);
+        ModTypeDiscoveryHub.RegisterModAssembly(ModId, assembly);
+
         Harmony harmony = new(ModId);
 
         harmony.PatchAll();

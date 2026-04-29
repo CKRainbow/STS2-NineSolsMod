@@ -1,9 +1,11 @@
 ﻿using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using NineSolsMod.NineSolsModCode.Cards;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Powers;
 
+[RegisterPower]
 public class HackPower : CustomTemporaryStrenthPower
 {
     public override AbstractModel OriginModel => ModelDb.Card<Hack>();

@@ -1,22 +1,17 @@
-﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Combat;
+﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Cards;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
-using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
-using NineSolsMod.NineSolsModCode.Variables;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
-[Pool(typeof(YiCardPool))]
+[RegisterCard(typeof(YiCardPool))]
 public class FusangNourish() : NineSolsModCard(2, CardType.Skill,
     CardRarity.Rare, TargetType.Self)
 {
@@ -38,7 +33,7 @@ public class FusangNourish() : NineSolsModCard(2, CardType.Skill,
             CardCmd.Upgrade(card, CardPreviewStyle.HorizontalLayout);
         }
         // TODO: 感觉好像给苍砂不太合理
-        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, true, CardPilePosition.Random);
+        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, Owner, CardPilePosition.Random);
     }
 
     protected override void OnUpgrade()
@@ -54,7 +49,7 @@ public class FusangNourish() : NineSolsModCard(2, CardType.Skill,
         CardKeyword.Exhaust
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
         HoverTipFactory.FromPower<InternalDamagePower>()
     ];

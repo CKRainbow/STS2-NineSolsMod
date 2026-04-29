@@ -1,9 +1,6 @@
-using System.Reflection;
-using BaseLib.Utils;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Nodes;
-using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.HoverTips;
 
 namespace NineSolsMod.NineSolsModCode.Patches;

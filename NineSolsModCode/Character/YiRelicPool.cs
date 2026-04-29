@@ -1,13 +1,13 @@
-﻿using BaseLib.Abstracts;
-using NineSolsMod.NineSolsModCode.Extensions;
-using Godot;
+﻿using Godot;
+using STS2RitsuLib.Scaffolding.Content;
 
 namespace NineSolsMod.NineSolsModCode.Character;
 
-public class YiRelicPool : CustomRelicPoolModel
+public class YiRelicPool : TypeListRelicPoolModel
 {
     public override Color LabOutlineColor => Yi.Color;
+    public override string EnergyColorName => "Jade";
 
-    public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();
-    public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();
+    public override string BigEnergyIconPath => $"res://{MainFile.ModId}/images/charui/big_energy_yi.png";
+    public override string TextEnergyIconPath => $"res://{MainFile.ModId}/images/charui/text_energy_yi.png";
 }

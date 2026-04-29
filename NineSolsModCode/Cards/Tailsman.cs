@@ -1,6 +1,4 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -8,10 +6,12 @@ using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
 using NineSolsMod.NineSolsModCode.Utils;
 using NineSolsMod.NineSolsModCode.Variables;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
-[Pool(typeof(YiCardPool))]
+[RegisterCard(typeof(YiCardPool))]
+[RegisterCharacterStarterCard(typeof(Yi), 1)]
 public class Tailsman() : NineSolsModCard(0, CardType.Skill,
     CardRarity.Basic, TargetType.AnyEnemy)
 {
@@ -26,11 +26,11 @@ public class Tailsman() : NineSolsModCard(0, CardType.Skill,
         ArgumentNullException.ThrowIfNull(play.Target);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner, false);
         var internalDamageAmount = play.Target.GetPower<InternalDamagePower>();
-        if (internalDamageAmount is null)
+        if (!play.Target.HasPower<InternalDamagePower>())
         {
             return;
         }
-        await NineSolsModCmd.Finish(internalDamageAmount.Amount, this, play.Target, choiceContext);
+        await NineSolsModCmd.Finish(0, this, play.Target, choiceContext);
         await NineSolsModCmd.CostQi(3, this, choiceContext, false);
     }
 

@@ -1,6 +1,4 @@
-﻿using BaseLib.Abstracts;
-using Godot;
-using MegaCrit.Sts2.Core.Combat;
+﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -89,7 +87,7 @@ public abstract class CustomTemporaryDexterityPower : NineSolsModPower, ITempora
         }
     }
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips
     {
         get
         {
@@ -137,11 +135,11 @@ public abstract class CustomTemporaryDexterityPower : NineSolsModPower, ITempora
         }
         else
         {
-            await PowerCmd.Apply<DexterityPower>(target, (decimal)Sign * amount, applier, cardSource, silent: true);
+            await PowerCmd.Apply<DexterityPower>(new ThrowingPlayerChoiceContext(), target, (decimal)Sign * amount, applier, cardSource, silent: true);
         }
     }
 
-    public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature? applier, CardModel? cardSource)
     {
         if (!(amount == (decimal)Amount) && power == this)
         {
@@ -151,7 +149,7 @@ public abstract class CustomTemporaryDexterityPower : NineSolsModPower, ITempora
             }
             else
             {
-                await PowerCmd.Apply<DexterityPower>(Owner, (decimal)Sign * amount, applier, cardSource, silent: true);
+                await PowerCmd.Apply<DexterityPower>(choiceContext, Owner, (decimal)Sign * amount, applier, cardSource, silent: true);
             }
         }
     }
@@ -162,7 +160,7 @@ public abstract class CustomTemporaryDexterityPower : NineSolsModPower, ITempora
         {
             Flash();
             await PowerCmd.Remove(this);
-            await PowerCmd.Apply<DexterityPower>(Owner, -Sign * Amount, Owner, null);
+            await PowerCmd.Apply<DexterityPower>(choiceContext, Owner, -Sign * Amount, Owner, null);
         }
     }
 }

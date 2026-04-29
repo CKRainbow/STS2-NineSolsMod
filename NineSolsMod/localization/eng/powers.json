@@ -1,8 +1,8 @@
 ﻿{
-  "NINESOLSMOD-INTERNAL_DAMAGE_POWER.title": "InternalDamagePower",
-  "NINESOLSMOD-INTERNAL_DAMAGE_POWER.description": "",
-  "NINESOLSMOD-INTERNAL_DAMAGE_POWER.smartDescription": "",
-  "NINESOLSMOD-PARRY_POWER.title": "ParryPower",
-  "NINESOLSMOD-PARRY_POWER.description": "",
-  "NINESOLSMOD-PARRY_POWER.smartDescription": ""
+  "NINE_SOLS_MOD_POWER_INTERNAL_DAMAGE_POWER.title": "InternalDamagePower",
+  "NINE_SOLS_MOD_POWER_INTERNAL_DAMAGE_POWER.description": "",
+  "NINE_SOLS_MOD_POWER_INTERNAL_DAMAGE_POWER.smartDescription": "",
+  "NINE_SOLS_MOD_POWER_PARRY_POWER.title": "ParryPower",
+  "NINE_SOLS_MOD_POWER_PARRY_POWER.description": "",
+  "NINE_SOLS_MOD_POWER_PARRY_POWER.smartDescription": ""
 }

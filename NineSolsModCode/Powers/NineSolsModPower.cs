@@ -1,28 +1,32 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Extensions;
-using NineSolsMod.NineSolsModCode.Extensions;
-using Godot;
+﻿using Godot;
+using STS2RitsuLib.Interop.AutoRegistration;
+using STS2RitsuLib.Scaffolding.Content;
 
 namespace NineSolsMod.NineSolsModCode.Powers;
 
-public abstract class NineSolsModPower : CustomPowerModel
+public abstract class NineSolsModPower : ModPowerTemplate
 {
+    public override PowerAssetProfile AssetProfile => new(
+        IconPath: _PackedIconPath,
+        BigIconPath: _BigIconPath
+    );
+
     //Loads from NineSolsMod/images/powers/your_power.png
-    public override string CustomPackedIconPath
+    private string _PackedIconPath
     {
         get
         {
-            var path = $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".PowerImagePath();
-            return ResourceLoader.Exists(path) ? path : "power.png".PowerImagePath();
+            var path = $"res://{MainFile.ModId}/images/powers/{GetType().Name}.png";
+            return ResourceLoader.Exists(path) ? path : $"res://{MainFile.ModId}/images/powers/power.png";
         }
     }
 
-    public override string CustomBigIconPath
+    private string _BigIconPath
     {
         get
         {
-            var path = $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigPowerImagePath();
-            return ResourceLoader.Exists(path) ? path : "power.png".BigPowerImagePath();
+            var path = $"res://{MainFile.ModId}/images/powers/{GetType().Name}_big.png";
+            return ResourceLoader.Exists(path) ? path : $"res://{MainFile.ModId}/images/powers/power_big.png";
         }
     }
 }

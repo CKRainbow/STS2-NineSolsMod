@@ -1,5 +1,5 @@
-using BaseLib.Extensions;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using STS2RitsuLib.Cards.DynamicVars;
 
 namespace NineSolsMod.NineSolsModCode.Variables;
 
@@ -12,6 +12,6 @@ public class AbundanceVar : DynamicVar
 
     public AbundanceVar(decimal baseValue) : base(Key, baseValue)
     {
-        this.WithTooltip(LocKey);
+        this.WithSharedTooltip(LocKey);
     }
 }

@@ -5,9 +5,11 @@ using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using NineSolsMod.NineSolsModCode.Variables;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Powers;
 
+[RegisterPower]
 public class StatisJadePower : NineSolsModPower
 {
     public override PowerType Type => PowerType.Buff;
@@ -18,7 +20,7 @@ public class StatisJadePower : NineSolsModPower
         new FinishVar(100)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
         HoverTipFactory.FromPower<WeakPower>(),
         new HoverTip(
             new LocString("static_hover_tips", "NINESOLSMOD-FINISH.title"),

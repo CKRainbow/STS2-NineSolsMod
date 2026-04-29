@@ -1,20 +1,15 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
-using MegaCrit.Sts2.Core.ValueProps;
-using NineSolsMod.NineSolsModCode.Cards;
 using NineSolsMod.NineSolsModCode.Character;
-using NineSolsMod.NineSolsModCode.Powers;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
-[Pool(typeof(YiCardPool))]
+[RegisterCard(typeof(YiCardPool))]
 public class Collect() : NineSolsModCard(1, CardType.Skill,
     CardRarity.Uncommon, TargetType.Self)
 {
@@ -40,12 +35,12 @@ public class Collect() : NineSolsModCard(1, CardType.Skill,
             }
         }
 
-        await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Draw, true, CardPilePosition.Random);
+        await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Draw, Owner, CardPilePosition.Random);
     }
 
     protected override void OnUpgrade() { }
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
         HoverTipFactory.FromCard<AzureSand>(IsUpgraded)
     ];
 }

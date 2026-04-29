@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk6jmcd8gskpg"
-path="res://.godot/imported/card.png-1938cac0fa9d2b6b2d57e6f2e1d9fc59.ctex"
+uid="uid://dv8qxqg2j87p6"
+path="res://.godot/imported/strike_yi.png-3967f2e76d0e8c87a8e4196210abef55.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://NineSolsMod/images/card_portraits/card.png"
-dest_files=["res://.godot/imported/card.png-1938cac0fa9d2b6b2d57e6f2e1d9fc59.ctex"]
+source_file="res://NineSolsMod/images/cards/big/strike_yi.png"
+dest_files=["res://.godot/imported/strike_yi.png-3967f2e76d0e8c87a8e4196210abef55.ctex"]
 
 [params]
 

@@ -1,5 +1,4 @@
-﻿using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -8,11 +7,11 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
-using NineSolsMod.NineSolsModCode.Variables;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
-[Pool(typeof(YiCardPool))]
+[RegisterCard(typeof(YiCardPool))]
 public class AirDash() : NineSolsModCard(1, CardType.Skill,
     CardRarity.Uncommon, TargetType.Self)
 {
@@ -20,8 +19,7 @@ public class AirDash() : NineSolsModCard(1, CardType.Skill,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await PowerCmd.Apply<AirDashPower>(Owner.Creature, DynamicVars["DexterityPower"].BaseValue,
-            Owner.Creature, this, false);
+        await PowerCmd.Apply<AirDashPower>(choiceContext, Owner.Creature, DynamicVars["DexterityPower"].BaseValue, Owner.Creature, this, false);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play, false);
     }
 
@@ -38,7 +36,7 @@ public class AirDash() : NineSolsModCard(1, CardType.Skill,
         new BlockVar(5m, ValueProp.Move),
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
         HoverTipFactory.FromPower<DexterityPower>()
     ];

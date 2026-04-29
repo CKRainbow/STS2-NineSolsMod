@@ -1,8 +1,5 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Utils;
-using NineSolsMod.NineSolsModCode.Character;
+﻿using STS2RitsuLib.Scaffolding.Content;
 
 namespace NineSolsMod.NineSolsModCode.Potions;
 
-[Pool(typeof(YiPotionPool))]
-public abstract class NineSolsModPotion : CustomPotionModel;
+public abstract class NineSolsModPotion : ModPotionTemplate;

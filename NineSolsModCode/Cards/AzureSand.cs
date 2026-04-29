@@ -1,24 +1,15 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
-using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
-using MegaCrit.Sts2.Core.ValueProps;
-using NineSolsMod.NineSolsModCode.Cards;
-using NineSolsMod.NineSolsModCode.Character;
-using NineSolsMod.NineSolsModCode.Powers;
-using NineSolsMod.NineSolsModCode.Tags;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
-[Pool(typeof(TokenCardPool))]
+[RegisterCard(typeof(TokenCardPool))]
 public class AzureSand() : NineSolsModCard(0, CardType.Skill,
     CardRarity.Token, TargetType.Self)
 {
@@ -47,7 +38,7 @@ public class AzureSand() : NineSolsModCard(0, CardType.Skill,
         CardModel? cardModel = await CardSelectCmd.FromChooseACardScreen(choiceContext, azureCards, Owner, false);
         if (cardModel != null)
         {
-            await CardPileCmd.AddGeneratedCardToCombat(cardModel, PileType.Hand, true, CardPilePosition.Bottom);
+            await CardPileCmd.AddGeneratedCardToCombat(cardModel, PileType.Hand, Owner, CardPilePosition.Bottom);
         }
     }
 
@@ -55,7 +46,7 @@ public class AzureSand() : NineSolsModCard(0, CardType.Skill,
         CardKeyword.Exhaust
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
         HoverTipFactory.FromCard<CloudPiercingArrow>(IsUpgraded),
         HoverTipFactory.FromCard<ThunderBusterArrow>(IsUpgraded),
         HoverTipFactory.FromCard<ShadowHunterArrow>(IsUpgraded),

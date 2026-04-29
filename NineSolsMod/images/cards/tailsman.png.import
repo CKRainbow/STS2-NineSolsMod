@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv8qxqg2j87p6"
-path="res://.godot/imported/strike_yi.png-2652c5ed413a1c6eca9335da74daa8b9.ctex"
+uid="uid://brnm2bvk3iqqg"
+path="res://.godot/imported/tailsman.png-0d6b5074149ef54b77afd7303205a941.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://NineSolsMod/images/card_portraits/big/strike_yi.png"
-dest_files=["res://.godot/imported/strike_yi.png-2652c5ed413a1c6eca9335da74daa8b9.ctex"]
+source_file="res://NineSolsMod/images/cards/tailsman.png"
+dest_files=["res://.godot/imported/tailsman.png-0d6b5074149ef54b77afd7303205a941.ctex"]
 
 [params]
 

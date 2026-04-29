@@ -1,25 +1,16 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Utils;
-using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
-using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.Nodes.CommonUi;
-using MegaCrit.Sts2.Core.ValueProps;
-using NineSolsMod.NineSolsModCode.Cards;
-using NineSolsMod.NineSolsModCode.Character;
-using NineSolsMod.NineSolsModCode.Powers;
-using NineSolsMod.NineSolsModCode.Tags;
+using NineSolsMod.NineSolsModCode.Keywords;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
-[Pool(typeof(TokenCardPool))]
+[RegisterCard(typeof(TokenCardPool))]
 public class AzureSandArmor() : NineSolsModCard(1, CardType.Skill,
     CardRarity.Token, TargetType.Self)
 {
@@ -27,7 +18,7 @@ public class AzureSandArmor() : NineSolsModCard(1, CardType.Skill,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await PowerCmd.Apply<PlatingPower>(Owner.Creature, DynamicVars["PlatingPower"].IntValue, Owner.Creature, this, false);
+        await PowerCmd.Apply<PlatingPower>(choiceContext, Owner.Creature, DynamicVars["PlatingPower"].IntValue, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()
@@ -44,11 +35,12 @@ public class AzureSandArmor() : NineSolsModCard(1, CardType.Skill,
         CardKeyword.Retain
     ];
 
-    protected override HashSet<CardTag> CanonicalTags => [
-        NineSolsModTag.AzureSand
+    protected override IEnumerable<string> RegisteredKeywordIds => [
+        NineSolsModKeywords.AzureSandCraft
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
         HoverTipFactory.FromPower<PlatingPower>()
     ];
 }

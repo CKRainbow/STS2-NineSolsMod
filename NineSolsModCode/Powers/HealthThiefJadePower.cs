@@ -1,21 +1,14 @@
-﻿using BaseLib.Abstracts;
-using Godot;
-using MegaCrit.Sts2.Core.Commands;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
+﻿using Godot;
 using MegaCrit.Sts2.Core.Entities.Powers;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.ValueProps;
-using NineSolsMod.NineSolsModCode.Utils;
 using NineSolsMod.NineSolsModCode.Variables;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Powers;
 
+[RegisterPower]
 public class HealthThiefJadePower : NineSolsModPower
 {
     public override PowerType Type => PowerType.Buff;
@@ -26,7 +19,7 @@ public class HealthThiefJadePower : NineSolsModPower
         new FinishVar(100)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
         new HoverTip(
             new LocString("static_hover_tips", "NINESOLSMOD-FINISH.title"),
             new LocString("static_hover_tips", "NINESOLSMOD-FINISH.description")

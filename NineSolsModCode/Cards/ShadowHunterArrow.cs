@@ -1,28 +1,20 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Utils;
-using Godot;
-using MegaCrit.Sts2.Core.Combat;
+﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
-using MegaCrit.Sts2.Core.Nodes.Combat;
-using MegaCrit.Sts2.Core.Nodes.Rooms;
-using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
-using NineSolsMod.NineSolsModCode.Cards;
-using NineSolsMod.NineSolsModCode.Character;
+using NineSolsMod.NineSolsModCode.Keywords;
 using NineSolsMod.NineSolsModCode.Powers;
-using NineSolsMod.NineSolsModCode.Tags;
+using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
-[Pool(typeof(TokenCardPool))]
+[RegisterCard(typeof(TokenCardPool))]
 public class ShadowHunterArrow() : NineSolsModCard(1, CardType.Attack,
     CardRarity.Token, TargetType.AnyEnemy)
 {
@@ -46,12 +38,12 @@ public class ShadowHunterArrow() : NineSolsModCard(1, CardType.Attack,
             .Execute(choiceContext);
         if (!_exhaustedPlay)
         {
-            await PowerCmd.Apply<ShadowHunterArrowPower>(play.Target, 1, Owner.Creature, this, true);
+            await PowerCmd.Apply<ShadowHunterArrowPower>(choiceContext, play.Target, 1, Owner.Creature, this, true);
         }
         _exhaustedPlay = false;
     }
 
-    public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, CombatState combatState)
+    public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
     {
         CardPile? pile = Pile;
         if (pile is not null && pile.Type == PileType.Exhaust)
@@ -85,8 +77,9 @@ public class ShadowHunterArrow() : NineSolsModCard(1, CardType.Attack,
         DynamicVars.Damage.UpgradeValueBy(4m);
     }
 
-    protected override HashSet<CardTag> CanonicalTags => [
-        NineSolsModTag.AzureSand
+
+    protected override IEnumerable<string> RegisteredKeywordIds => [
+        NineSolsModKeywords.AzureSandCraft
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [
@@ -98,6 +91,6 @@ public class ShadowHunterArrow() : NineSolsModCard(1, CardType.Attack,
         new DamageVar(10m, ValueProp.Move),
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
     ];
 }

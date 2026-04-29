@@ -1,34 +1,16 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Extensions;
-using BaseLib.Utils;
-using NineSolsMod.NineSolsModCode.Character;
-using NineSolsMod.NineSolsModCode.Extensions;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Models.Cards;
+﻿using MegaCrit.Sts2.Core.Entities.Cards;
 using Godot;
+using STS2RitsuLib.Scaffolding.Content;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
-[Pool(typeof(YiCardPool))]
-public abstract class NineSolsModCard(int cost, CardType type, CardRarity rarity, TargetType target) :
-    CustomCardModel(cost, type, rarity, target)
+public abstract class NineSolsModCard(int cost, CardType type, CardRarity rarity, TargetType target, bool showInLibrary = true) :
+    ModCardTemplate(cost, type, rarity, target, showInLibrary)
 {
-    //Image size:
-    //Normal art: 1000x760 (Using 500x380 should also work, it will simply be scaled.)
-    //Full art: 606x852
-    public override string CustomPortraitPath
-    {
-        get
-        {
-            var path = $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".BigCardImagePath();
-            // 用 resourceLoader 试试
-            if (!ResourceLoader.Exists(path))
-            {
-                return "card.png".BigCardImagePath();
-            }
-            return path;
-        }
-    }
+    public override CardAssetProfile AssetProfile => new(
+        PortraitPath: PortraitPath,
+        BetaPortraitPath: BetaPortraitPath
+    );
 
     //Smaller variants of card images for efficiency:
     //Smaller variant of fullart: 250x350
@@ -39,24 +21,16 @@ public abstract class NineSolsModCard(int cost, CardType type, CardRarity rarity
     {
         get
         {
-            var path = $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-            if (!ResourceLoader.Exists(path))
-            {
-                return "card.png".CardImagePath();
-            }
-            return path;
+            var path = $"res://{MainFile.ModId}/images/cards/{GetType().Name}.png";
+            return ResourceLoader.Exists(path) ? path : $"res://{MainFile.ModId}/images/cards/card.png";
         }
     }
     public override string BetaPortraitPath
     {
         get
         {
-            var path = $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-            if (!ResourceLoader.Exists(path))
-            {
-                return "card.png".CardImagePath();
-            }
-            return path;
+            var path = $"res://{MainFile.ModId}/images/cards/beta/{GetType().Name}.png";
+            return ResourceLoader.Exists(path) ? path : $"res://{MainFile.ModId}/images/cards/beta/card.png";
         }
     }
 }
