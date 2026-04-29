@@ -21,7 +21,19 @@ public static class NineSolsModCmd
     /// <returns></returns>
     public static async Task Finish(decimal baseAttack, CardModel model, Creature target, PlayerChoiceContext? choiceContext = null, bool calculated = false)
     {
+        if (baseAttack > 0)
+        {
+            await DamageCmd.Attack(baseAttack).FromCard(model).Targeting(target)
+                .WithHitFx("vfx/vfx_attack_slash", null, null)
+                .Execute(choiceContext);
+        }
         var internalDamageAmount = target.GetPowerAmount<InternalDamagePower>();
+
+        if (internalDamageAmount <= 0)
+        {
+            return;
+        }
+
         decimal finishMult;
         if (calculated)
         {
@@ -33,12 +45,6 @@ public static class NineSolsModCmd
             finishMult = model.DynamicVars[FinishVar.Key].BaseValue / 100m;
         }
         await PowerCmd.Remove<InternalDamagePower>(target);
-        if (baseAttack > 0)
-        {
-            await DamageCmd.Attack(baseAttack).FromCard(model).Targeting(target)
-                .WithHitFx("vfx/vfx_attack_slash", null, null)
-                .Execute(choiceContext);
-        }
         // // 不受任何加成影响的伤害
         // VfxCmd.PlayOnCreatureCenter(target, "vfx/vfx_attack_blunt");
         // await CreatureCmd.Damage(choiceContext, target, finishMult * internalDamageAmount, ValueProp.Unpowered, model.Owner.Creature, model);
@@ -46,11 +52,6 @@ public static class NineSolsModCmd
         await DamageCmd.Attack(finishMult * internalDamageAmount).FromCard(model).Targeting(target)
             .WithHitFx("vfx/vfx_attack_blunt", null, null)
             .Execute(choiceContext);
-
-        if (internalDamageAmount <= 0)
-        {
-            return;
-        }
 
         var statisJadePower = model.Owner.Creature.GetPower<StatisJadePower>();
         if (statisJadePower is not null)

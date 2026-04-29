@@ -1,6 +1,8 @@
 {
     "NINESOLSMOD-FINISH.description": "移除目标所有[gold]内伤[/gold]，额外造成[gold]内伤[/gold]层数{NineSolsMod-Finish:diff()}%的伤害。",
     "NINESOLSMOD-FINISH.title": "终结",
+    "NINE_SOLS_MOD_FINISH.description": "移除目标所有[gold]内伤[/gold]，额外造成[gold]内伤[/gold]层数{Finish:diff()}%的伤害。",
+    "NINE_SOLS_MOD_FINISH.title": "终结",
     "NINESOLSMOD-CALCULATEDFINISH.description": "移除目标所有[gold]内伤[/gold]，额外造成[gold]内伤[/gold]层数{NineSolsMod-CalculatedFinish:diff()}%的伤害。",
     "NINESOLSMOD-CALCULATEDFINISH.title": "终结",
     "NINESOLSMOD-INTERNALDAMAGE.description": "对目标施加{NineSolsMod-InternalDamage:diff()}层[gold]内伤[/gold]。",

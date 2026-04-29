@@ -16,8 +16,8 @@ public class Tailsman() : NineSolsModCard(0, CardType.Skill,
     CardRarity.Basic, TargetType.AnyEnemy)
 {
     // 只是颜色，并不影响能否被打出
-    protected override bool ShouldGlowRedInternal => !Owner.Creature.HasPower<QiPower>();
-    protected override bool IsPlayable => Owner.Creature.HasPower<QiPower>();
+    // protected override bool ShouldGlowRedInternal => !Owner.Creature.HasPower<QiPower>();
+    // protected override bool IsPlayable => Owner.Creature.HasPower<QiPower>();
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -25,23 +25,17 @@ public class Tailsman() : NineSolsModCard(0, CardType.Skill,
     {
         ArgumentNullException.ThrowIfNull(play.Target);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner, false);
-        var internalDamageAmount = play.Target.GetPower<InternalDamagePower>();
-        if (!play.Target.HasPower<InternalDamagePower>())
-        {
-            return;
-        }
-        await NineSolsModCmd.Finish(0, this, play.Target, choiceContext);
-        await NineSolsModCmd.CostQi(3, this, choiceContext, false);
+        await PowerCmd.Apply<InternalDamagePower>(choiceContext, play.Target, DynamicVars[InternalDamageVar.Key].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["NineSolsMod-Finish"].UpgradeValueBy(0.5m);
+        DynamicVars[InternalDamageVar.Key].UpgradeValueBy(3m);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(1),
-        new FinishVar(100m),
+        new InternalDamageVar(6)
     ];
 }
