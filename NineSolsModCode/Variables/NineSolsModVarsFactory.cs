@@ -6,6 +6,8 @@ using MegaCrit.Sts2.Core.Models;
 using NineSolsMod.NineSolsModCode.Variables;
 using STS2RitsuLib.Cards.DynamicVars;
 
+namespace NineSolsMod.NineSolsModCode.Variables;
+
 public static class NineSolsModVarsFactory
 {
     public static DynamicVar FinishVar(decimal baseValue, Func<CardModel?, decimal> currentValueFactory, Func<CardModel?, CardPreviewMode, Creature?, bool, decimal>? previewValueFactory = null)

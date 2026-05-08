@@ -82,7 +82,7 @@
         </PackageReference>
         <AdditionalFiles Include="mod_manifest.json" />
         <AdditionalFiles Include="NineSolsMod/localization/**/*.json" />
-        <PackageReference Include="STS2.RitsuLib" Version="0.2.11" />
+        <PackageReference Include="STS2.RitsuLib" Version="0.2.27" />
     </ItemGroup>
 
     <ItemGroup>
@@ -98,7 +98,7 @@
 
     <ItemGroup>
         <None Include=".gitignore" />
-        <None Include="NineSolsMod.json" />
+        <None Include="mod_manifest.json" />
         <None Include="project.godot" />
         <None Include="NineSolsMod/**" />
     </ItemGroup>
@@ -143,7 +143,7 @@
     <Target Name="CopyToModsFolderOnBuild" AfterTargets="PostBuildEvent">
         <Message Text="Copying .dll and manifest to mods folder." Importance="high" />
         <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/" />
-        <Copy SourceFiles="NineSolsMod.json" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/" />
+        <Copy SourceFiles="mod_manifest.json" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/" />
         <Copy SourceFiles="$(TargetDir)$(TargetName).pdb" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/" Condition="Exists('$(TargetDir)$(TargetName).pdb')" />
         <Message Text="Copying RitsuLib to mods folder." Importance="high" />
         <ItemGroup>

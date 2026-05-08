@@ -1,6 +1,6 @@
 ﻿{
   "NINE_SOLS_MOD_CARD_TAILSMAN.title": "符咒",
-  "NINE_SOLS_MOD_CARD_TAILSMAN.description": "抽{Cards:diff()}张牌。\n[gold]终结[/gold]{NineSolsMod-Finish:diff()}。",
+  "NINE_SOLS_MOD_CARD_TAILSMAN.description": "抽{Cards:diff()}张牌。\n[gold]震伤[/gold]{NineSolsMod-InternalDamage:diff()}。",
   "NINE_SOLS_MOD_CARD_STRIKE_YI.title": "打击",
   "NINE_SOLS_MOD_CARD_STRIKE_YI.description": "造成{Damage:diff()}点伤害。",
   "NINE_SOLS_MOD_CARD_DEFEND_YI.description": "获得{Block:diff()}点[gold]格挡[/gold]。",
@@ -79,5 +79,7 @@
   "NINE_SOLS_MOD_CARD_YIN_YANG.description": "",
   "NINE_SOLS_MOD_CARD_YIN_YANG.title": "阴阳两仪",
   "NINE_SOLS_MOD_CARD_REVIVAL_JADE.description": "",
-  "NINE_SOLS_MOD_CARD_REVIVAL_JADE.title": "替死玉"
+  "NINE_SOLS_MOD_CARD_REVIVAL_JADE.title": "替死玉",
+  "NINE_SOLS_MOD_CARD_TAILSMAN_QI_BLAST.description": "抽{Cards:diff()}张牌。[gold]震伤[/gold]{NineSolsMod-InternalDamage:diff()}。\n[gold]用气[/gold]3-：每多消耗1点气，[gold]终结[/gold]倍率提高{qiMult:diff()}%。\n[gold]终结[/gold]{Finish:diff()}（造成{CalculatedDamage:diff()}点伤害）。",
+  "NINE_SOLS_MOD_CARD_TAILSMAN_QI_BLAST.title": "一气贯通"
 }

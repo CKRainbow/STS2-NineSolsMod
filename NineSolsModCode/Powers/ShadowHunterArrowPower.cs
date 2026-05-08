@@ -21,7 +21,7 @@ public class ShadowHunterArrowPower : NineSolsModPower
     public override Color AmountLabelColor => _normalAmountLabelColor;
 
     // 可以施加多个，每个都是独立实例
-    public override bool IsInstanced => true;
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
 
     protected override object? InitInternalData()
     {

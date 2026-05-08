@@ -19,8 +19,8 @@ public class TailsmanQiBlast() : NineSolsModCard(0, CardType.Skill,
     CardRarity.Ancient, TargetType.AnyEnemy)
 {
     // 只是颜色，并不影响能否被打出
-    // protected override bool ShouldGlowRedInternal => !Owner.Creature.HasPower<QiPower>();
-    // protected override bool IsPlayable => Owner.Creature.HasPower<QiPower>();
+    protected override bool ShouldGlowRedInternal => !Owner.Creature.HasPower<QiPower>();
+    protected override bool IsPlayable => Owner.Creature.HasPower<QiPower>();
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -34,7 +34,8 @@ public class TailsmanQiBlast() : NineSolsModCard(0, CardType.Skill,
 
     protected override void OnUpgrade()
     {
-        DynamicVars[InternalDamageVar.Key].UpgradeValueBy(3m);
+        DynamicVars[InternalDamageVar.Key].UpgradeValueBy(6m);
+        DynamicVars["qiMult"].UpgradeValueBy(25m);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
@@ -56,14 +57,16 @@ public class TailsmanQiBlast() : NineSolsModCard(0, CardType.Skill,
             }),
         new CalculationBaseVar(0m),
         new ExtraDamageVar(1m),
+        // FIXME: 这个显示的伤害又会受到目标内伤层数的影响，使得最终伤害显示有问题
+        // FIXME: 用 PreviewValue 似乎不太合理
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier(
             (card, target) => {
-                var b = card.DynamicVars.CalculationBase.BaseValue;
+                var b = card.DynamicVars[InternalDamageVar.Key].BaseValue;
                 var creature = card.Owner.Creature;
                 if (creature is null) return 0m;
-                if (card.DynamicVars["Finish"] is not CalculatedVar finishVar) return 0m;
+                // if (card.DynamicVars["Finish"] is not CalculatedVar finishVar) return 0m;
                 if (target is null) return 0m;
-                var finishMult = finishVar.Calculate(target);
+                var finishMult = card.DynamicVars["Finish"].PreviewValue / 100m;
                 var internalAmount = target.GetPowerAmount<InternalDamagePower>();
                 return finishMult * internalAmount;
             }
