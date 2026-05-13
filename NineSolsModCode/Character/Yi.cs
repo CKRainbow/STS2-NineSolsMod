@@ -86,6 +86,7 @@ public class Yi : ModCharacterTemplate<YiCardPool, YiRelicPool, YiPotionPool>
     public override float CastAnimDelay => 0f;
 
     // 自动转换人物场景，让你不需要手动挂脚本。复制即可。
+    // TODO: 修一下动画
     protected override NCreatureVisuals? TryCreateCreatureVisuals() => RitsuGodotNodeFactories.CreateFromScenePath<NCreatureVisuals>(AssetProfile.Scenes!.VisualsPath!);
 
     // 攻击建筑师的攻击特效列表
