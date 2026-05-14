@@ -6,12 +6,14 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using NineSolsMod.NineSolsModCode.Combat;
+using STS2RitsuLib.Combat.HealthBars;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Powers;
 
 [RegisterPower]
-public class InternalDamagePower : NineSolsModPower
+public class InternalDamagePower : NineSolsModPower, IHealthBarForecastSource
 {
     private class Data
     {
@@ -57,4 +59,20 @@ public class InternalDamagePower : NineSolsModPower
         }
     }
 
+    /// <inheritdoc/>
+    /// <remarks>
+    /// TODO: 使用暗红色表示内伤预告
+    /// </remarks>
+    public IEnumerable<HealthBarForecastSegment> GetHealthBarForecastSegments(HealthBarForecastContext context)
+    {
+        if (context.Creature != Owner)
+            return [];
+
+
+        var order = HealthBarForecastOrder.ForSideTurnStart(context.Creature, Owner.Side);
+        return HealthBarForecasts
+            .FromRight(context, new(1f, 0.478f, 0f), Colors.White)
+            .Add(Amount, order, InternalDamagePowerHealthBarForecastMaterials.ForecastMaterial)
+            .Build();
+    }
 }

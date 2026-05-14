@@ -113,5 +113,7 @@
   "NINE_SOLS_MOD_CARD_XUAN_TIE_CONVERT.description": "选择手牌中的一张牌，将其升级。",
   "NINE_SOLS_MOD_CARD_XUAN_TIE_CONVERT.selectionScreenPrompt": "选择要升级的卡牌。",
   "NINE_SOLS_MOD_CARD_CLEAR_INTERNAL_DAMAGE.title": "",
-  "NINE_SOLS_MOD_CARD_CLEAR_INTERNAL_DAMAGE.description": "恢复{RemoveAmount:diff()}层内伤。"
+  "NINE_SOLS_MOD_CARD_CLEAR_INTERNAL_DAMAGE.description": "恢复{RemoveAmount:diff()}层内伤。",
+  "NINE_SOLS_MOD_CARD_MOB_QUELL_JADE.description": "[gold]终结[/gold]时，对所有敌人造成伤害。",
+  "NINE_SOLS_MOD_CARD_MOB_QUELL_JADE.title": "群咒玉"
 }

@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Powers;
 using NineSolsMod.NineSolsModCode.Variables;
 
@@ -46,12 +47,21 @@ public static class NineSolsModCmd
         }
         await PowerCmd.Remove<InternalDamagePower>(target);
         // // 不受任何加成影响的伤害
-        // VfxCmd.PlayOnCreatureCenter(target, "vfx/vfx_attack_blunt");
-        // await CreatureCmd.Damage(choiceContext, target, finishMult * internalDamageAmount, ValueProp.Unpowered, model.Owner.Creature, model);
+        VfxCmd.PlayOnCreatureCenter(target, "vfx/vfx_attack_blunt");
+        var mobQuellJadePower = model.Owner.Creature.GetPower<MobQuellJadePower>();
+        if (mobQuellJadePower is not null)
+        {
+            ArgumentNullException.ThrowIfNull(model.Owner.Creature.CombatState);
+            await CreatureCmd.Damage(choiceContext ?? new ThrowingPlayerChoiceContext(), model.Owner.Creature.CombatState.HittableEnemies, finishMult * internalDamageAmount, ValueProp.Unpowered, model.Owner.Creature, model);
+        }
+        else
+        {
+            await CreatureCmd.Damage(choiceContext ?? new ThrowingPlayerChoiceContext(), target, finishMult * internalDamageAmount, ValueProp.Unpowered, model.Owner.Creature, model);
+        }
         // 额外一段受加成影响的伤害
-        await DamageCmd.Attack(finishMult * internalDamageAmount).FromCard(model).Targeting(target)
-            .WithHitFx("vfx/vfx_attack_blunt", null, null)
-            .Execute(choiceContext);
+        // await DamageCmd.Attack(finishMult * internalDamageAmount).FromCard(model).Targeting(target)
+        //     .WithHitFx("vfx/vfx_attack_blunt", null, null)
+        //     .Execute(choiceContext);
 
         var statisJadePower = model.Owner.Creature.GetPower<StatisJadePower>();
         if (statisJadePower is not null)

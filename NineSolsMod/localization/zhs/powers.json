@@ -46,5 +46,9 @@
   "NINE_SOLS_MOD_POWER_HACK_POWER.title": "骇入",
   "NINE_SOLS_MOD_POWER_SWIFT_RUN_POWER.description": "",
   "NINE_SOLS_MOD_POWER_SWIFT_RUN_POWER.smartDescription": "",
-  "NINE_SOLS_MOD_POWER_SWIFT_RUN_POWER.title": "神速"
+  "NINE_SOLS_MOD_POWER_SWIFT_RUN_POWER.title": "神速",
+  "NINE_SOLS_MOD_POWER_MOB_QUELL_JADE_POWER.description": "[gold]终结[/gold]时，对所有敌人造成伤害。",
+  "NINE_SOLS_MOD_POWER_MOB_QUELL_JADE_POWER.smartDescription": "[gold]终结[/gold]时，对所有敌人造成伤害。",
+  "NINE_SOLS_MOD_POWER_MOB_QUELL_JADE_POWER.title": "群咒玉"
+
 }
