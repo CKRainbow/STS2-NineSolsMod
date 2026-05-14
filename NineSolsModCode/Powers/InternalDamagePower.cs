@@ -34,16 +34,31 @@ public class InternalDamagePower : NineSolsModPower, IHealthBarForecastSource
         new DynamicVar("DamagePerAmount", 1m)
     ];
 
-    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    // public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    // {
+    //     if (target != Owner)
+    //     {
+    //         return 0m;
+    //     }
+    //     var damageperamount = dynamicvars["damageperamount"].basevalue;
+    //     // 只对直接作用在血量上的攻击提供加成
+    //     var internaldamageamount = amount;
+    //     getinternaldata<data>().effectiveamount = math.min(internaldamageamount, amount);
+    //     return getinternaldata<data>().effectiveamount * damageperamount;
+    // }
+
+    public override decimal ModifyHpLostAfterOsty(Creature target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
         if (target != Owner)
         {
-            return 0m;
+            return amount;
         }
+
         var damagePerAmount = DynamicVars["DamagePerAmount"].BaseValue;
         var internalDamageAmount = Amount;
-        GetInternalData<Data>().effectiveAmount = Math.Min(internalDamageAmount, amount);
-        return GetInternalData<Data>().effectiveAmount * damagePerAmount;
+        var effectiveAmount = Math.Min(internalDamageAmount, amount);
+        GetInternalData<Data>().effectiveAmount = effectiveAmount;
+        return amount + effectiveAmount * damagePerAmount;
     }
 
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target, DamageResult result, ValueProp props, Creature? dealer, CardModel? cardSource)

@@ -49,6 +49,12 @@
   "NINE_SOLS_MOD_POWER_SWIFT_RUN_POWER.title": "神速",
   "NINE_SOLS_MOD_POWER_MOB_QUELL_JADE_POWER.description": "[gold]终结[/gold]时，对所有敌人造成伤害。",
   "NINE_SOLS_MOD_POWER_MOB_QUELL_JADE_POWER.smartDescription": "[gold]终结[/gold]时，对所有敌人造成伤害。",
-  "NINE_SOLS_MOD_POWER_MOB_QUELL_JADE_POWER.title": "群咒玉"
+  "NINE_SOLS_MOD_POWER_MOB_QUELL_JADE_POWER.title": "群咒玉",
+  "NINE_SOLS_MOD_POWER_LAST_STAND_JADE_POWER.description": "当损失血量和内伤层数之和大于等于血量上限的一半时，造成的伤害增加50%。",
+  "NINE_SOLS_MOD_POWER_LAST_STAND_JADE_POWER.smartDescription": "当损失血量和内伤层数之和大于等于血量上限的一半时，造成的伤害增加{Amount}%。",
+  "NINE_SOLS_MOD_POWER_LAST_STAND_JADE_POWER.title": "背水玉",
+  "NINE_SOLS_MOD_POWER_QUICK_PARRY_POWER.description": "每当你获得格挡时，获得2层[gold]反击[/gold]。",
+  "NINE_SOLS_MOD_POWER_QUICK_PARRY_POWER.smartDescription": "每当你获得格挡时，获得{Amount}层[gold]反击[/gold]。",
+  "NINE_SOLS_MOD_POWER_QUICK_PARRY_POWER.title": "随意"
 
 }

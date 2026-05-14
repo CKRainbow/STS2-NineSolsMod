@@ -35,7 +35,6 @@ public class UnboundedCounterPower : NineSolsModPower
         return 0;
     }
 
-    // Token: 0x060054D5 RID: 21717 RVA: 0x0022CDCF File Offset: 0x0022AFCF
     public override Task AfterModifyingHpLostAfterOsty()
     {
         Flash();

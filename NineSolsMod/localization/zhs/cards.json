@@ -115,5 +115,11 @@
   "NINE_SOLS_MOD_CARD_CLEAR_INTERNAL_DAMAGE.title": "",
   "NINE_SOLS_MOD_CARD_CLEAR_INTERNAL_DAMAGE.description": "恢复{RemoveAmount:diff()}层内伤。",
   "NINE_SOLS_MOD_CARD_MOB_QUELL_JADE.description": "[gold]终结[/gold]时，对所有敌人造成伤害。",
-  "NINE_SOLS_MOD_CARD_MOB_QUELL_JADE.title": "群咒玉"
+  "NINE_SOLS_MOD_CARD_MOB_QUELL_JADE.title": "群咒玉",
+  "NINE_SOLS_MOD_CARD_LAST_STAND_JADE.description": "当损失血量和内伤层数之和大于等于血量上限的一半时，造成的伤害增加{LastStandJadePower:diff()}%。",
+  "NINE_SOLS_MOD_CARD_LAST_STAND_JADE.title": "背水玉",
+  "NINE_SOLS_MOD_CARD_TAKE_TOKEN.description": "将[gold]抽牌堆[/gold]和[gold]弃牌堆[/gold]中的所有[gold]令牌[/gold]加入你的[gold]手牌[/gold]。",
+  "NINE_SOLS_MOD_CARD_TAKE_TOKEN.title": "拿取令牌",
+  "NINE_SOLS_MOD_CARD_QUICK_PARRY.description": "每当你获得[gold]格挡[/gold]时，获得{QuickParryPower:diff()}层[gold]反击[/gold]。",
+  "NINE_SOLS_MOD_CARD_QUICK_PARRY.title": "随意"
 }
