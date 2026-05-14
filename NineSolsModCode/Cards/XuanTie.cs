@@ -30,7 +30,7 @@ public class XuanTie() : NineSolsModCard(0, CardType.Skill,
         {
             // 通过查看卡牌中 DynamicVar 中的 DamageVar 来增加其伤害
             decimal attackInc = DynamicVars["AttackInc"].IntValue;
-            cardModel.DynamicVars.Damage.UpgradeValueBy(attackInc);
+            cardModel.DynamicVars.Damage.BaseValue += attackInc;
         }
     }
 
