@@ -17,19 +17,19 @@ public class RevivalJade() : NineSolsModCard(3, CardType.Power,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await PowerCmd.Apply<MedicalJadePower>(choiceContext, Owner.Creature, DynamicVars["MedicalJadePower"].IntValue, Owner.Creature, this, false);
+        await PowerCmd.Apply<RevivalJadePower>(choiceContext, Owner.Creature, DynamicVars["RevivalJadePower"].IntValue, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(10);
+        DynamicVars["RevivalJadePower"].UpgradeValueBy(10);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<MedicalJadePower>(25)
+        new PowerVar<RevivalJadePower>(25)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
-        HoverTipFactory.FromPower<MedicalJadePower>(),
+        HoverTipFactory.FromPower<RevivalJadePower>(),
     ];
 }

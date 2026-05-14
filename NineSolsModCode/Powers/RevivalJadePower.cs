@@ -82,7 +82,8 @@ public class RevivalJadePower : NineSolsModPower
         if (creature == Owner)
         {
             GetInternalData<Data>().isReviving = true;
-            await CreatureCmd.Heal(Owner, Amount, playAnim: false);
+            var healAmount = Math.Max(Owner.MaxHp * Amount / 100, 1m);
+            await CreatureCmd.Heal(Owner, healAmount, playAnim: false);
             await PowerCmd.Remove(this);
             foreach (var power in Owner.Powers)
             {

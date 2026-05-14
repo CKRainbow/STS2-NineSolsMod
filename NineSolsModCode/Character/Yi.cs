@@ -94,6 +94,7 @@ public class Yi : ModCharacterTemplate<YiCardPool, YiRelicPool, YiPotionPool>
     // 自动转换人物场景，让你不需要手动挂脚本。复制即可。
     protected override NCreatureVisuals? TryCreateCreatureVisuals() => RitsuGodotNodeFactories.CreateFromScenePath<NCreatureVisuals>(AssetProfile.Scenes!.VisualsPath!);
 
+    // TODO: 考虑修改一下受伤动画，目前有点突兀
     protected override ModAnimStateMachine? SetupCustomCombatAnimationStateMachine(
     Node visualsRoot,
     CharacterModel character)
