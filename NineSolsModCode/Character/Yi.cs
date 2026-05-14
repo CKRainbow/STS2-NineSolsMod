@@ -1,10 +1,13 @@
 ﻿using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using STS2RitsuLib.Interop.AutoRegistration;
 using STS2RitsuLib.Scaffolding.Characters;
 using STS2RitsuLib.Scaffolding.Godot;
+using STS2RitsuLib.Scaffolding.Visuals.Definition;
+using STS2RitsuLib.Scaffolding.Visuals.StateMachine;
 
 namespace NineSolsMod.NineSolsModCode.Character;
 
@@ -27,6 +30,9 @@ public class Yi : ModCharacterTemplate<YiCardPool, YiRelicPool, YiPotionPool>
     public override CharacterAssetProfile AssetProfile => CharacterAssetProfiles.Merge(
         CharacterAssetProfiles.Ironclad(),
         new(
+            VisualCues: new VisualCueSet(
+
+            ),
             Scenes: new(
                 // 人物模型tscn路径。
                 VisualsPath: $"res://{MainFile.ModId}/scenes/creature_visuals/yi.tscn",
@@ -86,8 +92,20 @@ public class Yi : ModCharacterTemplate<YiCardPool, YiRelicPool, YiPotionPool>
     public override float CastAnimDelay => 0f;
 
     // 自动转换人物场景，让你不需要手动挂脚本。复制即可。
-    // TODO: 修一下动画
     protected override NCreatureVisuals? TryCreateCreatureVisuals() => RitsuGodotNodeFactories.CreateFromScenePath<NCreatureVisuals>(AssetProfile.Scenes!.VisualsPath!);
+
+    protected override ModAnimStateMachine? SetupCustomCombatAnimationStateMachine(
+    Node visualsRoot,
+    CharacterModel character)
+    {
+        return ModAnimStateMachines.StandardCue(visualsRoot, character,
+            idleName: "idle_loop",
+            deadName: "die", deadLoop: false,
+            hitName: "hurt", hitLoop: false,
+            attackName: "attack", attackLoop: false,
+            castName: "cast", castLoop: false
+        );
+    }
 
     // 攻击建筑师的攻击特效列表
     public override List<string> GetArchitectAttackVfx() => [
