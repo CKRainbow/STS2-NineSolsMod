@@ -4,7 +4,6 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
-using NineSolsMod.NineSolsModCode.Utils;
 using NineSolsMod.NineSolsModCode.Variables;
 using STS2RitsuLib.Interop.AutoRegistration;
 

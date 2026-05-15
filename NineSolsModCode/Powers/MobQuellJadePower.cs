@@ -1,10 +1,8 @@
 ﻿using Godot;
 using MegaCrit.Sts2.Core.Entities.Powers;
-using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Powers;
 using NineSolsMod.NineSolsModCode.Variables;
 using STS2RitsuLib.Interop.AutoRegistration;
 

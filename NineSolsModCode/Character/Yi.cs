@@ -1,6 +1,5 @@
 ﻿using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
-using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using STS2RitsuLib.Interop.AutoRegistration;
