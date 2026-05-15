@@ -1,5 +1,6 @@
 ﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -33,7 +34,12 @@ public class FusangNourish() : NineSolsModCard(2, CardType.Skill,
             CardCmd.Upgrade(card, CardPreviewStyle.HorizontalLayout);
         }
         // TODO: 感觉好像给苍砂不太合理
-        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, Owner, CardPilePosition.Random);
+        var addResult = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, Owner, CardPilePosition.Random);
+        if (LocalContext.IsMe(Owner))
+        {
+            CardCmd.PreviewCardPileAdd(addResult, 0.6f, CardPreviewStyle.HorizontalLayout);
+            await Cmd.Wait(1f, false);
+        }
     }
 
     protected override void OnUpgrade()

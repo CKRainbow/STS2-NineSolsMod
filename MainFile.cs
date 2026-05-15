@@ -2,6 +2,7 @@ using System.Reflection;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
+using NineSolsMod.NineSolsModCode.Cards;
 using STS2RitsuLib;
 using STS2RitsuLib.Interop;
 
@@ -20,6 +21,11 @@ public partial class MainFile : Node
         var assembly = Assembly.GetExecutingAssembly();
         RitsuLibFramework.EnsureGodotScriptsRegistered(assembly, Logger);
         ModTypeDiscoveryHub.RegisterModAssembly(ModId, assembly);
+
+        // 设置先古卡升级
+        RitsuLibFramework.RegisterArchaicToothTranscendenceMapping<Tailsman, TailsmanQiBlast>();
+        // 设置先古遗物升级
+        // RitsuLibFramework.RegisterTouchOfOrobasRefinementMapping<TestRelic, Akabeko>();
 
         Harmony harmony = new(ModId);
 

@@ -1,4 +1,5 @@
 ﻿using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -35,7 +36,12 @@ public class Collect() : NineSolsModCard(1, CardType.Skill,
             }
         }
 
-        await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Draw, Owner, CardPilePosition.Random);
+        var addResults = await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Draw, Owner, CardPilePosition.Random);
+        if (LocalContext.IsMe(Owner))
+        {
+            CardCmd.PreviewCardPileAdd(addResults, 0.6f, CardPreviewStyle.HorizontalLayout);
+            await Cmd.Wait(1f, false);
+        }
     }
 
     protected override void OnUpgrade() { }

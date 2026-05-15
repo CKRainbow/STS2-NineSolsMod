@@ -1,4 +1,5 @@
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -28,8 +29,12 @@ public class WenWuBlock() : NineSolsModCard(1, CardType.Skill,
         {
             CardCmd.Upgrade(card, CardPreviewStyle.HorizontalLayout);
         }
-        // 怎么没有加入的动画
-        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, Owner, CardPilePosition.Random);
+        var addResult = await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Draw, Owner, CardPilePosition.Random);
+        if (LocalContext.IsMe(Owner))
+        {
+            CardCmd.PreviewCardPileAdd(addResult, 0.6f, CardPreviewStyle.HorizontalLayout);
+            await Cmd.Wait(1f, false);
+        }
     }
 
     protected override void OnUpgrade()

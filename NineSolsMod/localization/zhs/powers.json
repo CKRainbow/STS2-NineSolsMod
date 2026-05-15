@@ -55,6 +55,11 @@
   "NINE_SOLS_MOD_POWER_LAST_STAND_JADE_POWER.title": "背水玉",
   "NINE_SOLS_MOD_POWER_QUICK_PARRY_POWER.description": "每当你获得格挡时，获得2层[gold]反击[/gold]。",
   "NINE_SOLS_MOD_POWER_QUICK_PARRY_POWER.smartDescription": "每当你获得格挡时，获得{Amount}层[gold]反击[/gold]。",
-  "NINE_SOLS_MOD_POWER_QUICK_PARRY_POWER.title": "随意"
-
+  "NINE_SOLS_MOD_POWER_QUICK_PARRY_POWER.title": "随意",
+  "NINE_SOLS_MOD_POWER_HEXACHREM_VAULT_POWER.description": "在你的回合开始时，在你的[gold]抽牌堆[/gold]中加入一张[gold]文物[/gold]。",
+  "NINE_SOLS_MOD_POWER_HEXACHREM_VAULT_POWER.smartDescription": "在你的回合开始时，在你的[gold]抽牌堆[/gold]中加入一张[gold]文物[/gold]。",
+  "NINE_SOLS_MOD_POWER_HEXACHREM_VAULT_POWER.title": "六行宝库",
+  "NINE_SOLS_MOD_POWER_QI_STORM_POWER.description": "每当你抽到一张[gold]保留[/gold]牌时，抽[blue]1[/blue]张牌。",
+  "NINE_SOLS_MOD_POWER_QI_STORM_POWER.smartDescription": "每当你抽到一张[gold]保留[/gold]牌时，抽[blue]{Amount}[/blue]张牌。",
+  "NINE_SOLS_MOD_POWER_QI_STORM_POWER.title": "气之风暴"
 }

@@ -420,3 +420,5 @@ mono_crash.*.json
 ### workspace specific ###
 .idea/
 .vscode/
+
+*.lscache
