@@ -24,8 +24,7 @@ public class Insight() : NineSolsModCard(2, CardType.Skill,
     ];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DynamicVar("TempAgile", 3m),
-        new DynamicVar("ParryPower", 3m)
+        new DynamicVar("ParryPower", 4m)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
@@ -58,15 +57,11 @@ public class Insight() : NineSolsModCard(2, CardType.Skill,
             await CreatureCmd.GainBlock(Owner.Creature, attackTotal, ValueProp.Move, play, false);
             await PowerCmd.Apply<ParryPower>(choiceContext, Owner.Creature, DynamicVars["ParryPower"].BaseValue, Owner.Creature, this, false);
         }
-        else
-        {
-
-        }
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars["TempAgile"].UpgradeValueBy(2m);
+        DynamicVars["ParryPower"].UpgradeValueBy(5m);
     }
 
 }

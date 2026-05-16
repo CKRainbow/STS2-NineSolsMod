@@ -120,10 +120,12 @@
   "NINE_SOLS_MOD_CARD_LAST_STAND_JADE.title": "背水玉",
   "NINE_SOLS_MOD_CARD_TAKE_TOKEN.description": "将[gold]抽牌堆[/gold]和[gold]弃牌堆[/gold]中的所有[gold]令牌[/gold]加入你的[gold]手牌[/gold]。",
   "NINE_SOLS_MOD_CARD_TAKE_TOKEN.title": "拿取令牌",
-  "NINE_SOLS_MOD_CARD_QUICK_PARRY.description": "每当你获得[gold]格挡[/gold]时，获得{QuickParryPower:diff()}层[gold]反击[/gold]。",
-  "NINE_SOLS_MOD_CARD_QUICK_PARRY.title": "随意",
   "NINE_SOLS_MOD_CARD_HEXACHREM_VAULT.description": "在你的回合开始时，在你的[gold]抽牌堆[/gold]中加入一张[gold]{IfUpgraded:show:文物+|文物}[/gold]。",
   "NINE_SOLS_MOD_CARD_HEXACHREM_VAULT.title": "六行宝库",
   "NINE_SOLS_MOD_CARD_QI_STORM.description": "每当你抽到一张[gold]保留[/gold]牌时，抽{Cards:diff()}张牌。",
-  "NINE_SOLS_MOD_CARD_QI_STORM.title": "气之风暴"
+  "NINE_SOLS_MOD_CARD_QI_STORM.title": "气之风暴",
+  "NINE_SOLS_MOD_CARD_DEVINE_MASTERY.description": "每当你获得[gold]格挡[/gold]时，获得{Amount:diff()}层[gold]反击[/gold]。",
+  "NINE_SOLS_MOD_CARD_DEVINE_MASTERY.title": "出神入化",
+  "NINE_SOLS_MOD_CARD_HARNESS_FORCE_JADE.description": "每当你[gold]反击[/gold]时，获得1点[gold]力量[/gold]。",
+  "NINE_SOLS_MOD_CARD_HARNESS_FORCE_JADE.title": "借力玉"
 }

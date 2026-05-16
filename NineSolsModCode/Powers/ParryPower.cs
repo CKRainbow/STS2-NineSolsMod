@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using NineSolsMod.NineSolsModCode.Utils;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Powers;
@@ -37,6 +38,8 @@ public class ParryPower : NineSolsModPower
             return;
         if (target != Owner)
             return;
+        if (props != ValueProp.Move)
+            return;
 
         var hasUnboundedCounter = Owner.HasPower<UnboundedCounterPower>();
 
@@ -45,10 +48,11 @@ public class ParryPower : NineSolsModPower
 
         var internalDamageAmount = Amount * DynamicVars["InternalDamagePerAmount"].BaseValue;
 
-
         MainFile.Logger.Info($"target.Block: {target.Block}, result.BlockedDamage: {result.BlockedDamage}");
 
-        if ((target.Block == 0 && result.BlockedDamage == result.TotalDamage) || hasUnboundedCounter)
+        var isPerfectParry = target.Block == 0 && result.BlockedDamage == result.TotalDamage || hasUnboundedCounter;
+
+        if (isPerfectParry)
         {
             internalDamageAmount *= DynamicVars["PerfectParryMult"].BaseValue;
             await PowerCmd.Apply<InternalDamagePower>(choiceContext, CombatState.HittableEnemies, internalDamageAmount, target, null, false);
@@ -60,6 +64,16 @@ public class ParryPower : NineSolsModPower
         }
 
         await PowerCmd.Apply<QiPower>(choiceContext, target, 1, null, null, true);
+
+        await Hooks.ParryHook.AfterParry(CombatState, new AfterParryContext
+        {
+            ParryingCreature = target,
+            AttackingCreature = dealer,
+            SourceCard = cardSource,
+            IsPerfectParry = isPerfectParry,
+            ChoiceContext = choiceContext,
+            DamageResult = result,
+        });
     }
 
     public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, ICombatState combatState)
