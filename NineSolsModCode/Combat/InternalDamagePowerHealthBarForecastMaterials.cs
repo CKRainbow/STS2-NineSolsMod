@@ -12,6 +12,6 @@ internal static class InternalDamagePowerHealthBarForecastMaterials
 
     private static ShaderMaterial Create()
     {
-        return MaterialUtils.CreateHsvShaderMaterial(0.47f, 0.52f, 0.60f);
+        return MaterialUtils.CreateRgbShaderMaterial(0.44f, 0.09f, 0.09f);
     }
 }

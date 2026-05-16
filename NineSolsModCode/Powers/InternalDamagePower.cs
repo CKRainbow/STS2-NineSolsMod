@@ -83,11 +83,10 @@ public class InternalDamagePower : NineSolsModPower, IHealthBarForecastSource
         if (context.Creature != Owner)
             return [];
 
-
-        var order = HealthBarForecastOrder.ForSideTurnStart(context.Creature, Owner.Side);
-        return HealthBarForecasts
-            .FromRight(context, new(1f, 0.478f, 0f), Colors.White)
-            .Add(Amount, order, InternalDamagePowerHealthBarForecastMaterials.ForecastMaterial)
-            .Build();
+        return HealthBarForecasts.Single(
+                (int)(context.Creature.GetPowerAmount<InternalDamagePower>() * DynamicVars["DamagePerAmount"].BaseValue),
+                new Color(0.44f, 0.09f, 0.09f),
+                HealthBarForecastGrowthDirection.FromRight
+        );
     }
 }
