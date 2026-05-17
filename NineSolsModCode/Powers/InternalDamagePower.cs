@@ -53,6 +53,10 @@ public class InternalDamagePower : NineSolsModPower, IHealthBarForecastSource
         {
             return amount;
         }
+        if (Owner.HasPower<GreatTaoFormPower>())
+        {
+            return amount;
+        }
 
         var damagePerAmount = DynamicVars["DamagePerAmount"].BaseValue;
         var internalDamageAmount = Amount;

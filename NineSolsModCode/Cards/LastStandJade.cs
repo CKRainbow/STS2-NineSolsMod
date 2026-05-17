@@ -30,6 +30,6 @@ public class LastStandJade() : NineSolsModCard(1, CardType.Power,
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
-        HoverTipFactory.FromPower<LastStandJadePower>(),
+        HoverTipFactory.FromPower<InternalDamagePower>(),
     ];
 }

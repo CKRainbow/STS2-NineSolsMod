@@ -1,27 +1,16 @@
 ﻿using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 using NineSolsMod.NineSolsModCode.Cards;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Powers;
 
 [RegisterPower]
-public class SwiftRunPower : CustomTemporaryDexterityPower
+public class SwiftRunPower : NineSolsModTemporaryPower
 {
-    public override AbstractModel OriginModel => ModelDb.Card<AirDash>();
+    public override AbstractModel OriginModel => ModelDb.Card<SwiftRun>();
 
-    public override LocString Description => new LocString("powers", IsPositive ? "TEMPORARY_DEXTERITY_POWER.description" : "TEMPORARY_DEXTERITY_DOWN.description");
+    public override PowerModel InternallyAppliedPower => ModelDb.Power<DexterityPower>();
 
-    protected override string SmartDescriptionLocKey
-    {
-        get
-        {
-            if (!IsPositive)
-            {
-                return "TEMPORARY_DEXTERITY_DOWN.smartDescription";
-            }
-
-            return "TEMPORARY_DEXTERITY_POWER.smartDescription";
-        }
-    }
 }
