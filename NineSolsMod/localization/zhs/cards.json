@@ -84,9 +84,6 @@
   "NINE_SOLS_MOD_CARD_TAILSMAN_QI_BLAST.title": "一气贯通",
   "NINE_SOLS_MOD_CARD_WEN_WU.title": "",
   "NINE_SOLS_MOD_CARD_WEN_WU.description": "获得{Block:diff()}点[gold]格挡[/gold]。抽{Cards:diff()}张牌。",
-  "NINE_SOLS_MOD_CARD_XUAN_TIE.title": "",
-  "NINE_SOLS_MOD_CARD_XUAN_TIE.description": "选择手牌中的一张攻击牌，将其升级。",
-  "NINE_SOLS_MOD_CARD_XUAN_TIE.selectionScreenPrompt": "选择要升级的攻击牌。",
   "NINE_SOLS_MOD_CARD_ABUNDANCE_STRIKE.title": "",
   "NINE_SOLS_MOD_CARD_ABUNDANCE_STRIKE.description": "造成{Damage:diff()}点伤害。[gold]充盈[/gold]6：消耗6点[gold]气[/gold]，给予{VulnerablePower:diff()}层[gold]易伤[/gold]。",
   "NINE_SOLS_MOD_CARD_WEN_WU_BLOCK.title": "",
@@ -131,5 +128,8 @@
   "NINE_SOLS_MOD_CARD_GREAT_TAO_FORM.description": "受到的伤害会全部以[gold]内伤[/gold]的形式附加，当[gold]内伤[/gold]超过当前生命值时，于你的回合结束时死亡。\n受到的攻击伤害提高20%。",
   "NINE_SOLS_MOD_CARD_GREAT_TAO_FORM.title": "大道形态",
   "NINE_SOLS_MOD_CARD_RECIPROCATION_JADE.description": "每当你[gold]反击[/gold]时，将自身{ReciprocationJadePower:diff()}层[gold]内伤[/gold]转移给攻击者。",
-  "NINE_SOLS_MOD_CARD_RECIPROCATION_JADE.title": "奉还玉"
+  "NINE_SOLS_MOD_CARD_RECIPROCATION_JADE.title": "奉还玉",
+  "NINE_SOLS_MOD_CARD_DARK_STEEL.description":  "选择手牌中的一张攻击牌，将其升级。",
+  "NINE_SOLS_MOD_CARD_DARK_STEEL.title": "玄铁",
+  "NINE_SOLS_MOD_CARD_DARK_STEEL.selectionScreenPrompt": "选择要升级的攻击牌。"
 }

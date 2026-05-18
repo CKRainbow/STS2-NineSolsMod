@@ -9,9 +9,6 @@
   "NINE_SOLS_MOD_CARD_PARRY.title": "Parry",
   "NINE_SOLS_MOD_CARD_WEN_WU.title": "Relic",
   "NINE_SOLS_MOD_CARD_WEN_WU.description": "Gain {Block:diff()} [gold]Block[/gold]. Draw {Cards:diff()} cards.",
-  "NINE_SOLS_MOD_CARD_XUAN_TIE.title": "Black Iron",
-  "NINE_SOLS_MOD_CARD_XUAN_TIE.description": "Select an Attack card in your hand and Upgrade it.",
-  "NINE_SOLS_MOD_CARD_XUAN_TIE.selectionScreenPrompt": "Select an Attack card to Upgrade.",
   "NINE_SOLS_MOD_CARD_ABUNDANCE_STRIKE.title": "Abundance Strike",
   "NINE_SOLS_MOD_CARD_ABUNDANCE_STRIKE.description": "Deal {Damage:diff()} damage. [gold]Abundance[/gold] 6: Cost 6 [gold]Qi[/gold], apply {VulnerablePower:diff()} [gold]Vulnerable[/gold].",
   "NINE_SOLS_MOD_CARD_WEN_WU_BLOCK.title": "Relic Block",
@@ -130,5 +127,8 @@
   "NINE_SOLS_MOD_CARD_GREAT_TAO_FORM.description": "",
   "NINE_SOLS_MOD_CARD_GREAT_TAO_FORM.title": "",
   "NINE_SOLS_MOD_CARD_RECIPROCATION_JADE.description": "",
-  "NINE_SOLS_MOD_CARD_RECIPROCATION_JADE.title": ""
+  "NINE_SOLS_MOD_CARD_RECIPROCATION_JADE.title": "",
+  "NINE_SOLS_MOD_CARD_DARK_STEEL.description": "Select an Attack card in your hand and Upgrade it.",
+  "NINE_SOLS_MOD_CARD_DARK_STEEL.title": "Dark Steel",
+  "NINE_SOLS_MOD_CARD_DARK_STEEL.selectionScreenPrompt": "Select an Attack card to Upgrade."
 }

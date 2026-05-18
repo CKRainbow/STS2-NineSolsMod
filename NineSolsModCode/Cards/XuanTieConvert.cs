@@ -33,7 +33,7 @@ public class XuanTieConvert() : NineSolsModCard(1, CardType.Skill,
         if (cardModel != null)
         {
             CardCmd.Upgrade(cardModel, CardPreviewStyle.HorizontalLayout);
-            var convertedCard = CombatState.CreateCard<XuanTie>(Owner);
+            var convertedCard = CombatState.CreateCard<DarkSteel>(Owner);
             if (IsUpgraded)
             {
                 CardCmd.Upgrade(convertedCard, CardPreviewStyle.HorizontalLayout);
@@ -44,6 +44,6 @@ public class XuanTieConvert() : NineSolsModCard(1, CardType.Skill,
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
-        HoverTipFactory.FromCard<XuanTie>()
+        HoverTipFactory.FromCard<DarkSteel>()
     ];
 }

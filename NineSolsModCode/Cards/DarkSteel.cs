@@ -11,7 +11,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(TokenCardPool))]
-public class XuanTie() : NineSolsModCard(0, CardType.Skill,
+public class DarkSteel() : NineSolsModCard(0, CardType.Skill,
     CardRarity.Token, TargetType.Self)
 {
     protected override async Task OnPlay(
