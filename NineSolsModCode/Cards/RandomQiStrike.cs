@@ -13,11 +13,9 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(YiCardPool))]
-public class RandomQiStrike() : NineSolsModCard(1, CardType.Attack,
-    CardRarity.Common, TargetType.AnyEnemy)
+public class RandomQiStrike() : NineSolsModQiCard(1, CardType.Attack,
+    CardRarity.Common, TargetType.AnyEnemy, 1)
 {
-    protected override bool ShouldGlowGoldInternal => Owner.Creature.GetPower<InternalDamagePower>() is not null && Owner.Creature.GetPower<InternalDamagePower>()!.Amount >= DynamicVars["QiCost"].IntValue;
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
@@ -28,10 +26,9 @@ public class RandomQiStrike() : NineSolsModCard(1, CardType.Attack,
         }
 
         int hitCount = DynamicVars.Repeat.IntValue;
-        var qiCostRequired = DynamicVars["QiCost"].IntValue;
-        var qiCostPaid = await NineSolsModCmd.CostQi(qiCostRequired, this, choiceContext, true);
-        if (qiCostPaid >= qiCostRequired)
+        if (HasEnoughQi)
         {
+            await NineSolsModCmd.CostQi(qiCost, this, choiceContext, true);
             hitCount += 1;
         }
 
@@ -48,9 +45,9 @@ public class RandomQiStrike() : NineSolsModCard(1, CardType.Attack,
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
+        ..base.CanonicalVars,
         new DamageVar(3m, ValueProp.Move),
         new RepeatVar(3),
-        NineSolsModVarsFactory.QiCostVar(1)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>

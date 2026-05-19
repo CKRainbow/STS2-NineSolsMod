@@ -131,5 +131,9 @@
   "NINE_SOLS_MOD_CARD_RECIPROCATION_JADE.title": "奉还玉",
   "NINE_SOLS_MOD_CARD_DARK_STEEL.description":  "选择手牌中的一张攻击牌，将其升级。",
   "NINE_SOLS_MOD_CARD_DARK_STEEL.title": "玄铁",
-  "NINE_SOLS_MOD_CARD_DARK_STEEL.selectionScreenPrompt": "选择要升级的攻击牌。"
+  "NINE_SOLS_MOD_CARD_DARK_STEEL.selectionScreenPrompt": "选择要升级的攻击牌。",
+  "NINE_SOLS_MOD_CARD_ROOT_FORM.description": "在你的回合结束时，减少{RootFormPower:diff()}层[gold]内伤[/gold]。每当你减少1层[gold]内伤[/gold]时，获得1点[gold]格挡[/gold]。",
+  "NINE_SOLS_MOD_CARD_ROOT_FORM.title": "古树形态",
+  "NINE_SOLS_MOD_CARD_RHIZOMATIC_ARROW.description": "[gold]运气[/gold]{QiCost:diff()}：对自身造成当前血量一半的[gold]内伤[/gold]，对所有敌人造成该数值{Multiplier:diff()}倍（{TotalInternalDamage:diff()}）的[gold]内伤[/gold]。",
+  "NINE_SOLS_MOD_CARD_RHIZOMATIC_ARROW.title": "元能箭"
 }

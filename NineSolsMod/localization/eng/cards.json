@@ -130,5 +130,9 @@
   "NINE_SOLS_MOD_CARD_RECIPROCATION_JADE.title": "",
   "NINE_SOLS_MOD_CARD_DARK_STEEL.description": "Select an Attack card in your hand and Upgrade it.",
   "NINE_SOLS_MOD_CARD_DARK_STEEL.title": "Dark Steel",
-  "NINE_SOLS_MOD_CARD_DARK_STEEL.selectionScreenPrompt": "Select an Attack card to Upgrade."
+  "NINE_SOLS_MOD_CARD_DARK_STEEL.selectionScreenPrompt": "Select an Attack card to Upgrade.",
+  "NINE_SOLS_MOD_CARD_ROOT_FORM.description": "",
+  "NINE_SOLS_MOD_CARD_ROOT_FORM.title": "",
+  "NINE_SOLS_MOD_CARD_RHIZOMATIC_ARROW.description": "",
+  "NINE_SOLS_MOD_CARD_RHIZOMATIC_ARROW.title": ""
 }
