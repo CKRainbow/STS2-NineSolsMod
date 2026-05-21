@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Keywords;
 using NineSolsMod.NineSolsModCode.Powers;
 using STS2RitsuLib.Interop.AutoRegistration;
+using STS2RitsuLib.Keywords;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
@@ -77,14 +78,10 @@ public class ShadowHunterArrow() : NineSolsModCard(1, CardType.Attack,
         DynamicVars.Damage.UpgradeValueBy(4m);
     }
 
-
-    protected override IEnumerable<string> RegisteredKeywordIds => [
-        NineSolsModKeywords.AzureSandCraft
-    ];
-
     public override IEnumerable<CardKeyword> CanonicalKeywords => [
         CardKeyword.Exhaust,
-        CardKeyword.Retain
+        CardKeyword.Retain,
+        NineSolsModKeywords.AzureSandCraft.GetModCardKeyword()
     ];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [

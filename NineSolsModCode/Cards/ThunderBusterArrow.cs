@@ -8,6 +8,7 @@ using NineSolsMod.NineSolsModCode.Keywords;
 using NineSolsMod.NineSolsModCode.Powers;
 using NineSolsMod.NineSolsModCode.Variables;
 using STS2RitsuLib.Interop.AutoRegistration;
+using STS2RitsuLib.Keywords;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
@@ -32,13 +33,10 @@ public class ThunderBusterArrow() : NineSolsModCard(1, CardType.Attack,
         DynamicVars[InternalDamageVar.Key].UpgradeValueBy(4m);
     }
 
-    protected override IEnumerable<string> RegisteredKeywordIds => [
-        NineSolsModKeywords.AzureSandCraft
-    ];
-
     public override IEnumerable<CardKeyword> CanonicalKeywords => [
         CardKeyword.Exhaust,
-        CardKeyword.Retain
+        CardKeyword.Retain,
+        NineSolsModKeywords.AzureSandCraft.GetModCardKeyword()
     ];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
