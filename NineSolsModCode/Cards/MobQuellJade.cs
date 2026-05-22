@@ -26,7 +26,7 @@ public class MobQuellJade() : NineSolsModCard(2, CardType.Power,
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<MobQuellJadePower>(50)
+        new PowerVar<MobQuellJadePower>(1)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [

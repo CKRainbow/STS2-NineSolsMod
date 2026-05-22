@@ -4,25 +4,28 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using NineSolsMod.NineSolsModCode.Variables;
+using NineSolsMod.NineSolsModCode.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Powers;
 
 [RegisterPower]
-public class HealthThiefJadePower : NineSolsModPower
+public class HealthThiefJadePower : NineSolsModPower, IFinishListener
 {
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
     public override Color AmountLabelColor => _normalAmountLabelColor;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new FinishVar(100)
+        ..NineSolsModVarsFactory.FinishVar(100)
     ];
 
-    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
-        new HoverTip(
-            new LocString("static_hover_tips", "NINESOLSMOD-FINISH.title"),
-            new LocString("static_hover_tips", "NINESOLSMOD-FINISH.description")
-        )
-    ];
+    public async Task AfterFinish(AfterFinishContext context)
+    {
+        if (context.SourceCard.Owner.Creature == Owner)
+        {
+            await CreatureCmd.Heal(Owner, Amount);
+        }
+    }
 }

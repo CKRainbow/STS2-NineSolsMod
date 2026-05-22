@@ -35,6 +35,6 @@ public class ShadowStrike() : NineSolsModCard(1, CardType.Attack,
     // 用处是？
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DamageVar(6m, ValueProp.Move),
-        new FinishVar(120m)
+        ..NineSolsModVarsFactory.FinishVar(120m)
     ];
 }

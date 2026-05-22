@@ -29,12 +29,12 @@ public class Tailsman() : NineSolsModCard(0, CardType.Skill,
 
     protected override void OnUpgrade()
     {
-        DynamicVars[InternalDamageVar.Key].UpgradeValueBy(3m);
+        DynamicVars[InternalDamageVar.Key].UpgradeValueBy(2m);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(1),
-        new InternalDamageVar(6)
+        new InternalDamageVar(4)
     ];
 }

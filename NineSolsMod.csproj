@@ -79,7 +79,7 @@
         <AdditionalFiles Include="mod_manifest.json" />
         <AdditionalFiles Include="NineSolsMod/localization/**/*.json" />
         <PackageReference Include="Nothing.STS2RitsuLib.ModAnalyzers" Version="0.7.0" />
-        <PackageReference Include="STS2.RitsuLib" Version="0.2.39" GeneratePathProperty="true" />
+        <PackageReference Include="STS2.RitsuLib" Version="0.2.40" GeneratePathProperty="true" />
     </ItemGroup>
 
     <ItemGroup>

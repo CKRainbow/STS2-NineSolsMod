@@ -7,6 +7,7 @@ using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
 using NineSolsMod.NineSolsModCode.Utils;
 using NineSolsMod.NineSolsModCode.Variables;
+using STS2RitsuLib.Cards.DynamicVars;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
@@ -29,32 +30,26 @@ public class TailsmanFullControl() : NineSolsModCard(0, CardType.Skill,
         {
             return;
         }
-        await NineSolsModCmd.Finish(0, this, play.Target, choiceContext, calculated: true);
+        await NineSolsModCmd.Finish(0, this, play.Target, choiceContext);
         await NineSolsModCmd.CostQi(5, this, choiceContext, false);
     }
 
     protected override void OnUpgrade()
     {
+        DynamicVars["AdditionBonus"].UpgradeValueBy(10m);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CalculationBaseVar(100m),
-        new CalculationExtraVar(100m),
-        new CalculatedFinishVar().WithMultiplier((CardModel card, Creature? _)=>
-        {
-            var qiPower = card.Owner.Creature.GetPower<QiPower>();
-            if (qiPower is null)
+        ModCardVars.Int("AdditionBonus", 20m),
+        ..NineSolsModVarsFactory.FinishVar(
+            100m,
+            (card) =>
             {
-                return 0;
-            }
-            var multiplier = 0m;
-            for(int i = 0; i < qiPower?.Amount; i++)
-            {
-                multiplier += 0.2m;
-                multiplier *= 1.2m;
-            }
-            return multiplier;
-        })
+                if (card is null) return 0;
+                if (!card.IsInCombat) return 0;
+                var qiAmount = card.Owner.Creature.GetPowerAmount<QiPower>();
+                return qiAmount * DynamicVars["AdditionBonus"].BaseValue;
+            }),
     ];
 }

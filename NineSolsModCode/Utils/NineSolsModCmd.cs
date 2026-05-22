@@ -5,7 +5,9 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Powers;
+using NineSolsMod.NineSolsModCode.Hooks;
 using NineSolsMod.NineSolsModCode.Variables;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace NineSolsMod.NineSolsModCode.Utils;
 
@@ -20,61 +22,65 @@ public static class NineSolsModCmd
     /// <param name="choiceContext"></param>
     /// <param name="calculated">是否使用CalculatedFinishVar</param>
     /// <returns></returns>
-    public static async Task Finish(decimal baseAttack, CardModel model, Creature target, PlayerChoiceContext? choiceContext = null, bool calculated = false)
+    public static async Task Finish(decimal baseAttack, CardModel model, Creature target, PlayerChoiceContext? choiceContext = null)
     {
+        var internalDamageAmount = target.GetPowerAmount<InternalDamagePower>();
+
+        decimal finishMult;
+        var finishVar = model.DynamicVars["Finish"];
+        if (finishVar is CalculatedVar calculatedFinishVar)
+        {
+            finishMult = calculatedFinishVar.Calculate(target) / 100m;
+        }
+        else
+        {
+            finishMult = finishVar.BaseValue / 100m;
+        }
+
+        await PowerCmd.Remove<InternalDamagePower>(target);
+
         if (baseAttack > 0)
         {
             await DamageCmd.Attack(baseAttack).FromCard(model).Targeting(target)
                 .WithHitFx("vfx/vfx_attack_slash", null, null)
                 .Execute(choiceContext);
         }
-        var internalDamageAmount = target.GetPowerAmount<InternalDamagePower>();
 
         if (internalDamageAmount <= 0)
         {
             return;
         }
 
-        decimal finishMult;
-        if (calculated)
+        var beforeContext = new BeforeFinishContext
         {
-            CalculatedFinishVar calculatedFinishVar = (model.DynamicVars[CalculatedFinishVar.Key] as CalculatedFinishVar)!;
-            finishMult = calculatedFinishVar.Calculate(target) / 100m;
-        }
-        else
-        {
-            finishMult = model.DynamicVars[FinishVar.Key].BaseValue / 100m;
-        }
-        await PowerCmd.Remove<InternalDamagePower>(target);
+            ChoiceContext = choiceContext,
+            SourceCard = model,
+            Target = target,
+            FinishMult = finishMult,
+            InternalDamageAmount = internalDamageAmount,
+            TargetsToDamage = [target]
+        };
+
+        ArgumentNullException.ThrowIfNull(model.Owner.Creature.CombatState);
+        await FinishHook.BeforeFinish(model.Owner.Creature.CombatState, beforeContext);
+
+        var damageContext = choiceContext ?? new ThrowingPlayerChoiceContext();
         // // 不受任何加成影响的伤害
-        VfxCmd.PlayOnCreatureCenter(target, "vfx/vfx_attack_blunt");
-        var mobQuellJadePower = model.Owner.Creature.GetPower<MobQuellJadePower>();
-        if (mobQuellJadePower is not null)
-        {
-            ArgumentNullException.ThrowIfNull(model.Owner.Creature.CombatState);
-            await CreatureCmd.Damage(choiceContext ?? new ThrowingPlayerChoiceContext(), model.Owner.Creature.CombatState.HittableEnemies, finishMult * internalDamageAmount, ValueProp.Unpowered, model.Owner.Creature, model);
-        }
-        else
-        {
-            await CreatureCmd.Damage(choiceContext ?? new ThrowingPlayerChoiceContext(), target, finishMult * internalDamageAmount, ValueProp.Unpowered, model.Owner.Creature, model);
-        }
-        // 额外一段受加成影响的伤害
-        // await DamageCmd.Attack(finishMult * internalDamageAmount).FromCard(model).Targeting(target)
-        //     .WithHitFx("vfx/vfx_attack_blunt", null, null)
-        //     .Execute(choiceContext);
+        VfxCmd.PlayOnCreatureCenters(beforeContext.TargetsToDamage, "vfx/vfx_attack_blunt");
+        await CreatureCmd.Damage(damageContext, beforeContext.TargetsToDamage, finishMult * internalDamageAmount, ValueProp.Unpowered, model.Owner.Creature, model);
 
-        var statisJadePower = model.Owner.Creature.GetPower<StatisJadePower>();
-        if (statisJadePower is not null)
+        var afterContext = new AfterFinishContext
         {
-            var context = choiceContext ?? new ThrowingPlayerChoiceContext();
-            await PowerCmd.Apply<WeakPower>(context, target, statisJadePower.Amount, model.Owner.Creature, model, false);
-        }
+            ChoiceContext = choiceContext,
+            SourceCard = model,
+            Target = target,
+            FinishMult = finishMult,
+            InternalDamageAmount = internalDamageAmount,
+            DamagedTargets = beforeContext.TargetsToDamage
+        };
 
-        var healthThiefJadePower = model.Owner.Creature.GetPower<HealthThiefJadePower>();
-        if (healthThiefJadePower is not null)
-        {
-            await CreatureCmd.Heal(model.Owner.Creature, healthThiefJadePower.Amount);
-        }
+        await FinishHook.AfterFinish(model.Owner.Creature.CombatState, afterContext);
+
     }
 
     public static async Task Deviation(CardModel model, Creature target, PlayerChoiceContext? choiceContext = null)

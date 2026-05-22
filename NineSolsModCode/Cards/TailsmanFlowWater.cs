@@ -27,7 +27,7 @@ public class TailsmanFlowWater() : NineSolsModCard(1, CardType.Skill,
         {
             return;
         }
-        await NineSolsModCmd.Finish(0, this, play.Target, choiceContext, calculated: true);
+        await NineSolsModCmd.Finish(0, this, play.Target, choiceContext);
         await NineSolsModCmd.CostQi(1, this, choiceContext, true);
     }
 
@@ -43,12 +43,12 @@ public class TailsmanFlowWater() : NineSolsModCard(1, CardType.Skill,
 
     protected override void OnUpgrade()
     {
-        DynamicVars[FinishVar.Key].UpgradeValueBy(50m);
+        DynamicVars["Finish"].UpgradeValueBy(50m);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new FinishVar(150m),
+        ..NineSolsModVarsFactory.FinishVar(150m)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [

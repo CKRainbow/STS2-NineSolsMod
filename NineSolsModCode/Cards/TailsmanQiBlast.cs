@@ -7,6 +7,7 @@ using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
 using NineSolsMod.NineSolsModCode.Utils;
 using NineSolsMod.NineSolsModCode.Variables;
+using STS2RitsuLib.Cards.DynamicVars;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
@@ -27,46 +28,33 @@ public class TailsmanQiBlast() : NineSolsModCard(0, CardType.Skill,
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner, false);
         await PowerCmd.Apply<InternalDamagePower>(choiceContext, play.Target, DynamicVars[InternalDamageVar.Key].BaseValue, Owner.Creature, this);
         await NineSolsModCmd.CostQi(3, this, choiceContext, false);
+        await NineSolsModCmd.Finish(0, this, play.Target, choiceContext);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars[InternalDamageVar.Key].UpgradeValueBy(6m);
-        DynamicVars["qiMult"].UpgradeValueBy(25m);
+        DynamicVars["MultiplierBonus"].UpgradeValueBy(10m);
     }
 
+    // FIXME: 没有将一开始的 12 点内伤考虑进去
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(1),
         new InternalDamageVar(12),
-        new DynamicVar("qiMult", 25),
-        NineSolsModVarsFactory.FinishVar(
-            100,
-            card => {
-                var qiPower = card?.Owner.Creature.GetPower<QiPower>();
-                var value = DynamicVars["Finish"].BaseValue;
-                if (qiPower is null)
+        ModCardVars.Int("MultiplierBonus", 20),
+        ..NineSolsModVarsFactory.FinishVar(
+            0,
+            (card) => {
+                if (card is null) return 100m;
+                if (!card.IsInCombat) return 100m;
+                var qiPowerAmount = Math.Min(3, card.Owner.Creature.GetPowerAmount<QiPower>());
+                var value = 100m;
+                for (int i = 0; i < qiPowerAmount; i++)
                 {
-                    return value;
+                    value *= 1 + DynamicVars["MultiplierBonus"].BaseValue / 100m;
                 }
-                value += Math.Max(qiPower.Amount - 1, 0) * DynamicVars["qiMult"].BaseValue;
                 return value;
             }),
-        new CalculationBaseVar(0m),
-        new ExtraDamageVar(1m),
-        // FIXME: 这个显示的伤害又会受到目标内伤层数的影响，使得最终伤害显示有问题
-        // FIXME: 用 PreviewValue 似乎不太合理
-        new CalculatedDamageVar(ValueProp.Move).WithMultiplier(
-            (card, target) => {
-                var b = card.DynamicVars[InternalDamageVar.Key].BaseValue;
-                var creature = card.Owner.Creature;
-                if (creature is null) return 0m;
-                // if (card.DynamicVars["Finish"] is not CalculatedVar finishVar) return 0m;
-                if (target is null) return 0m;
-                var finishMult = card.DynamicVars["Finish"].PreviewValue / 100m;
-                var internalAmount = target.GetPowerAmount<InternalDamagePower>();
-                return finishMult * internalAmount;
-            }
-        )
     ];
 }
