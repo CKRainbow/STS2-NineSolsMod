@@ -1,9 +1,6 @@
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using Godot;
 using NineSolsMod.NineSolsModCode.Variables;
-using System.Collections.Generic;
-using STS2RitsuLib.Scaffolding.Content;
 using NineSolsMod.NineSolsModCode.Powers;
 
 namespace NineSolsMod.NineSolsModCode.Cards;

@@ -7,7 +7,6 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
 using NineSolsMod.NineSolsModCode.Utils;
-using NineSolsMod.NineSolsModCode.Variables;
 using STS2RitsuLib.Interop.AutoRegistration;
 using ParryPower = NineSolsMod.NineSolsModCode.Powers.ParryPower;
 

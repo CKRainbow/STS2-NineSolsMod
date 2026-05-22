@@ -39,6 +39,6 @@ public class SwiftRise() : NineSolsModCard(1, CardType.Skill,
     protected override bool ShouldGlowGoldInternal => DamageReceivedLastTurn;
 
     private bool DamageReceivedLastTurn => CombatManager.Instance.History.Entries.OfType<DamageReceivedEntry>().Any(
-        (DamageReceivedEntry entry) => entry.Receiver == Owner.Creature && entry.RoundNumber == CombatState!.RoundNumber - 1
+        entry => entry.Receiver == Owner.Creature && Owner.Creature.Player is not null && entry.HappenedLastPlayerTurn(Owner.Creature.Player)
     );
 }

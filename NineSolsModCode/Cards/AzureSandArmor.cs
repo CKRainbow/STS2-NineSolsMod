@@ -5,9 +5,9 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Models.Powers;
-using NineSolsMod.NineSolsModCode.Keywords;
+using NineSolsMod.NineSolsModCode.Tags;
+using STS2RitsuLib.CardTags;
 using STS2RitsuLib.Interop.AutoRegistration;
-using STS2RitsuLib.Keywords;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
@@ -34,7 +34,10 @@ public class AzureSandArmor() : NineSolsModCard(1, CardType.Skill,
     public override IEnumerable<CardKeyword> CanonicalKeywords => [
         CardKeyword.Exhaust,
         CardKeyword.Retain,
-        NineSolsModKeywords.AzureSandCraft.GetModCardKeyword()
+    ];
+
+    protected override HashSet<CardTag> CanonicalTags => [
+        NineSolsModTags.AzureSandCraft.GetModCardTag()
     ];
 
 

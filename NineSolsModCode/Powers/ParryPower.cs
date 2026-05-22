@@ -76,9 +76,9 @@ public class ParryPower : NineSolsModPower
         });
     }
 
-    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, ICombatState combatState)
+    public override async Task BeforeSideTurnStart(PlayerChoiceContext choiceContext, CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
-        if (side == Owner.Side)
+        if (participants.Contains(Owner))
         {
             Flash();
             await PowerCmd.Remove(this);

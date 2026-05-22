@@ -1,7 +1,5 @@
 ﻿using Godot;
 using MegaCrit.Sts2.Core.Entities.Powers;
-using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using NineSolsMod.NineSolsModCode.Variables;
 using NineSolsMod.NineSolsModCode.Utils;

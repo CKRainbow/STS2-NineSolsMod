@@ -17,11 +17,11 @@ public class RootFormPower : NineSolsModPower
     public override PowerStackType StackType => PowerStackType.Single;
     public override Color AmountLabelColor => _normalAmountLabelColor;
 
-    public override async Task BeforeTurnEndEarly(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task BeforeSideTurnEndEarly(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
         if (CombatManager.Instance.IsOverOrEnding)
             return;
-        if (side != Owner.Side)
+        if (!participants.Contains(Owner))
             return;
         if (Owner.IsDead)
             return;

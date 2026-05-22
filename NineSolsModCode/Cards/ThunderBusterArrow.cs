@@ -4,11 +4,11 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.ValueProps;
-using NineSolsMod.NineSolsModCode.Keywords;
 using NineSolsMod.NineSolsModCode.Powers;
+using NineSolsMod.NineSolsModCode.Tags;
 using NineSolsMod.NineSolsModCode.Variables;
+using STS2RitsuLib.CardTags;
 using STS2RitsuLib.Interop.AutoRegistration;
-using STS2RitsuLib.Keywords;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
@@ -32,11 +32,13 @@ public class ThunderBusterArrow() : NineSolsModCard(1, CardType.Attack,
         DynamicVars.Damage.UpgradeValueBy(4m);
         DynamicVars[InternalDamageVar.Key].UpgradeValueBy(4m);
     }
-
     public override IEnumerable<CardKeyword> CanonicalKeywords => [
         CardKeyword.Exhaust,
         CardKeyword.Retain,
-        NineSolsModKeywords.AzureSandCraft.GetModCardKeyword()
+    ];
+
+    protected override HashSet<CardTag> CanonicalTags => [
+        NineSolsModTags.AzureSandCraft.GetModCardTag()
     ];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [

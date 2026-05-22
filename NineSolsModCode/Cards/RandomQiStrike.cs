@@ -7,7 +7,6 @@ using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
 using NineSolsMod.NineSolsModCode.Utils;
-using NineSolsMod.NineSolsModCode.Variables;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;

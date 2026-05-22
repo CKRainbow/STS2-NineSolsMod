@@ -5,6 +5,8 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
+using NineSolsMod.NineSolsModCode.Tags;
+using STS2RitsuLib.CardTags;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
@@ -20,12 +22,12 @@ public class AzureSand() : NineSolsModCard(0, CardType.Skill,
         if (CombatState is null)
             return;
 
-        List<CardModel> azureCards = [
-            CombatState.CreateCard<CloudPiercingArrow>(Owner),
-            CombatState.CreateCard<ThunderBusterArrow>(Owner),
-            CombatState.CreateCard<ShadowHunterArrow>(Owner),
-            CombatState.CreateCard<AzureSandArmor>(Owner)
-        ];
+        var azureCards = Owner.Character.CardPool.GetUnlockedCards(
+            Owner.UnlockState,
+            Owner.RunState.CardMultiplayerConstraint
+        ).Where(
+            card => card.Tags.Contains(NineSolsModTags.AzureSandCraft.GetModCardTag())
+        ).ToList();
 
         if (IsUpgraded)
         {

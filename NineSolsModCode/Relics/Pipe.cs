@@ -1,5 +1,6 @@
 ﻿using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -22,9 +23,9 @@ public class Pipe() : NineSolsModRelic
         HoverTipFactory.FromPower<InternalDamagePower>()
     ];
 
-    public override async Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
-        if (side == Owner.Creature.Side)
+        if (participants.Contains(Owner.Creature))
         {
             var internalDamage = Owner.Creature.GetPower<InternalDamagePower>();
             if (internalDamage is not null)

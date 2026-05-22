@@ -85,13 +85,13 @@ public class GreatTaoFormPower : NineSolsModPower
         return Task.CompletedTask;
     }
 
-    public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task BeforeSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
         if (CombatManager.Instance.IsOverOrEnding)
             return;
-        if (side != Owner.Side)
-            return;
         if (Owner.IsDead)
+            return;
+        if (!participants.Contains(Owner))
             return;
 
         if (Owner.GetPowerAmount<InternalDamagePower>() >= Owner.CurrentHp)

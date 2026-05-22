@@ -38,4 +38,9 @@ public class GutwrenchFruit() : NineSolsModCard(1, CardType.Skill,
         HoverTipFactory.FromPower<VulnerablePower>(),
         HoverTipFactory.FromPower<WeakPower>()
     ];
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [
+        CardKeyword.Exhaust,
+        CardKeyword.Retain
+    ];
 }
