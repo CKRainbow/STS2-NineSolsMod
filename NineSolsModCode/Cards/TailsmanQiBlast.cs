@@ -42,6 +42,7 @@ public class TailsmanQiBlast() : NineSolsModCard(0, CardType.Skill,
         new CardsVar(1),
         new InternalDamageVar(12),
         ModCardVars.Int("MultiplierBonus", 20),
+        NineSolsModVarsFactory.QiCostVar(3),
         ..NineSolsModVarsFactory.FinishVar(
             0,
             (card) => {

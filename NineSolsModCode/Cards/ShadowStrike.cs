@@ -27,6 +27,7 @@ public class ShadowStrike() : NineSolsModCard(1, CardType.Attack,
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars["Finish"].UpgradeValueBy(20m);
     }
 
     // Tags 和 Keywords 的区别是？

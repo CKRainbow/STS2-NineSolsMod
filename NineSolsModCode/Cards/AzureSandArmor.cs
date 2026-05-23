@@ -12,7 +12,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(TokenCardPool))]
-public class AzureSandArmor() : NineSolsModCard(1, CardType.Skill,
+public class AzureSandArmor() : NineSolsModCard(1, CardType.Power,
     CardRarity.Token, TargetType.Self)
 {
     protected override async Task OnPlay(

@@ -73,5 +73,21 @@
   "NINE_SOLS_MOD_POWER_RECIPROCATION_JADE_POWER.title": "奉还玉",
   "NINE_SOLS_MOD_POWER_ROOT_FORM_POWER.description": "在你的回合结束时，减少9层[gold]内伤[/gold]。每当你减少1层[gold]内伤[/gold]时，获得1点[gold]格挡[/gold]。",
   "NINE_SOLS_MOD_POWER_ROOT_FORM_POWER.smartDescription": "在你的回合结束时，减少{Amount}层[gold]内伤[/gold]。每当你减少1层[gold]内伤[/gold]时，获得1点[gold]格挡[/gold]。",
-  "NINE_SOLS_MOD_POWER_ROOT_FORM_POWER.title": "古树形态"
+  "NINE_SOLS_MOD_POWER_ROOT_FORM_POWER.title": "古树形态",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_POWER_REWARD_POWER.description": "战斗结束后，获得{Amount}瓶药水。",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_POWER_REWARD_POWER.title": "咒灭化力-奖励",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_WEALTH_REWARD_POWER.description": "战斗结束后，获得{Amount}金币。",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_WEALTH_REWARD_POWER.title": "咒灭化缘-奖励",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_LIFE_POWER.title": "咒灭化生",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_LIFE_POWER.description": "每当触发[gold]终结[/gold]时，减少你的内伤。",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_LIFE_POWER.smartDescription": "每当触发[gold]终结[/gold]时，减少你{Amount}层[gold]内伤[/gold]。",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_POWER_POWER.title": "咒灭化力",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_POWER_POWER.description": "每当触发[gold]终结[/gold]并击杀敌人时，获得药水。",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_POWER_POWER.smartDescription": "每当触发[gold]终结[/gold]并击杀敌人时，获得{Amount}瓶药水。",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_WEALTH_POWER.title": "咒灭化缘",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_WEALTH_POWER.description": "每当触发[gold]终结[/gold]并击杀敌人时，获得金币。",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_WEALTH_POWER.smartDescription": "每当触发[gold]终结[/gold]并击杀敌人时，获得{Amount}金币。",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_QI_POWER.title": "咒灭化息",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_QI_POWER.description": "每当触发[gold]终结[/gold]时，获得[gold]气[/gold]。",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_QI_POWER.smartDescription": "每当触发[gold]终结[/gold]时，获得{Amount}层[gold]气[/gold]。"
 }

@@ -1,4 +1,16 @@
 {
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_LIFE_POWER.title": "Transmute Unto Life",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_LIFE_POWER.description": "Whenever you trigger [gold]Finish[/gold], lose Internal Damage.",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_LIFE_POWER.smartDescription": "Whenever you trigger [gold]Finish[/gold], lose {Amount} [gold]Internal Damage[/gold].",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_POWER_POWER.title": "Transmute Unto Power",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_POWER_POWER.description": "Whenever you trigger [gold]Finish[/gold] and it's Fatal, gain potions.",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_POWER_POWER.smartDescription": "Whenever you trigger [gold]Finish[/gold] and it's Fatal, gain {Amount} Potion(s).",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_WEALTH_POWER.title": "Transmute Unto Wealth",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_WEALTH_POWER.description": "Whenever you trigger [gold]Finish[/gold] and it's Fatal, gain Gold.",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_WEALTH_POWER.smartDescription": "Whenever you trigger [gold]Finish[/gold] and it's Fatal, gain {Amount} Gold.",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_QI_POWER.title": "Transmute Unto Qi",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_QI_POWER.description": "Whenever you trigger [gold]Finish[/gold], gain Qi.",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_QI_POWER.smartDescription": "Whenever you trigger [gold]Finish[/gold], gain {Amount} [gold]Qi[/gold].",
   "NINE_SOLS_MOD_POWER_INTERNAL_DAMAGE_POWER.title": "InternalDamagePower",
   "NINE_SOLS_MOD_POWER_INTERNAL_DAMAGE_POWER.description": "",
   "NINE_SOLS_MOD_POWER_INTERNAL_DAMAGE_POWER.smartDescription": "",
@@ -73,5 +85,9 @@
   "NINE_SOLS_MOD_POWER_RECIPROCATION_JADE_POWER.title": "",
   "NINE_SOLS_MOD_POWER_ROOT_FORM_POWER.description": "",
   "NINE_SOLS_MOD_POWER_ROOT_FORM_POWER.smartDescription": "",
-  "NINE_SOLS_MOD_POWER_ROOT_FORM_POWER.title": ""
+  "NINE_SOLS_MOD_POWER_ROOT_FORM_POWER.title": "",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_POWER_REWARD_POWER.description": "",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_POWER_REWARD_POWER.title": "",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_WEALTH_REWARD_POWER.description": "",
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_WEALTH_REWARD_POWER.title": ""
 }

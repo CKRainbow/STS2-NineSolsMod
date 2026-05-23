@@ -22,4 +22,5 @@ public sealed record AfterFinishContext
     public required decimal FinishMult { get; init; }
     public required decimal InternalDamageAmount { get; init; }
     public required IEnumerable<Creature> DamagedTargets { get; init; }
+    public required int TriggeredFatalNum { get; init; }
 }

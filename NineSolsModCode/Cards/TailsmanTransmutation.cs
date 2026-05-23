@@ -1,20 +1,20 @@
-﻿using MegaCrit.Sts2.Core.CardSelection;
+using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.CardPools;
-using MegaCrit.Sts2.Core.Nodes.CommonUi;
+using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Tags;
 using STS2RitsuLib.CardTags;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
-[RegisterCard(typeof(TokenCardPool))]
-public class AzureSand() : NineSolsModCard(0, CardType.Skill,
-    CardRarity.Token, TargetType.Self)
+[RegisterCard(typeof(YiCardPool))]
+public class TailsmanTransmutation() : NineSolsModCard(1, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -23,47 +23,39 @@ public class AzureSand() : NineSolsModCard(0, CardType.Skill,
         if (Owner.Creature.CombatState is null)
             return;
 
-        var azureCards = ModelDb.AllCards.Where(
-            card => card.Tags.Contains(NineSolsModTags.AzureSandCraft.GetModCardTag())
+        var transmutationCards = ModelDb.AllCards.Where(
+            card => card.Tags.Contains(NineSolsModTags.TailsmanTransmutation.GetModCardTag()) && card is IChoosable
         ).Select(card => Owner.Creature.CombatState.CreateCard(card, Owner)).ToList();
-
-        if (IsUpgraded)
-        {
-            foreach (var card in azureCards)
-            {
-                CardCmd.Upgrade(card, CardPreviewStyle.HorizontalLayout);
-            }
-        }
 
         CardModel? cardModel = (await CardSelectCmd.FromSimpleGrid(
             choiceContext,
-            azureCards,
+            transmutationCards,
             Owner,
             new CardSelectorPrefs(SelectionScreenPrompt, 1)
         )).ToList().FirstOrDefault();
-        if (cardModel != null)
+        if (cardModel != null && cardModel is IChoosable choosableCard)
         {
-            await CardPileCmd.AddGeneratedCardToCombat(cardModel, PileType.Hand, Owner, CardPilePosition.Bottom);
+            await choosableCard.OnChoose(choiceContext, play);
         }
     }
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [
-        CardKeyword.Exhaust
-    ];
-
-
+    protected override void OnUpgrade()
+    {
+        EnergyCost.UpgradeBy(-1);
+    }
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips
     {
         get
         {
-            var azureCards = ModelDb.AllCards.Where(
-                card => card.Tags.Contains(NineSolsModTags.AzureSandCraft.GetModCardTag())
+            var transmutationCards = ModelDb.AllCards.Where(
+                card => card.Tags.Contains(NineSolsModTags.TailsmanTransmutation.GetModCardTag())
             ).ToList();
-            foreach (var card in azureCards)
+            foreach (var card in transmutationCards)
             {
                 yield return HoverTipFactory.FromCard(card);
             }
         }
     }
+
 }

@@ -46,6 +46,11 @@ public class Collect() : NineSolsModCard(1, CardType.Skill,
 
     protected override void OnUpgrade() { }
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [
+        CardKeyword.Exhaust
+    ];
+
+
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
         HoverTipFactory.FromCard<AzureSand>(IsUpgraded)
     ];

@@ -14,7 +14,7 @@ namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(TokenCardPool))]
 public class ThunderBusterArrow() : NineSolsModCard(1, CardType.Attack,
-    CardRarity.Token, TargetType.AllEnemies)
+    CardRarity.Token, TargetType.AnyEnemy)
 {
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,

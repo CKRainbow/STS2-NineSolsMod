@@ -17,7 +17,7 @@ public class ShadowHunterArrowPower : NineSolsModPower
 
     // 是否会被人工阻挡？可能还需要考虑，目前先设置为不会
     public override PowerType Type => PowerType.None;
-    public override PowerStackType StackType => PowerStackType.Counter;
+    public override PowerStackType StackType => PowerStackType.Single;
     public override Color AmountLabelColor => _normalAmountLabelColor;
 
     // 可以施加多个，每个都是独立实例
@@ -28,9 +28,17 @@ public class ShadowHunterArrowPower : NineSolsModPower
         return new Data();
     }
 
-    protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
-        HoverTipFactory.FromCard(GetInternalData<Data>().relatedCard!)
-    ];
+    protected override IEnumerable<IHoverTip> AdditionalHoverTips
+    {
+        get
+        {
+            if (GetInternalData<Data>().relatedCard is null) return [];
+
+            return [
+                HoverTipFactory.FromCard(GetInternalData<Data>().relatedCard!)
+            ];
+        }
+    }
 
     public override Task AfterApplied(Creature? applier, CardModel? cardSource)
     {

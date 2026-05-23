@@ -64,9 +64,14 @@ public static class NineSolsModCmd
         await FinishHook.BeforeFinish(model.Owner.Creature.CombatState, beforeContext);
 
         var damageContext = choiceContext ?? new ThrowingPlayerChoiceContext();
-        // // 不受任何加成影响的伤害
+        // 不受任何加成影响的伤害
         VfxCmd.PlayOnCreatureCenters(beforeContext.TargetsToDamage, "vfx/vfx_attack_blunt");
-        await CreatureCmd.Damage(damageContext, beforeContext.TargetsToDamage, finishMult * internalDamageAmount, ValueProp.Unpowered, model.Owner.Creature, model);
+
+        var fatalEligibleTargets = beforeContext.TargetsToDamage.Where(t => t.Powers.All(p => p.ShouldOwnerDeathTriggerFatal())).ToList();
+
+        var damageResults = await CreatureCmd.Damage(damageContext, beforeContext.TargetsToDamage, finishMult * internalDamageAmount, ValueProp.Unpowered, model.Owner.Creature, model);
+
+        int triggeredFatalNum = damageResults.Count(r => fatalEligibleTargets.Contains(r.Receiver) && r.WasTargetKilled);
 
         var afterContext = new AfterFinishContext
         {
@@ -75,7 +80,8 @@ public static class NineSolsModCmd
             Target = target,
             FinishMult = finishMult,
             InternalDamageAmount = internalDamageAmount,
-            DamagedTargets = beforeContext.TargetsToDamage
+            DamagedTargets = beforeContext.TargetsToDamage,
+            TriggeredFatalNum = triggeredFatalNum
         };
 
         await FinishHook.AfterFinish(model.Owner.Creature.CombatState, afterContext);

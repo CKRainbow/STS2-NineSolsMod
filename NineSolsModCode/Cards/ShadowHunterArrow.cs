@@ -19,55 +19,44 @@ namespace NineSolsMod.NineSolsModCode.Cards;
 public class ShadowHunterArrow() : NineSolsModCard(1, CardType.Attack,
     CardRarity.Token, TargetType.AnyEnemy)
 {
-    private bool _exhaustedPlay = false;
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
-        // NCombatRoom? instance = NCombatRoom.Instance;
-        // NCreature? ncreature = instance?.GetCreatureNode(play.Target);
-        // if (ncreature is not null)
-        // {
-        //     NLargeMagicMissileVfx? nlargeMagicMissileVfx = NLargeMagicMissileVfx.Create(ncreature.GetBottomOfHitbox(), new Color("50b598"));
-        //     NCombatRoom.Instance.CombatVfxContainer.AddChildSafely(nlargeMagicMissileVfx);
-        //     await Cmd.Wait(nlargeMagicMissileVfx.WaitTime, false);
-        // }
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
             .WithHitFx("vfx/vfx_attack_blunt", null, "blunt_attack.mp3")
             .Execute(choiceContext);
-        if (!_exhaustedPlay)
+        if (!play.IsAutoPlay)
         {
             await PowerCmd.Apply<ShadowHunterArrowPower>(choiceContext, play.Target, 1, Owner.Creature, this, true);
         }
-        _exhaustedPlay = false;
     }
 
-    public override async Task BeforeHandDraw(Player player, PlayerChoiceContext choiceContext, ICombatState combatState)
+    public override async Task AfterAutoPrePlayPhaseEnteredEarly(PlayerChoiceContext choiceContext, Player player)
     {
+        if (CombatState is null)
+            return;
+
         CardPile? pile = Pile;
         if (pile is not null && pile.Type == PileType.Exhaust)
         {
             if (player == Owner)
             {
-                Creature? target = null;
-                foreach (var enemy in combatState.Enemies)
+                foreach (var enemy in CombatState.Enemies)
                 {
-                    var power = enemy.GetPower<ShadowHunterArrowPower>();
-                    if (power is null)
+                    var powers = enemy.GetPowerInstances<ShadowHunterArrowPower>();
+                    foreach (var power in powers)
                     {
-                        continue;
+                        if (power is null)
+                        {
+                            continue;
+                        }
+                        if (power.MatchCard(this))
+                        {
+                            await CardCmd.AutoPlay(choiceContext, this, enemy, AutoPlayType.Default, false, false);
+                        }
                     }
-                    if (power.MatchCard(this))
-                    {
-                        target = enemy;
-                    }
-                }
-                if (target is not null)
-                {
-                    _exhaustedPlay = true;
-                    await CardCmd.AutoPlay(choiceContext, this, target, AutoPlayType.Default, false, false);
                 }
             }
         }

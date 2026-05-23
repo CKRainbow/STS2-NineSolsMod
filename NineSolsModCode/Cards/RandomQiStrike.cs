@@ -13,7 +13,7 @@ namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(YiCardPool))]
 public class RandomQiStrike() : NineSolsModQiCard(1, CardType.Attack,
-    CardRarity.Common, TargetType.AnyEnemy, 1)
+    CardRarity.Common, TargetType.RandomEnemy, 1)
 {
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
