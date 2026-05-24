@@ -25,14 +25,14 @@ public class TailsmanQiBlast() : NineSolsModCard(0, CardType.Skill,
     {
         ArgumentNullException.ThrowIfNull(play.Target);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner, false);
-        await PowerCmd.Apply<InternalDamagePower>(choiceContext, play.Target, DynamicVars[InternalDamageVar.Key].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<InternalDamagePower>(choiceContext, play.Target, DynamicVars[NineSolsModVarsFactory.InternalDamageKey].BaseValue, Owner.Creature, this);
         await NineSolsModCmd.CostQi(3, this, choiceContext, false);
         await NineSolsModCmd.Finish(0, this, play.Target, choiceContext);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars[InternalDamageVar.Key].UpgradeValueBy(6m);
+        DynamicVars[NineSolsModVarsFactory.InternalDamageKey].UpgradeValueBy(6m);
         DynamicVars["MultiplierBonus"].UpgradeValueBy(10m);
     }
 
@@ -41,7 +41,7 @@ public class TailsmanQiBlast() : NineSolsModCard(0, CardType.Skill,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(1),
-        new InternalDamageVar(12),
+        NineSolsModVarsFactory.InternalDamageVar(12),
         ModCardVars.Int("MultiplierBonus", 20),
         NineSolsModVarsFactory.QiCostVar(3),
         ..NineSolsModVarsFactory.FinishVar(

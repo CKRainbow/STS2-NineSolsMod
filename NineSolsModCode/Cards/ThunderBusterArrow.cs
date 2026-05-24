@@ -24,13 +24,13 @@ public class ThunderBusterArrow() : NineSolsModCard(1, CardType.Attack,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
             .WithHitFx("vfx/vfx_attack_slash", null, null)
             .Execute(choiceContext);
-        await PowerCmd.Apply<InternalDamagePower>(choiceContext, play.Target, DynamicVars[InternalDamageVar.Key].BaseValue, Owner.Creature, this, false);
+        await PowerCmd.Apply<InternalDamagePower>(choiceContext, play.Target, DynamicVars[NineSolsModVarsFactory.InternalDamageKey].BaseValue, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(4m);
-        DynamicVars[InternalDamageVar.Key].UpgradeValueBy(4m);
+        DynamicVars[NineSolsModVarsFactory.InternalDamageKey].UpgradeValueBy(4m);
     }
     public override IEnumerable<CardKeyword> CanonicalKeywords => [
         CardKeyword.Exhaust,
@@ -43,6 +43,6 @@ public class ThunderBusterArrow() : NineSolsModCard(1, CardType.Attack,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DamageVar(16m, ValueProp.Move),
-        new InternalDamageVar(6m)
+        NineSolsModVarsFactory.InternalDamageVar(6m)
     ];
 }

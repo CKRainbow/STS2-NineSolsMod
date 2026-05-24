@@ -24,17 +24,17 @@ public class Tailsman() : NineSolsModCard(0, CardType.Skill,
     {
         ArgumentNullException.ThrowIfNull(play.Target);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner, false);
-        await PowerCmd.Apply<InternalDamagePower>(choiceContext, play.Target, DynamicVars[InternalDamageVar.Key].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<InternalDamagePower>(choiceContext, play.Target, DynamicVars[NineSolsModVarsFactory.InternalDamageKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars[InternalDamageVar.Key].UpgradeValueBy(2m);
+        DynamicVars[NineSolsModVarsFactory.InternalDamageKey].UpgradeValueBy(2m);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(1),
-        new InternalDamageVar(4)
+        NineSolsModVarsFactory.InternalDamageVar(4)
     ];
 }

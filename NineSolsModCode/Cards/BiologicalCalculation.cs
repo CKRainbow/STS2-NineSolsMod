@@ -29,7 +29,7 @@ public class BiologicalCalculation() : NineSolsModCard(0, CardType.Skill,
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new EnergyVar(1),
-        new DeviationVar(2),
+        NineSolsModVarsFactory.DeviationVar(2),
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>

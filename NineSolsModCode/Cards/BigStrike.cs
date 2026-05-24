@@ -35,7 +35,7 @@ public class BigStrike() : NineSolsModCard(2, CardType.Attack,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(24m, ValueProp.Move),
-        new DeviationVar(3m)
+        NineSolsModVarsFactory.DeviationVar(3m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>

@@ -29,7 +29,7 @@ public class QiSwipeJadePower : NineSolsModPower
     /// </summary>
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DeviationVar(2m)
+        NineSolsModVarsFactory.DeviationVar(2m)
     ];
 
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
@@ -88,7 +88,7 @@ public class QiSwipeJadePower : NineSolsModPower
         if (GetInternalData<Data>().amountsForPlayedCards.Remove(cardPlay.Card, out var value))
         {
             Flash();
-            await NineSolsModCmd.Deviation(Owner, DynamicVars[DeviationVar.Key].IntValue);
+            await NineSolsModCmd.Deviation(Owner, DynamicVars[NineSolsModVarsFactory.DeviationKey].IntValue);
         }
     }
 

@@ -26,20 +26,20 @@ public class SkullKick() : NineSolsModCard(2, CardType.Attack,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
             .WithHitFx("vfx/vfx_attack_slash", null, null)
             .Execute(choiceContext);
-        await PowerCmd.Apply<InternalDamagePower>(choiceContext, play.Target, DynamicVars[InternalDamageVar.Key].BaseValue, Owner.Creature, this, false);
+        await PowerCmd.Apply<InternalDamagePower>(choiceContext, play.Target, DynamicVars[NineSolsModVarsFactory.InternalDamageKey].BaseValue, Owner.Creature, this, false);
         await PowerCmd.Apply<EnergyNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Energy.BaseValue, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(4m);
-        DynamicVars[InternalDamageVar.Key].UpgradeValueBy(3m);
+        DynamicVars[NineSolsModVarsFactory.InternalDamageKey].UpgradeValueBy(3m);
     }
 
     // 用处是？
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DamageVar(10m, ValueProp.Move),
-        new InternalDamageVar(6m),
+        NineSolsModVarsFactory.InternalDamageVar(6m),
         new EnergyVar(1)
     ];
 }

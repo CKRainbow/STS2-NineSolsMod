@@ -26,7 +26,7 @@ public static class NineSolsModCmd
         var internalDamageAmount = target.GetPowerAmount<InternalDamagePower>();
 
         decimal finishMult;
-        var finishVar = model.DynamicVars["Finish"];
+        var finishVar = model.DynamicVars[NineSolsModVarsFactory.FinishKey];
         if (finishVar is CalculatedVar calculatedFinishVar)
         {
             finishMult = calculatedFinishVar.Calculate(target) / 100m;
@@ -90,7 +90,7 @@ public static class NineSolsModCmd
 
     public static async Task Deviation(CardModel model, Creature target, PlayerChoiceContext? choiceContext = null)
     {
-        var deviationAmount = model.DynamicVars[DeviationVar.Key].BaseValue;
+        var deviationAmount = model.DynamicVars[NineSolsModVarsFactory.DeviationKey].BaseValue;
         var context = choiceContext ?? new ThrowingPlayerChoiceContext();
         await PowerCmd.Apply<InternalDamagePower>(context, target, deviationAmount, model.Owner.Creature, model, false);
     }

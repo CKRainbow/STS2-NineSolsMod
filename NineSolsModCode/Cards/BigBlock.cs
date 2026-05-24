@@ -34,7 +34,7 @@ public class BigBlock() : NineSolsModCard(2, CardType.Skill,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(18m, ValueProp.Move),
-        new DeviationVar(3m)
+        NineSolsModVarsFactory.DeviationVar(3m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>

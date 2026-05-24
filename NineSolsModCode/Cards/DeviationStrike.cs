@@ -20,18 +20,18 @@ public class DeviationStrike() : NineSolsModCard(1, CardType.Skill,
         CardPlay play)
     {
         await NineSolsModCmd.Deviation(this, Owner.Creature, choiceContext);
-        await PowerCmd.Apply<InternalDamagePower>(choiceContext, CombatState!.HittableEnemies, DynamicVars[InternalDamageVar.Key].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<InternalDamagePower>(choiceContext, CombatState!.HittableEnemies, DynamicVars[NineSolsModVarsFactory.InternalDamageKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars[InternalDamageVar.Key].UpgradeValueBy(5m);
+        DynamicVars[NineSolsModVarsFactory.InternalDamageKey].UpgradeValueBy(5m);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DeviationVar(2m),
-        new InternalDamageVar(13m)
+        NineSolsModVarsFactory.DeviationVar(2m),
+        NineSolsModVarsFactory.InternalDamageVar(13m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>

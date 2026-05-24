@@ -38,6 +38,6 @@ public class SwiftBlade() : NineSolsModCard(1, CardType.Attack,
     [
         new DamageVar(4m, ValueProp.Move),
         new RepeatVar(3),
-        new DeviationVar(2m)
+        NineSolsModVarsFactory.DeviationVar(2m)
     ];
 }

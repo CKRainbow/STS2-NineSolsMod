@@ -22,19 +22,19 @@ public class ThunderBusterBomb() : NineSolsModCard(1, CardType.Attack,
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(CombatState!)
                     .WithHitFx("vfx/vfx_attack_blunt", null, "heavy_attack.mp3")
                     .Execute(choiceContext);
-        await PowerCmd.Apply<InternalDamagePower>(choiceContext, CombatState!.HittableEnemies, DynamicVars[InternalDamageVar.Key].BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<InternalDamagePower>(choiceContext, CombatState!.HittableEnemies, DynamicVars[NineSolsModVarsFactory.InternalDamageKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(3m);
-        DynamicVars[InternalDamageVar.Key].UpgradeValueBy(2m);
+        DynamicVars[NineSolsModVarsFactory.InternalDamageKey].UpgradeValueBy(2m);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(6m, ValueProp.Move),
-        new InternalDamageVar(4m)
+        NineSolsModVarsFactory.InternalDamageVar(4m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>

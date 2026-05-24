@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
+using NineSolsMod.NineSolsModCode.Variables;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
@@ -15,7 +16,7 @@ namespace NineSolsMod.NineSolsModCode.Cards;
 public class AbundanceStrike() : NineSolsModCard(1, CardType.Attack,
     CardRarity.Common, TargetType.AnyEnemy)
 {
-    protected override bool ShouldGlowGoldInternal => Owner.PlayerCombatState is not null && Owner.PlayerCombatState.Hand.Cards.Count >= 6;
+    protected override bool ShouldGlowGoldInternal => Owner.PlayerCombatState is not null && Owner.PlayerCombatState.Hand.Cards.Count >= DynamicVars[NineSolsModVarsFactory.OverflowKey].BaseValue;
 
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -32,7 +33,7 @@ public class AbundanceStrike() : NineSolsModCard(1, CardType.Attack,
             .WithHitFx("vfx/vfx_attack_slash", null, null)
             .Execute(choiceContext);
 
-        if (cardCount >= 6)
+        if (cardCount >= DynamicVars[NineSolsModVarsFactory.OverflowKey].BaseValue)
         {
             await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target, DynamicVars["VulnerablePower"].BaseValue, Owner.Creature, this);
         }
@@ -47,7 +48,8 @@ public class AbundanceStrike() : NineSolsModCard(1, CardType.Attack,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(7m, ValueProp.Move),
-        new DynamicVar("VulnerablePower", 1m)
+        new DynamicVar("VulnerablePower", 1m),
+        NineSolsModVarsFactory.OverflowVar(6m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>

@@ -43,7 +43,7 @@ public class TailsmanFlowWater() : NineSolsModCard(1, CardType.Skill,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["Finish"].UpgradeValueBy(50m);
+        DynamicVars[NineSolsModVarsFactory.FinishKey].UpgradeValueBy(50m);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>

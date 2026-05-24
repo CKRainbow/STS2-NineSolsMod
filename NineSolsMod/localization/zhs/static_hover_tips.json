@@ -1,14 +1,12 @@
 {
-    "Finish.description": "移除目标所有[gold]内伤[/gold]，额外造成[gold]内伤[/gold]层数{Finish:diff()}%的伤害。",
-    "Finish.title": "终结",
-    "QiCost.description": "如果拥有不少于{QiCost:diff()}点[gold]气[/gold]，则消耗之并触发额外效果。",
-    "QiCost.title": "运气",
+    "NINESOLSMOD-FINISH.description": "移除目标所有[gold]内伤[/gold]，额外造成[gold]内伤[/gold]层数{NineSolsMod-Finish:diff()}%的伤害。",
+    "NINESOLSMOD-FINISH.title": "终结",
+    "NINESOLSMOD-QICOST.description": "如果拥有不少于{NineSolsMod-QiCost:diff()}点[gold]气[/gold]，则消耗之并触发额外效果。",
+    "NINESOLSMOD-QICOST.title": "运气",
     "NINESOLSMOD-INTERNALDAMAGE.description": "对目标施加{NineSolsMod-InternalDamage:diff()}层[gold]内伤[/gold]。",
     "NINESOLSMOD-INTERNALDAMAGE.title": "震伤",
     "NINESOLSMOD-DEVIATION.description": "对自身造成{NineSolsMod-Deviation:diff()}层[gold]内伤[/gold]。",
     "NINESOLSMOD-DEVIATION.title": "内息紊乱",
-    "NINESOLSMOD-ABUNDANCE.description": "当手牌大于等于{NineSolsMod-Abundance:diff()}张时，触发额外效果。",
-    "NINESOLSMOD-ABUNDANCE.title": "充盈",
-    "Overflow.description": "当手牌数大于等于{Overflow:diff()}时，触发额外效果。",
-    "Overflow.title": "充盈"
+    "NINESOLSMOD-OVERFLOW.description": "当手牌数大于等于{NineSolsMod-Overflow:diff()}时，触发额外效果。",
+    "NINESOLSMOD-OVERFLOW.title": "充盈"
 }
