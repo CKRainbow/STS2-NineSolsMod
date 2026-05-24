@@ -1,0 +1,50 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3f07bk1jmtg1"]
+
+[ext_resource type="Texture2D" uid="uid://co4laq2egs1ps" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Standingidle0.png" id="1_vajnr"]
+[ext_resource type="Texture2D" uid="uid://njtp68mnrttb" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Standingidle1.png" id="2_y7o3j"]
+[ext_resource type="Texture2D" uid="uid://bb7j2u7ui0wo7" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Standingidle2.png" id="3_y8gwr"]
+[ext_resource type="Texture2D" uid="uid://iypimt67o7ry" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Standingidle3.png" id="4_4td06"]
+[ext_resource type="Texture2D" uid="uid://blyr4i4q5b25q" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Standingidle4.png" id="5_sxtvo"]
+[ext_resource type="Texture2D" uid="uid://bn6vpy7tpfw1i" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Standingidle5.png" id="6_aj2ln"]
+[ext_resource type="Texture2D" uid="uid://3rhvvkurbpr8" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Standingidle6.png" id="7_gfxc1"]
+[ext_resource type="Texture2D" uid="uid://cysq2o3bi0w8y" path="res://NineSolsMod/resources/animations/yi/HoHoYee_Standingidle7.png" id="8_nuclt"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bmr8q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vajnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_y7o3j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y8gwr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4td06")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_sxtvo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_aj2ln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_gfxc1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_nuclt")
+}],
+"loop": true,
+"name": &"relaxed_loop",
+"speed": 8.0
+}]
+
+[node name="YiMerchant" type="AnimatedSprite2D"]
+position = Vector2(-258, -363)
+sprite_frames = SubResource("SpriteFrames_bmr8q")
+animation = &"relaxed_loop"
+autoplay = "relaxed_loop"
+frame_progress = 0.823002
+centered = false

@@ -37,6 +37,7 @@ public class TailsmanQiBlast() : NineSolsModCard(0, CardType.Skill,
     }
 
     // FIXME: 没有将一开始的 12 点内伤考虑进去
+    // FIXME: 可能要调整基类
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CardsVar(1),

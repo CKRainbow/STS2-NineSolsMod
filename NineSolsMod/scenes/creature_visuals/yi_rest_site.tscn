@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://7axk3xpk76"]
+
+[ext_resource type="Texture2D" uid="uid://ds1hqqr61xpgq" path="res://NineSolsMod/resources/animations/yi_rest/HoHoYee_Smoke Chair11.png" id="2_pujgh"]
+[ext_resource type="Texture2D" uid="uid://cp2d82f52nft5" path="res://NineSolsMod/resources/animations/yi_rest/HoHoYee_Smoke Chair12.png" id="3_31pbv"]
+[ext_resource type="Texture2D" uid="uid://cs5e3bqbn3fa4" path="res://NineSolsMod/resources/animations/yi_rest/HoHoYee_Smoke Chair13.png" id="4_pmc74"]
+[ext_resource type="Texture2D" uid="uid://oo23bwf7baqo" path="res://NineSolsMod/resources/animations/yi_rest/HoHoYee_Smoke Chair14.png" id="5_i7m1b"]
+[ext_resource type="Texture2D" uid="uid://ckjnebgwgetu6" path="res://NineSolsMod/resources/animations/yi_rest/HoHoYee_Smoke Chair15.png" id="6_76e1a"]
+[ext_resource type="Texture2D" uid="uid://coggn2gs0gde" path="res://NineSolsMod/resources/animations/yi_rest/HoHoYee_Smoke Chair16.png" id="7_2vcjm"]
+[ext_resource type="Texture2D" uid="uid://dvbty6nobl0jd" path="res://NineSolsMod/resources/animations/yi_rest/HoHoYee_Smoke Chair17.png" id="8_lvwii"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kduq5"]
+animations = [{
+"frames": [{
+"duration": 15.0,
+"texture": ExtResource("2_pujgh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_31pbv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pmc74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i7m1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_76e1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2vcjm")
+}, {
+"duration": 6.0,
+"texture": ExtResource("8_lvwii")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_2vcjm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_76e1a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i7m1b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pmc74")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_31pbv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="YiRestSite" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-233, -157)
+sprite_frames = SubResource("SpriteFrames_kduq5")
+autoplay = "default"
+frame = 6
+frame_progress = 0.18668525
+centered = false
+
+[node name="ControlRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="SelectionReticle" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -153.0
+offset_top = -350.0
+offset_right = 267.0
+offset_bottom = 320.0
+
+[node name="Hitbox" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -155.0
+offset_top = -165.0
+offset_right = 154.0
+offset_bottom = 166.0
+
+[node name="ThoughtBubbleRight" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 121.0
+offset_top = -125.0
+offset_right = 121.0
+offset_bottom = -125.0
+
+[node name="ThoughtBubbleLeft" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -113.0
+offset_top = -95.0
+offset_right = -113.0
+offset_bottom = -95.0

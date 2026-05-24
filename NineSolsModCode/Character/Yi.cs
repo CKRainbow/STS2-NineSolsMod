@@ -36,11 +36,12 @@ public class Yi : ModCharacterTemplate<YiCardPool, YiRelicPool, YiPotionPool>
                 // 人物模型tscn路径。
                 VisualsPath: $"res://{MainFile.ModId}/scenes/creature_visuals/yi.tscn",
                 // 能量表盘tscn路径。
-                EnergyCounterPath: $"res://{MainFile.ModId}/scenes/combat/energy_counters/yi_energy_counter.tscn"
-            // FIXME: 商店人物场景。
-            // MerchantAnimPath: SceneHelper.GetScenePath("merchant/characters/necrobinder_merchant"),
-            // FIXME: 篝火休息场景。
-            // RestSiteAnimPath: SceneHelper.GetScenePath("rest_site/characters/necrobinder_rest_site")
+                EnergyCounterPath: $"res://{MainFile.ModId}/scenes/combat/energy_counters/yi_energy_counter.tscn",
+                // 商店人物场景。
+                MerchantAnimPath: $"res://{MainFile.ModId}/scenes/creature_visuals/yi_merchant.tscn",
+                // 篝火休息场景。
+                // TODO: 可以尝试每次动画结束后随机调整播放时长
+                RestSiteAnimPath: $"res://{MainFile.ModId}/scenes/creature_visuals/yi_rest_site.tscn"
             ),
             Ui: new(
                 // 人物头像路径。
@@ -52,11 +53,11 @@ public class Yi : ModCharacterTemplate<YiCardPool, YiRelicPool, YiPotionPool>
                 // 人物选择图标。
                 CharacterSelectIconPath: $"res://{MainFile.ModId}/images/charui/char_select_yi.png",
                 // 人物选择图标-锁定状态。
-                CharacterSelectLockedIconPath: $"res://{MainFile.ModId}/images/charui/char_select_yi_locked.png"
-            // FIXME: 人物选择过渡动画。
-            // CharacterSelectTransitionPath: "res://materials/transitions/ironclad_transition_mat.tres",
-            // FIXME: 地图上的角色标记图标、表情轮盘上的角色头像
-            // MapMarkerPath: ImageHelper.GetImagePath("packed/map/icons/map_marker_necrobinder.png")
+                CharacterSelectLockedIconPath: $"res://{MainFile.ModId}/images/charui/char_select_yi_locked.png",
+                // FIXME: 人物选择过渡动画。
+                // CharacterSelectTransitionPath: "res://materials/transitions/ironclad_transition_mat.tres",
+                // 地图上的角色标记图标、表情轮盘上的角色头像
+                MapMarkerPath: $"res://{MainFile.ModId}/images/charui/map_marker_yi.png"
             ),
             Vfx: new(
             // FIXME: 卡牌拖尾场景。
