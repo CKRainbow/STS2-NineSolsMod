@@ -17,8 +17,6 @@
   "NINE_SOLS_MOD_CARD_DEFEND_YI.title": "Defend",
   "NINE_SOLS_MOD_CARD_PARRY.description": "Gain {Block:diff()} [gold]Block[/gold].",
   "NINE_SOLS_MOD_CARD_PARRY.title": "Parry",
-  "NINE_SOLS_MOD_CARD_WEN_WU.title": "Relic",
-  "NINE_SOLS_MOD_CARD_WEN_WU.description": "Gain {Block:diff()} [gold]Block[/gold]. Draw {Cards:diff()} cards.",
   "NINE_SOLS_MOD_CARD_ABUNDANCE_STRIKE.title": "Abundance Strike",
   "NINE_SOLS_MOD_CARD_ABUNDANCE_STRIKE.description": "Deal {Damage:diff()} damage. [gold]Overflow[/gold] {NineSolsMod-Overflow:diff()}: Cost 6 [gold]Qi[/gold], apply {VulnerablePower:diff()} [gold]Vulnerable[/gold].",
   "NINE_SOLS_MOD_CARD_WEN_WU_BLOCK.title": "Relic Block",
@@ -144,5 +142,7 @@
   "NINE_SOLS_MOD_CARD_ROOT_FORM.description": "",
   "NINE_SOLS_MOD_CARD_ROOT_FORM.title": "",
   "NINE_SOLS_MOD_CARD_RHIZOMATIC_ARROW.description": "",
-  "NINE_SOLS_MOD_CARD_RHIZOMATIC_ARROW.title": ""
+  "NINE_SOLS_MOD_CARD_RHIZOMATIC_ARROW.title": "",
+  "NINE_SOLS_MOD_CARD_QIANMO_NETWORK.description": "",
+  "NINE_SOLS_MOD_CARD_QIANMO_NETWORK.title": ""
 }

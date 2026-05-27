@@ -27,7 +27,7 @@ public class HexachremVaultPower : NineSolsModPower
     public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
-        HoverTipFactory.FromCard<WenWu>(GetInternalData<Data>().isUpgraded)
+        HoverTipFactory.FromCard<QianmoNetwork>(GetInternalData<Data>().isUpgraded)
     ];
 
     protected override object InitInternalData()
@@ -45,12 +45,12 @@ public class HexachremVaultPower : NineSolsModPower
         {
             return;
         }
-        var cardToAdd = combatState.CreateCard<WenWu>(player);
+        var cardToAdd = combatState.CreateCard<QianmoNetwork>(player);
         if (GetInternalData<Data>().isUpgraded)
         {
             CardCmd.Upgrade(cardToAdd);
         }
-        var addResult = await CardPileCmd.AddGeneratedCardToCombat(cardToAdd, PileType.Draw, player, CardPilePosition.Random);
+        var addResult = await CardPileCmd.AddGeneratedCardToCombat(cardToAdd, PileType.Discard, player, CardPilePosition.Random);
         if (LocalContext.IsMe(player))
         {
             CardCmd.PreviewCardPileAdd(addResult, 0.6f, CardPreviewStyle.HorizontalLayout);

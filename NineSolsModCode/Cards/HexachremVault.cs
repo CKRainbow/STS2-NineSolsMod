@@ -25,6 +25,6 @@ public class HexachremVault() : NineSolsModCard(0, CardType.Power,
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
-        HoverTipFactory.FromCard<WenWu>(IsUpgraded),
+        HoverTipFactory.FromCard<QianmoNetwork>(IsUpgraded),
     ];
 }

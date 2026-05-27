@@ -24,7 +24,7 @@ public class WenWuBlock() : NineSolsModCard(1, CardType.Skill,
         if (CombatState is null)
             return;
 
-        var card = CombatState.CreateCard<WenWu>(Owner);
+        var card = CombatState.CreateCard<QianmoNetwork>(Owner);
         if (IsUpgraded)
         {
             CardCmd.Upgrade(card, CardPreviewStyle.HorizontalLayout);
@@ -49,6 +49,6 @@ public class WenWuBlock() : NineSolsModCard(1, CardType.Skill,
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
-        HoverTipFactory.FromCard<WenWu>()
+        HoverTipFactory.FromCard<QianmoNetwork>()
     ];
 }

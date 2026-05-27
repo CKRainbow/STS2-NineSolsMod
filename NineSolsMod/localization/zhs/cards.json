@@ -83,12 +83,10 @@
   "NINE_SOLS_MOD_CARD_REVIVAL_JADE.title": "替死玉",
   "NINE_SOLS_MOD_CARD_TAILSMAN_QI_BLAST.description": "抽{Cards:diff()}张牌。[gold]震伤[/gold]{NineSolsMod-InternalDamage:diff()}。\n[gold]运气[/gold]{NineSolsMod-QiCost:diff()}-：每多消耗一点气，[gold]终结[/gold]倍率叠乘{MultiplierBonus:diff()}%。\n[gold]终结[/gold]{NineSolsMod-Finish:diff()}（造成{NineSolsMod-FinishDamage:diff()}点伤害）。",
   "NINE_SOLS_MOD_CARD_TAILSMAN_QI_BLAST.title": "一气贯通",
-  "NINE_SOLS_MOD_CARD_WEN_WU.title": "",
-  "NINE_SOLS_MOD_CARD_WEN_WU.description": "获得{Block:diff()}点[gold]格挡[/gold]。抽{Cards:diff()}张牌。",
   "NINE_SOLS_MOD_CARD_ABUNDANCE_STRIKE.title": "",
   "NINE_SOLS_MOD_CARD_ABUNDANCE_STRIKE.description": "造成{Damage:diff()}点伤害。[gold]充盈[/gold]{NineSolsMod-Overflow:diff()}：给予{VulnerablePower:diff()}层[gold]易伤[/gold]。",
   "NINE_SOLS_MOD_CARD_WEN_WU_BLOCK.title": "",
-  "NINE_SOLS_MOD_CARD_WEN_WU_BLOCK.description": "获得{Block:diff()}点[gold]格挡[/gold]。将一张[gold]文物[/gold]加入你的[gold]抽牌堆[/gold]。",
+  "NINE_SOLS_MOD_CARD_WEN_WU_BLOCK.description": "获得{Block:diff()}点[gold]格挡[/gold]。将一张[gold]阡陌物流网[/gold]加入你的[gold]抽牌堆[/gold]。",
   "NINE_SOLS_MOD_CARD_ABUNDANCE_BLOCK.title": "",
   "NINE_SOLS_MOD_CARD_ABUNDANCE_BLOCK.description": "获得{Block:diff()}点[gold]格挡[/gold]。[gold]充盈[/gold]{NineSolsMod-Overflow:diff()}：给予全体敌人{WeakPower:diff()}层[gold]虚弱[/gold]。",
   "NINE_SOLS_MOD_CARD_PARRY_RETAIN.title": "",
@@ -118,7 +116,7 @@
   "NINE_SOLS_MOD_CARD_LAST_STAND_JADE.title": "背水玉",
   "NINE_SOLS_MOD_CARD_TAKE_TOKEN.description": "将[gold]抽牌堆[/gold]和[gold]弃牌堆[/gold]中的所有[gold]令牌[/gold]加入你的[gold]手牌[/gold]。",
   "NINE_SOLS_MOD_CARD_TAKE_TOKEN.title": "拿取令牌",
-  "NINE_SOLS_MOD_CARD_HEXACHREM_VAULT.description": "在你的回合开始时，在你的[gold]抽牌堆[/gold]中加入一张[gold]{IfUpgraded:show:文物+|文物}[/gold]。",
+  "NINE_SOLS_MOD_CARD_HEXACHREM_VAULT.description": "在你的回合开始时，在你的[gold]弃牌堆[/gold]中加入一张[gold]{IfUpgraded:show:阡陌物流网+|阡陌物流网}[/gold]。",
   "NINE_SOLS_MOD_CARD_HEXACHREM_VAULT.title": "六行宝库",
   "NINE_SOLS_MOD_CARD_QI_STORM.description": "每当你抽到一张[gold]保留[/gold]牌时，抽{Cards:diff()}张牌。",
   "NINE_SOLS_MOD_CARD_QI_STORM.title": "气之风暴",
@@ -147,5 +145,7 @@
   "NINE_SOLS_MOD_CARD_TRANSMUTE_UNTO_QI.description": "每当触发[gold]终结[/gold]时，获得1层[gold]气[/gold]。",
   "NINE_SOLS_MOD_CARD_TAILSMAN_TRANSMUTATION.title": "炼化神符",
   "NINE_SOLS_MOD_CARD_TAILSMAN_TRANSMUTATION.description": "从[gold]炼化神符[/gold]中选择一张加入手牌。",
-  "NINE_SOLS_MOD_CARD_TAILSMAN_TRANSMUTATION.selectionScreenPrompt": "选择使用的[gold]炼化神符[/gold]。"
+  "NINE_SOLS_MOD_CARD_TAILSMAN_TRANSMUTATION.selectionScreenPrompt": "选择使用的[gold]炼化神符[/gold]。",
+  "NINE_SOLS_MOD_CARD_QIANMO_NETWORK.description": "获得{Block:diff()}点[gold]格挡[/gold]。抽{Cards:diff()}张牌。",
+  "NINE_SOLS_MOD_CARD_QIANMO_NETWORK.title": "阡陌物流网"
 }

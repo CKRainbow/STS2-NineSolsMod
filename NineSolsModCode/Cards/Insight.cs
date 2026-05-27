@@ -13,7 +13,7 @@ namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(YiCardPool))]
 public class Insight() : NineSolsModCard(2, CardType.Skill,
-    CardRarity.Uncommon, TargetType.AnyEnemy)
+    CardRarity.Rare, TargetType.AnyEnemy)
 {
     // TODO: 这个是否可以改成非固定值
     public override bool GainsBlock => true;
@@ -24,7 +24,7 @@ public class Insight() : NineSolsModCard(2, CardType.Skill,
     ];
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DynamicVar("ParryPower", 4m)
+        new DynamicVar("ParryPower", 6m)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
@@ -61,7 +61,7 @@ public class Insight() : NineSolsModCard(2, CardType.Skill,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["ParryPower"].UpgradeValueBy(5m);
+        DynamicVars["ParryPower"].UpgradeValueBy(6m);
     }
 
 }

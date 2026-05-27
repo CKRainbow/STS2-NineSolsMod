@@ -9,7 +9,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(TokenCardPool))]
-public class WenWu() : NineSolsModCard(1, CardType.Skill,
+public class QianmoNetwork() : NineSolsModCard(1, CardType.Skill,
     CardRarity.Token, TargetType.Self)
 {
     protected override async Task OnPlay(
