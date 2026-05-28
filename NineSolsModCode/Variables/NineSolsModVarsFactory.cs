@@ -56,7 +56,7 @@ public static class NineSolsModVarsFactory
              {
                  if (card is null || target is null) return 0m;
                  var creature = card.Owner.Creature;
-                 CalculatedVar finishVar = (CalculatedVar)card.DynamicVars[FinishKey];
+                 var finishVar = (ComputedDynamicVar)card.DynamicVars[FinishKey];
                  var finishMult = finishVar.Calculate(target) / 100m;
                  var internalAmount = target.GetPowerAmount<InternalDamagePower>();
                  return finishMult * internalAmount;
@@ -72,7 +72,7 @@ public static class NineSolsModVarsFactory
              {
                  if (card is null || target is null) return 0m;
                  var creature = card.Owner.Creature;
-                 CalculatedVar finishVar = (CalculatedVar)card.DynamicVars[FinishKey];
+                 var finishVar = (ComputedDynamicVar)card.DynamicVars[FinishKey];
                  var finishMult = finishVar.Calculate(target) / 100m;
                  var internalAmount = target.GetPowerAmount<InternalDamagePower>();
                  return finishMult * internalAmount;

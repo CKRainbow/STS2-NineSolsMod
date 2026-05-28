@@ -44,8 +44,8 @@ public class TailsmanFullControl() : NineSolsModCard(0, CardType.Skill,
             100m,
             (card) =>
             {
-                if (card is null) return 0;
-                if (!card.IsInCombat) return 0;
+                if (card is null) return 100m;
+                if (!card.IsInCombat) return 100m;
                 var qiAmount = card.Owner.Creature.GetPowerAmount<QiPower>();
                 return qiAmount * DynamicVars["AdditionBonus"].BaseValue;
             }),

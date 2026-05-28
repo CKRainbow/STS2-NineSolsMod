@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Powers;
 using NineSolsMod.NineSolsModCode.Hooks;
 using NineSolsMod.NineSolsModCode.Variables;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using STS2RitsuLib.Cards.DynamicVars;
 
 namespace NineSolsMod.NineSolsModCode.Utils;
 
@@ -19,7 +19,6 @@ public static class NineSolsModCmd
     /// <param name="model"></param>
     /// <param name="target"></param>
     /// <param name="choiceContext"></param>
-    /// <param name="calculated">是否使用CalculatedFinishVar</param>
     /// <returns></returns>
     public static async Task Finish(decimal baseAttack, CardModel model, Creature target, PlayerChoiceContext? choiceContext = null)
     {
@@ -27,7 +26,7 @@ public static class NineSolsModCmd
 
         decimal finishMult;
         var finishVar = model.DynamicVars[NineSolsModVarsFactory.FinishKey];
-        if (finishVar is CalculatedVar calculatedFinishVar)
+        if (finishVar is ComputedDynamicVar calculatedFinishVar)
         {
             finishMult = calculatedFinishVar.Calculate(target) / 100m;
         }

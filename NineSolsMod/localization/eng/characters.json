@@ -13,5 +13,9 @@
   "NINE_SOLS_MOD_CHARACTER_YI.pronounSubject": "he",
   "NINE_SOLS_MOD_CHARACTER_YI.title": "The Yi",
   "NINE_SOLS_MOD_CHARACTER_YI.titleObject": "The Yi",
-  "NINE_SOLS_MOD_CHARACTER_YI.unlockText": ""
+  "NINE_SOLS_MOD_CHARACTER_YI.unlockText": "",
+  "NINE_SOLS_MOD_CHARACTER_YI.defeatMessage": "",
+  "NINE_SOLS_MOD_CHARACTER_YI.flavor": "",
+  "NINE_SOLS_MOD_CHARACTER_YI.selectMessage": "",
+  "NINE_SOLS_MOD_CHARACTER_YI.victoryMessage": ""
 }

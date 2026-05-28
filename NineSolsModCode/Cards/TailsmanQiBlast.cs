@@ -45,7 +45,7 @@ public class TailsmanQiBlast() : NineSolsModCard(0, CardType.Skill,
         ModCardVars.Int("MultiplierBonus", 20),
         NineSolsModVarsFactory.QiCostVar(3),
         ..NineSolsModVarsFactory.FinishVar(
-            0,
+            100m,
             (card) => {
                 if (card is null) return 100m;
                 if (!card.IsInCombat) return 100m;

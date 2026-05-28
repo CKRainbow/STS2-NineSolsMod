@@ -38,9 +38,6 @@
   "NINE_SOLS_MOD_POWER_REVIVAL_JADE_POWER.description": "",
   "NINE_SOLS_MOD_POWER_REVIVAL_JADE_POWER.smartDescription": "",
   "NINE_SOLS_MOD_POWER_REVIVAL_JADE_POWER.title": "替死玉",
-  "NINE_SOLS_MOD_POWER_AIR_DASH_POWER.description": "",
-  "NINE_SOLS_MOD_POWER_AIR_DASH_POWER.smartDescription": "",
-  "NINE_SOLS_MOD_POWER_AIR_DASH_POWER.title": "凌空闪",
   "NINE_SOLS_MOD_POWER_HACK_POWER.description": "",
   "NINE_SOLS_MOD_POWER_HACK_POWER.smartDescription": "",
   "NINE_SOLS_MOD_POWER_HACK_POWER.title": "骇入",
@@ -89,5 +86,8 @@
   "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_WEALTH_POWER.smartDescription": "每当触发[gold]终结[/gold]并击杀敌人时，获得{Amount}金币。",
   "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_QI_POWER.title": "咒灭化息",
   "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_QI_POWER.description": "每当触发[gold]终结[/gold]时，获得[gold]气[/gold]。",
-  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_QI_POWER.smartDescription": "每当触发[gold]终结[/gold]时，获得{Amount}层[gold]气[/gold]。"
+  "NINE_SOLS_MOD_POWER_TRANSMUTE_UNTO_QI_POWER.smartDescription": "每当触发[gold]终结[/gold]时，获得{Amount}层[gold]气[/gold]。",
+  "NINE_SOLS_MOD_POWER_AIR_DASH_POWER.description": "在本回合结束前失去[gold]敏捷[/gold]。",
+  "NINE_SOLS_MOD_POWER_AIR_DASH_POWER.smartDescription": "在本回合结束前失去[blue]{Amount}[/blue]点[gold]敏捷[/gold]。",
+  "NINE_SOLS_MOD_POWER_AIR_DASH_POWER.title": "凌空闪"
 }

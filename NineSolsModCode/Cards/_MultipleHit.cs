@@ -5,15 +5,11 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Cards;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
-using NineSolsMod.NineSolsModCode.Variables;
 using STS2RitsuLib.Cards.DynamicVars;
 using STS2RitsuLib.Interop.AutoRegistration;
-using STS2RitsuLib.Scaffolding.Characters;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
@@ -29,7 +25,7 @@ public class MultipleHit() : NineSolsModCard(1, CardType.Attack,
 
         await DamageCmd.Attack(DynamicVars.Damage.BaseValue)
                     .FromCard(this)
-                    .WithHitCount((int)((CalculatedVar)DynamicVars["TotalRepeat"]).Calculate(null))
+                    .WithHitCount((int)((ComputedDynamicVar)DynamicVars["TotalRepeat"]).Calculate())
                     .TargetingAllOpponents(play.Card.CombatState)
                     .WithHitFx("vfx/vfx_attack_blunt", null, "heavy_attack.mp3")
                     .Execute(choiceContext);
@@ -43,9 +39,9 @@ public class MultipleHit() : NineSolsModCard(1, CardType.Attack,
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(4m, ValueProp.Move),
-        ModCardVars.Computed("TotalRepeat", 0, (card) => {
-            if (card is null) return 0;
-            return CombatManager.Instance.History.Entries.OfType<PowerReceivedEntry>().Count(
+        ModCardVars.Computed("TotalRepeat", 1, (card) => {
+            if (card is null) return 1;
+            return 1 + CombatManager.Instance.History.Entries.OfType<PowerReceivedEntry>().Count(
                     (entry) => {
                         return entry.Actor == card.Owner.Creature && entry.Power is InternalDamagePower;
                     }

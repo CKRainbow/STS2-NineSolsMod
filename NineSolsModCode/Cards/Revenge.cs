@@ -3,14 +3,10 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models.Cards;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
-using NineSolsMod.NineSolsModCode.Variables;
 using STS2RitsuLib.Interop.AutoRegistration;
-using STS2RitsuLib.Scaffolding.Characters;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
@@ -22,7 +18,10 @@ public class Revenge() : NineSolsModCard(2, CardType.Attack,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await DamageCmd.Attack(DynamicVars.CalculatedDamage.Calculate(play.Target)).FromCard(this)
+        ArgumentNullException.ThrowIfNull(play.Target);
+        await DamageCmd.Attack(DynamicVars.CalculatedDamage.Calculate(play.Target))
+                    .FromCard(this)
+                    .Targeting(play.Target)
                     .WithHitFx("vfx/vfx_attack_blunt", null, "heavy_attack.mp3")
                     .Execute(choiceContext);
     }
@@ -34,7 +33,7 @@ public class Revenge() : NineSolsModCard(2, CardType.Attack,
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CalculationBaseVar(16m),
+        new CalculationBaseVar(18m),
         new ExtraDamageVar(1m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((card, _) => {
             return card.Owner.Creature.GetPowerAmount<InternalDamagePower>();

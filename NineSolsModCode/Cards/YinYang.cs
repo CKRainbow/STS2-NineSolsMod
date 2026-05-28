@@ -1,10 +1,9 @@
 ﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using NineSolsMod.NineSolsModCode.Character;
+using STS2RitsuLib.Cards.DynamicVars;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
@@ -17,7 +16,7 @@ public class YinYang() : NineSolsModCard(1, CardType.Skill,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, Owner);
+        await PlayerCmd.GainEnergy(((ComputedDynamicVar)DynamicVars["TotalEnergy"]).Calculate(), Owner);
     }
 
     protected override void OnUpgrade()
@@ -26,12 +25,11 @@ public class YinYang() : NineSolsModCard(1, CardType.Skill,
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new CalculationBaseVar(0),
-        new CalculationExtraVar(1),
-        new CalculatedVar("TotalEnergy").WithMultiplier((CardModel card, Creature? _) => {
+        ModCardVars.Computed("TotalEnergy", 0, (card) => {
+            if (card is null) return 0;
             decimal? num = card.Owner.PlayerCombatState?.Hand.Cards.Count;
             return num / 2 ?? 0;
-        }),
+        })
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [

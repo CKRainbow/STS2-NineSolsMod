@@ -147,5 +147,9 @@
   "NINE_SOLS_MOD_CARD_TAILSMAN_TRANSMUTATION.description": "从[gold]炼化神符[/gold]中选择一张加入手牌。",
   "NINE_SOLS_MOD_CARD_TAILSMAN_TRANSMUTATION.selectionScreenPrompt": "选择使用的[gold]炼化神符[/gold]。",
   "NINE_SOLS_MOD_CARD_QIANMO_NETWORK.description": "获得{Block:diff()}点[gold]格挡[/gold]。抽{Cards:diff()}张牌。",
-  "NINE_SOLS_MOD_CARD_QIANMO_NETWORK.title": "阡陌物流网"
+  "NINE_SOLS_MOD_CARD_QIANMO_NETWORK.title": "阡陌物流网",
+  "NINE_SOLS_MOD_CARD_MULTIPLE_HIT.description": "造成{Damage:diff()}点伤害{TotalRepeat:diff()}次。你每被施加一次[gold]内伤[/gold]，攻击次数增加1。",
+  "NINE_SOLS_MOD_CARD_MULTIPLE_HIT.title": "",
+  "NINE_SOLS_MOD_CARD_REVENGE.description": "造成{CaluclatedDamage:diff()}点伤害，附加你拥有[gold]内伤[/gold]层数的伤害。",
+  "NINE_SOLS_MOD_CARD_REVENGE.title": "复仇"
 }
