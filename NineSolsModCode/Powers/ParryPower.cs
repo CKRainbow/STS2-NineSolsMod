@@ -46,11 +46,23 @@ public class ParryPower : NineSolsModPower
         if (!result.WasFullyBlocked && !hasUnboundedCounter)
             return;
 
+        var hasDevineHandJade = Owner.HasPower<DevineHandJadePower>();
+
         var internalDamageAmount = Amount * DynamicVars["InternalDamagePerAmount"].BaseValue;
 
         MainFile.Logger.Info($"target.Block: {target.Block}, result.BlockedDamage: {result.BlockedDamage}");
 
-        var isPerfectParry = target.Block == 0 && result.BlockedDamage == result.TotalDamage || hasUnboundedCounter;
+        bool isPerfectParry;
+        if (!hasDevineHandJade)
+        {
+            isPerfectParry = target.Block == 0 && result.BlockedDamage == result.TotalDamage;
+        }
+        else
+        {
+            isPerfectParry = target.Block <= result.TotalDamage;
+        }
+
+        isPerfectParry = isPerfectParry || hasUnboundedCounter;
 
         if (isPerfectParry)
         {
