@@ -79,7 +79,7 @@
   "NINE_SOLS_MOD_CARD_BREATHE.title": "吐纳",
   "NINE_SOLS_MOD_CARD_YIN_YANG.description": "",
   "NINE_SOLS_MOD_CARD_YIN_YANG.title": "阴阳两仪",
-  "NINE_SOLS_MOD_CARD_REVIVAL_JADE.description": "",
+  "NINE_SOLS_MOD_CARD_REVIVAL_JADE.description": "当你的生命值将被减少至0或以下时，抵御一次死亡，然后将你回复到你最大生命值的{RevivalJadePower:diff()}%。",
   "NINE_SOLS_MOD_CARD_REVIVAL_JADE.title": "替死玉",
   "NINE_SOLS_MOD_CARD_TAILSMAN_QI_BLAST.description": "抽{Cards:diff()}张牌。[gold]震伤[/gold]{NineSolsMod-InternalDamage:diff()}。\n[gold]运气[/gold]{NineSolsMod-QiCost:diff()}-：每多消耗一点气，[gold]终结[/gold]倍率叠乘{MultiplierBonus:diff()}%。\n[gold]终结[/gold]{NineSolsMod-Finish:diff()}（造成{NineSolsMod-FinishDamage:diff()}点伤害）。",
   "NINE_SOLS_MOD_CARD_TAILSMAN_QI_BLAST.title": "一气贯通",
@@ -151,5 +151,13 @@
   "NINE_SOLS_MOD_CARD_MULTIPLE_HIT.description": "造成{Damage:diff()}点伤害{TotalRepeat:diff()}次。你每被施加一次[gold]内伤[/gold]，攻击次数增加1。",
   "NINE_SOLS_MOD_CARD_MULTIPLE_HIT.title": "",
   "NINE_SOLS_MOD_CARD_REVENGE.description": "造成{CaluclatedDamage:diff()}点伤害，附加你拥有[gold]内伤[/gold]层数的伤害。",
-  "NINE_SOLS_MOD_CARD_REVENGE.title": "复仇"
+  "NINE_SOLS_MOD_CARD_REVENGE.title": "复仇",
+  "NINE_SOLS_MOD_CARD_BREATHER_JADE.description": "每当你打出一张攻击牌时，恢复{BreatherJadePower:diff()}层[gold]内伤[/gold]。",
+  "NINE_SOLS_MOD_CARD_BREATHER_JADE.title": "调息玉",
+  "NINE_SOLS_MOD_CARD_BUBBLE_TEA.description": "恢复{Heal:diff}点生命。恢复{InternalHeal:diff}层[gold]内伤[/gold]。",
+  "NINE_SOLS_MOD_CARD_BUBBLE_TEA.title": "粉圆茶",
+  "NINE_SOLS_MOD_CARD_END_OF_EVOLUTION.description": "如果这张牌是你在回合内打出的第一张牌，获得{IntangiblePower:diff()}[gold]无实体[/gold]，[gold]消耗[/gold][gold]手牌[/gold]中所有非技能牌。",
+  "NINE_SOLS_MOD_CARD_END_OF_EVOLUTION.title": "进化终点",
+  "NINE_SOLS_MOD_CARD_HIDDEN_FORCE.description": "造成{Damage:diff()}点伤害。\n施加等量于所造成伤害的[gold]内伤[/gold]。",
+  "NINE_SOLS_MOD_CARD_HIDDEN_FORCE.title": "暗劲"
 }

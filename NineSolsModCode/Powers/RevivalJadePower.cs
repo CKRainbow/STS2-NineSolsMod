@@ -18,6 +18,7 @@ public class RevivalJadePower : NineSolsModPower
 
     public override PowerType Type => PowerType.Buff;
     public override PowerStackType StackType => PowerStackType.Counter;
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
     public override Color AmountLabelColor => _normalAmountLabelColor;
     private bool IsReviving => GetInternalData<Data>().isReviving;
 
@@ -41,6 +42,15 @@ public class RevivalJadePower : NineSolsModPower
         return 0m;
     }
 
+    /// <summary>
+    /// 这个是为了干什么？
+    /// </summary>
+    /// <param name="canonicalPower"></param>
+    /// <param name="target"></param>
+    /// <param name="amount"></param>
+    /// <param name="applier"></param>
+    /// <param name="modifiedAmount"></param>
+    /// <returns></returns>
     public override bool TryModifyPowerAmountReceived(PowerModel canonicalPower, Creature target, decimal amount, Creature? applier, out decimal modifiedAmount)
     {
         modifiedAmount = amount;

@@ -22,7 +22,7 @@ public class ComputingPowerOverclock() : NineSolsModCard(1, CardType.Power,
 
     protected override void OnUpgrade()
     {
-        EnergyCost.UpgradeBy(-1);
+        AddKeyword(CardKeyword.Innate);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [

@@ -26,6 +26,11 @@ public class QiPower : NineSolsModPower
     /// <returns></returns>
     public override bool TryModifyPowerAmountReceived(PowerModel canonicalPower, Creature target, decimal amount, Creature? applier, out decimal modifiedAmount)
     {
+        if (canonicalPower is not QiPower)
+        {
+            modifiedAmount = amount;
+            return false;
+        }
         var currentAmount = target.GetPowerAmount<QiPower>();
         modifiedAmount = Math.Max(0, 5 - currentAmount);
         return true;
