@@ -11,7 +11,7 @@
   "NINE_SOLS_MOD_CARD_TRIPLE_SLASH.title": "三元剑",
   "NINE_SOLS_MOD_CARD_IMMORTAL_DASH.description": "获得{Block:diff()}点[gold]格挡[/gold]。抽{Cards:diff()}张牌。",
   "NINE_SOLS_MOD_CARD_IMMORTAL_DASH.title": "仙步",
-  "NINE_SOLS_MOD_CARD_INSIGHT.description": "如果敌人的意图为造成伤害，则获得与其造成伤害相同数值的[gold]格挡[/gold]。[gold]反击[/gold]{ParryPower:diff()}。",
+  "NINE_SOLS_MOD_CARD_INSIGHT.description": "如果目标敌人的意图为造成伤害，则获得与其造成伤害相同数值的[gold]格挡[/gold]。[gold]反击[/gold]{ParryPower:diff()}。",
   "NINE_SOLS_MOD_CARD_INSIGHT.title": "洞察",
   "NINE_SOLS_MOD_CARD_HACK.description": "如果敌人拥有[gold]人工制品[/gold]，去除所有[gold]人工制品[/gold]，并使其[gold]眩晕[/gold]一回合。\n否则，获得{StrengthPower:diff()}点临时力量，并给予{VulnerablePower:diff()}层[gold]易伤[/gold]。",
   "NINE_SOLS_MOD_CARD_HACK.title": "骇入",
@@ -159,5 +159,11 @@
   "NINE_SOLS_MOD_CARD_END_OF_EVOLUTION.description": "如果这张牌是你在回合内打出的第一张牌，获得{IntangiblePower:diff()}[gold]无实体[/gold]，[gold]消耗[/gold][gold]手牌[/gold]中所有非技能牌。",
   "NINE_SOLS_MOD_CARD_END_OF_EVOLUTION.title": "进化终点",
   "NINE_SOLS_MOD_CARD_HIDDEN_FORCE.description": "造成{Damage:diff()}点伤害。\n施加等量于所造成伤害的[gold]内伤[/gold]。",
-  "NINE_SOLS_MOD_CARD_HIDDEN_FORCE.title": "暗劲"
+  "NINE_SOLS_MOD_CARD_HIDDEN_FORCE.title": "暗劲",
+  "NINE_SOLS_MOD_CARD_DEVINE_HAND_JADE.description": "减少完美反击的限制。每当格挡不足此次攻击的两倍时，就会出发完美反击。",
+  "NINE_SOLS_MOD_CARD_DEVINE_HAND_JADE.title": "神手玉",
+  "NINE_SOLS_MOD_CARD_SPITWINE.description": "永久获得{MaxHealth:diff()}点最大生命值。给予自身{PoisonPower:diff()}层中毒。",
+  "NINE_SOLS_MOD_CARD_SPITWINE.title": "口水酒",
+  "NINE_SOLS_MOD_CARD_TAUNT.description": "如果目标敌人的意图为造成伤害，则使其该意图造成的伤害减少为{TauntPower:diff()}%，但攻击次数翻倍。",
+  "NINE_SOLS_MOD_CARD_TAUNT.title": "嘲讽"
 }

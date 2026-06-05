@@ -28,7 +28,7 @@ public class DevineMasteryPower : NineSolsModPower
         {
             return;
         }
-        await PowerCmd.Apply<ParryPower>(new ThrowingPlayerChoiceContext(), creature, amount, creature, cardSource);
+        await PowerCmd.Apply<ParryPower>(new ThrowingPlayerChoiceContext(), creature, Amount, creature, cardSource);
     }
 
 }

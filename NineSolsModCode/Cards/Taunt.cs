@@ -25,7 +25,8 @@ public class Taunt() : NineSolsModCard(1, CardType.Skill,
         if (!monster.IntendsToAttack)
             return;
 
-        await PowerCmd.Apply<TauntPower>(choiceContext, target, DynamicVars["TauntPower"].IntValue, Owner.Creature, this, false);
+        var power = await PowerCmd.Apply<TauntPower>(choiceContext, target, 1m, Owner.Creature, this, false);
+        power?.SetDamageMultiplier(DynamicVars["TauntPower"].BaseValue);
     }
 
     protected override void OnUpgrade()

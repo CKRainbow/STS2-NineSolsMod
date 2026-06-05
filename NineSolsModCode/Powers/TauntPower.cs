@@ -2,9 +2,11 @@
 using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
 using MegaCrit.Sts2.Core.ValueProps;
+using STS2RitsuLib.Cards.DynamicVars;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Powers;
@@ -15,15 +17,22 @@ public class TauntPower : NineSolsModPower
     private class Data
     {
         public MoveState? state;
+        public decimal? damageMultiplier;
     }
 
     // 是否会被人工阻挡？可能还需要考虑，目前先设置为不会
-    public override PowerType Type => PowerType.None;
-    public override PowerStackType StackType => PowerStackType.Counter;
+    public override PowerType Type => PowerType.Debuff;
+    public override PowerStackType StackType => PowerStackType.Single;
     public override Color AmountLabelColor => _normalAmountLabelColor;
 
     // 可以施加多个，每个都是独立实例
     public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
+
+    // FIXME: 有很多本身是减少 x 的情况遇上双倍负面的情况会直接出问题，目前通过 InternalData 规避，需要检查
+    protected override IEnumerable<DynamicVar> CanonicalVars => [
+        ModCardVars.Computed("DamageMultiplier", 0m, (_) => GetInternalData<Data>().damageMultiplier ?? 0m),
+    ];
+
 
     protected override object? InitInternalData()
     {
@@ -57,13 +66,20 @@ public class TauntPower : NineSolsModPower
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
         if (Owner != dealer)
-            return amount;
-        var state = GetInternalData<Data>().state;
+            return 1m;
+        var internalData = GetInternalData<Data>();
+        var state = internalData.state;
+        var damageMultiplier = internalData.damageMultiplier ?? 100m;
         if (Owner.Monster is null || state is null)
-            return amount;
+            return 1m;
         if (state != Owner.Monster.NextMove)
-            return amount;
-        return amount * Amount / 100m;
+            return 1m;
+        return 1m * damageMultiplier / 100m;
+    }
+
+    public void SetDamageMultiplier(decimal damageMultiplier)
+    {
+        GetInternalData<Data>().damageMultiplier = damageMultiplier;
     }
 
 }

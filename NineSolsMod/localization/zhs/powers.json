@@ -94,5 +94,11 @@
   "NINE_SOLS_MOD_POWER_AIR_DASH_POWER.title": "凌空闪",
   "NINE_SOLS_MOD_POWER_BREATHER_JADE_POWER.description": "每当你打出一张攻击牌时，恢复2层[gold]内伤[/gold]。",
   "NINE_SOLS_MOD_POWER_BREATHER_JADE_POWER.smartDescription": "每当你打出一张攻击牌时，恢复{Amount}层[gold]内伤[/gold]。",
-  "NINE_SOLS_MOD_POWER_BREATHER_JADE_POWER.title": "调息玉"
+  "NINE_SOLS_MOD_POWER_BREATHER_JADE_POWER.title": "调息玉",
+  "NINE_SOLS_MOD_POWER_DEVINE_HAND_JADE_POWER.description": "放宽完美反击的限制。每当格挡不足此次攻击的两倍时，就会出发完美反击。",
+  "NINE_SOLS_MOD_POWER_DEVINE_HAND_JADE_POWER.smartDescription": "放宽完美反击的限制。每当格挡不足此次攻击的两倍时，就会出发完美反击。",
+  "NINE_SOLS_MOD_POWER_DEVINE_HAND_JADE_POWER.title": "神手玉",
+  "NINE_SOLS_MOD_POWER_TAUNT_POWER.description": "其意图造成伤害降低为50%，但攻击次数翻倍。",
+  "NINE_SOLS_MOD_POWER_TAUNT_POWER.smartDescription": "其意图造成伤害降低为{DamageMultiplier}%，但攻击次数翻倍。",
+  "NINE_SOLS_MOD_POWER_TAUNT_POWER.title": "嘲讽"
 }

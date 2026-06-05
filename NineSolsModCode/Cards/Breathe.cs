@@ -21,7 +21,7 @@ public class Breathe() : NineSolsModCard(1, CardType.Skill,
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await PowerCmd.Apply<RetainHandPower>(choiceContext, Owner.Creature, 1m, Owner.Creature, this);
         await PowerCmd.Apply<EnergyNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Energy.BaseValue, Owner.Creature, this);
-        await PowerCmd.Apply<QiNextTurnPower>(choiceContext, Owner.Creature, DynamicVars.Stars.BaseValue, Owner.Creature, this);
+        await PowerCmd.Apply<QiNextTurnPower>(choiceContext, Owner.Creature, DynamicVars["Qi"].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
