@@ -31,8 +31,27 @@ public class TauntPower : NineSolsModPower
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         ModCardVars.Computed("DamageMultiplier", 0m, (_) => GetInternalData<Data>().damageMultiplier ?? 0m),
+        new ComputedStringVar(
+            "State",
+            () => {
+                if (GetInternalData<Data>() is null) return "Move";
+                var move = GetInternalData<Data>().state;
+                if (move is null || Owner.Monster is null)
+                {
+                    return "Move";
+                }
+                else
+                {
+                    var moveId = Owner.Monster.NextMove.Id;
+                    if (moveId.EndsWith("_MOVE"))
+                    {
+                        moveId = moveId[..^"_MOVE".Length];
+                    }
+                    return new LocString("monsters", $"{Owner.Monster.Id.Entry}.moves.{moveId}.title").GetFormattedText();
+                }
+            }
+        )
     ];
-
 
     protected override object? InitInternalData()
     {
@@ -47,15 +66,6 @@ public class TauntPower : NineSolsModPower
             return Task.CompletedTask;
 
         GetInternalData<Data>().state = target.Monster.NextMove;
-
-        var moveId = target.Monster.NextMove.Id;
-        if (moveId.EndsWith("_MOVE"))
-        {
-            moveId = moveId[..^"_MOVE".Length];
-        }
-
-        var locString = SmartDescription;
-        locString.Add("State", new LocString("monsters", $"{target.Monster.Id.Entry}.moves.{moveId}.title"));
 
         return Task.CompletedTask;
     }
