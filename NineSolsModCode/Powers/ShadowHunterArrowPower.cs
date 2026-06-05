@@ -40,7 +40,7 @@ public class ShadowHunterArrowPower : NineSolsModPower
         }
     }
 
-    public override Task AfterApplied(Creature? applier, CardModel? cardSource)
+    public override Task BeforeApplied(Creature target, decimal amount, Creature? applier, CardModel? cardSource)
     {
         ArgumentNullException.ThrowIfNull(cardSource);
 

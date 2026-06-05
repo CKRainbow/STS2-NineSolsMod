@@ -99,6 +99,6 @@
   "NINE_SOLS_MOD_POWER_DEVINE_HAND_JADE_POWER.smartDescription": "放宽完美反击的限制。每当格挡不足此次攻击的两倍时，就会出发完美反击。",
   "NINE_SOLS_MOD_POWER_DEVINE_HAND_JADE_POWER.title": "神手玉",
   "NINE_SOLS_MOD_POWER_TAUNT_POWER.description": "其意图造成伤害降低为50%，但攻击次数翻倍。",
-  "NINE_SOLS_MOD_POWER_TAUNT_POWER.smartDescription": "其意图造成伤害降低为{DamageMultiplier}%，但攻击次数翻倍。",
+  "NINE_SOLS_MOD_POWER_TAUNT_POWER.smartDescription": "其行为“{State}”造成伤害降低为{DamageMultiplier}%，但攻击次数翻倍。",
   "NINE_SOLS_MOD_POWER_TAUNT_POWER.title": "嘲讽"
 }

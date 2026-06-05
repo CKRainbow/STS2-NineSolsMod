@@ -2,6 +2,7 @@
 using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.Localization;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
@@ -28,7 +29,6 @@ public class TauntPower : NineSolsModPower
     // 可以施加多个，每个都是独立实例
     public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
 
-    // FIXME: 有很多本身是减少 x 的情况遇上双倍负面的情况会直接出问题，目前通过 InternalData 规避，需要检查
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         ModCardVars.Computed("DamageMultiplier", 0m, (_) => GetInternalData<Data>().damageMultiplier ?? 0m),
     ];
@@ -39,14 +39,23 @@ public class TauntPower : NineSolsModPower
         return new Data();
     }
 
-    public override Task AfterApplied(Creature? applier, CardModel? cardSource)
+    public override Task BeforeApplied(Creature target, decimal amount, Creature? applier, CardModel? cardSource)
     {
         ArgumentNullException.ThrowIfNull(cardSource);
 
-        if (Owner.Monster is null)
+        if (target.Monster is null)
             return Task.CompletedTask;
 
-        GetInternalData<Data>().state = Owner.Monster.NextMove;
+        GetInternalData<Data>().state = target.Monster.NextMove;
+
+        var moveId = target.Monster.NextMove.Id;
+        if (moveId.EndsWith("_MOVE"))
+        {
+            moveId = moveId[..^"_MOVE".Length];
+        }
+
+        var locString = SmartDescription;
+        locString.Add("State", new LocString("monsters", $"{target.Monster.Id.Entry}.moves.{moveId}.title"));
 
         return Task.CompletedTask;
     }
