@@ -22,6 +22,8 @@ public partial class MainFile : Node
         RitsuLibFramework.EnsureGodotScriptsRegistered(assembly, Logger);
         ModTypeDiscoveryHub.RegisterModAssembly(ModId, assembly);
 
+        var content = RitsuLibFramework.GetContentRegistry(ModId);
+
         // 设置先古卡升级
         RitsuLibFramework.RegisterArchaicToothTranscendenceMapping<Tailsman, TailsmanQiBlast>();
         // 设置先古遗物升级

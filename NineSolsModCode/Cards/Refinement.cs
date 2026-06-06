@@ -11,7 +11,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(YiCardPool))]
-public class XuanTieConvert() : NineSolsModCard(1, CardType.Skill,
+public class Refinement() : NineSolsModCard(1, CardType.Skill,
     CardRarity.Common, TargetType.Self)
 {
     protected override async Task OnPlay(
@@ -33,7 +33,7 @@ public class XuanTieConvert() : NineSolsModCard(1, CardType.Skill,
         if (cardModel != null)
         {
             CardCmd.Upgrade(cardModel, CardPreviewStyle.HorizontalLayout);
-            var convertedCard = CombatState.CreateCard<DarkSteel>(Owner);
+            var convertedCard = CombatState.CreateCard<AzureSand>(Owner);
             if (IsUpgraded)
             {
                 CardCmd.Upgrade(convertedCard, CardPreviewStyle.HorizontalLayout);
@@ -44,6 +44,6 @@ public class XuanTieConvert() : NineSolsModCard(1, CardType.Skill,
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
-        HoverTipFactory.FromCard<DarkSteel>()
+        HoverTipFactory.FromCard<AzureSand>()
     ];
 }

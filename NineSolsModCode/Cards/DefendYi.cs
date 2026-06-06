@@ -9,7 +9,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(YiCardPool))]
-[RegisterCharacterStarterCard(typeof(Yi), 4)]
+[RegisterCharacterStarterCard(typeof(Yi), 4, Order = 1)]
 public class DefendYi() : NineSolsModCard(1, CardType.Skill,
     CardRarity.Basic, TargetType.Self)
 {

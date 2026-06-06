@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdnfr5hm2oykh"
-path="res://.godot/imported/strike_yi.png-3d06814c6e0660641a8e7ddb509590ad.ctex"
+uid="uid://t74a048dknkm"
+path="res://.godot/imported/StrikeYi.png-7d7c79e5453ca1af61f1c9cde5686acf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://NineSolsMod/images/cards/strike_yi.png"
-dest_files=["res://.godot/imported/strike_yi.png-3d06814c6e0660641a8e7ddb509590ad.ctex"]
+source_file="res://NineSolsMod/images/cards/StrikeYi.png"
+dest_files=["res://.godot/imported/StrikeYi.png-7d7c79e5453ca1af61f1c9cde5686acf.ctex"]
 
 [params]
 

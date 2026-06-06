@@ -11,7 +11,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(YiCardPool))]
-[RegisterCharacterStarterCard(typeof(Yi), 1)]
+[RegisterCharacterStarterCard(typeof(Yi), 1, Order = 2)]
 public class Parry() : NineSolsModCard(1, CardType.Skill,
     CardRarity.Basic, TargetType.Self)
 {

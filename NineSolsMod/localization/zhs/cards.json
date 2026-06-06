@@ -21,9 +21,9 @@
   "NINE_SOLS_MOD_CARD_QI_GATHERING.title": "凝神聚气",
   "NINE_SOLS_MOD_CARD_UNBOUNDED_COUNTER.description": "将受到的所有攻击伤害降低为[blue]0[/blue]，必定完美[gold]反击[/gold]。\n[gold]反击[/gold]{ParryPower:diff()}。",
   "NINE_SOLS_MOD_CARD_UNBOUNDED_COUNTER.title": "无量反击",
-  "NINE_SOLS_MOD_CARD_COLLECT.description": "将2张[gold]{IfUpgraded:show:苍砂+|苍砂}[/gold]加入你的[gold]抽牌堆[/gold]。",
+  "NINE_SOLS_MOD_CARD_COLLECT.description": "将2张[gold]{IfUpgraded:show:玄铁+|玄铁}[/gold]加入你的[gold]抽牌堆[/gold]。\n[gold]运气[/gold]{NineSolsMod-QiCost:diff()}：在下个回合抽{DrawCardsNextTurnPower:diff()}张牌。",
   "NINE_SOLS_MOD_CARD_COLLECT.title": "搜集",
-  "NINE_SOLS_MOD_CARD_AZURE_SAND.description": "从[gold]苍砂造物[/gold]中选择一张加入你的[gold]手牌[/gold]。",
+  "NINE_SOLS_MOD_CARD_AZURE_SAND.description": "从[gold]苍砂造物[/gold]中随机选择一张加入你的[gold]手牌[/gold]。",
   "NINE_SOLS_MOD_CARD_AZURE_SAND.title": "苍砂",
   "NINE_SOLS_MOD_CARD_AZURE_SAND.selectionScreenPrompt": "选择要加入手牌的[gold]苍砂造物[/gold]。",
   "NINE_SOLS_MOD_CARD_CLOUD_PIERCING_ARROW.description": "对所有敌人造成{Damage:diff()}点伤害。",
@@ -105,9 +105,6 @@
   "NINE_SOLS_MOD_CARD_THUNDER_BUSTER_BOMB.description": "对所有敌人造成{Damage:diff()}点伤害。[gold]震伤[/gold]{NineSolsMod-InternalDamage:diff()}。",
   "NINE_SOLS_MOD_CARD_BIG_STRIKE.title": "",
   "NINE_SOLS_MOD_CARD_BIG_STRIKE.description": "造成{Damage:diff()}点伤害。[gold]内息紊乱[/gold]{NineSolsMod-Deviation:diff()}。",
-  "NINE_SOLS_MOD_CARD_XUAN_TIE_CONVERT.title": "",
-  "NINE_SOLS_MOD_CARD_XUAN_TIE_CONVERT.description": "选择手牌中的一张牌，将其升级。",
-  "NINE_SOLS_MOD_CARD_XUAN_TIE_CONVERT.selectionScreenPrompt": "选择要升级的卡牌。",
   "NINE_SOLS_MOD_CARD_CLEAR_INTERNAL_DAMAGE.title": "",
   "NINE_SOLS_MOD_CARD_CLEAR_INTERNAL_DAMAGE.description": "恢复{RemoveAmount:diff()}层内伤。",
   "NINE_SOLS_MOD_CARD_MOB_QUELL_JADE.description": "[gold]终结[/gold]时，对所有敌人造成伤害。",
@@ -165,5 +162,10 @@
   "NINE_SOLS_MOD_CARD_SPITWINE.description": "永久获得{MaxHealth:diff()}点最大生命值。给予自身{PoisonPower:diff()}层中毒。",
   "NINE_SOLS_MOD_CARD_SPITWINE.title": "口水酒",
   "NINE_SOLS_MOD_CARD_TAUNT.description": "如果目标敌人的意图为造成伤害，则使其该意图造成的伤害减少为{TauntPower:diff()}%，但攻击次数翻倍。",
-  "NINE_SOLS_MOD_CARD_TAUNT.title": "嘲讽"
+  "NINE_SOLS_MOD_CARD_TAUNT.title": "嘲讽",
+  "NINE_SOLS_MOD_CARD_REFINEMENT.title": "精炼",
+  "NINE_SOLS_MOD_CARD_REFINEMENT.description": "选择你[gold]手牌[/gold]中的一张牌，将其[gold]变化[/gold]为[gold]{IfUpgrade:show:苍砂+|苍砂}[/gold]。",
+  "NINE_SOLS_MOD_CARD_REFINEMENT.selectionScreenPrompt": "选择要变化的卡牌。",
+  "NINE_SOLS_MOD_CARD_NANOROBOT.description": "将2张[gold]{IfUpgraded:show:苍砂+|苍砂}[/gold]加入你的[gold]抽牌堆[/gold]。",
+  "NINE_SOLS_MOD_CARD_NANOROBOT.title": "纳米机器人"
 }

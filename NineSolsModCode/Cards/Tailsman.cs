@@ -10,7 +10,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(YiCardPool))]
-[RegisterCharacterStarterCard(typeof(Yi), 1)]
+[RegisterCharacterStarterCard(typeof(Yi), 1, Order = 3)]
 public class Tailsman() : NineSolsModCard(0, CardType.Skill,
     CardRarity.Basic, TargetType.AnyEnemy)
 {

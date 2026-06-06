@@ -3,19 +3,16 @@ using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
-using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using NineSolsMod.NineSolsModCode.Character;
-using NineSolsMod.NineSolsModCode.Utils;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(YiCardPool))]
-public class Collect() : NineSolsModQiCard(1, CardType.Skill,
-    CardRarity.Uncommon, TargetType.Self, 1)
+public class Nanorobot() : NineSolsModCard(1, CardType.Skill,
+    CardRarity.Uncommon, TargetType.Self)
 {
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
@@ -27,8 +24,8 @@ public class Collect() : NineSolsModQiCard(1, CardType.Skill,
         }
 
         List<CardModel> cards = [
-            CombatState.CreateCard<DarkSteel>(Owner),
-            CombatState.CreateCard<DarkSteel>(Owner),
+            CombatState.CreateCard<AzureSand>(Owner),
+            CombatState.CreateCard<AzureSand>(Owner),
         ];
 
         foreach (var card in cards)
@@ -45,23 +42,16 @@ public class Collect() : NineSolsModQiCard(1, CardType.Skill,
             CardCmd.PreviewCardPileAdd(addResults, 0.6f, CardPreviewStyle.HorizontalLayout);
             await Cmd.Wait(1f, false);
         }
-
-        if (HasEnoughQi)
-        {
-            await NineSolsModCmd.CostQi(qiCost, this, choiceContext, true);
-            await PowerCmd.Apply<DrawCardsNextTurnPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
-        }
     }
 
     protected override void OnUpgrade() { }
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [
-        ..base.CanonicalVars,
-        new PowerVar<DrawCardsNextTurnPower>(1m)
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [
+        CardKeyword.Exhaust
     ];
 
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips => [
-        HoverTipFactory.FromCard<DarkSteel>(IsUpgraded),
+        HoverTipFactory.FromCard<AzureSand>(IsUpgraded)
     ];
 }
