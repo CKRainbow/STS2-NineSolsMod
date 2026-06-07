@@ -167,5 +167,7 @@
   "NINE_SOLS_MOD_CARD_REFINEMENT.description": "选择你[gold]手牌[/gold]中的一张牌，将其[gold]变化[/gold]为[gold]{IfUpgrade:show:苍砂+|苍砂}[/gold]。",
   "NINE_SOLS_MOD_CARD_REFINEMENT.selectionScreenPrompt": "选择要变化的卡牌。",
   "NINE_SOLS_MOD_CARD_NANOROBOT.description": "将2张[gold]{IfUpgraded:show:苍砂+|苍砂}[/gold]加入你的[gold]抽牌堆[/gold]。",
-  "NINE_SOLS_MOD_CARD_NANOROBOT.title": "纳米机器人"
+  "NINE_SOLS_MOD_CARD_NANOROBOT.title": "纳米机器人",
+  "NINE_SOLS_MOD_CARD_LIVE_BETTER_LIFE.description": "失去最大生命值{HealthLossPercentage:diff()}%的生命（{TotalHealthLoss}）。\n给予另一位玩家{StrengthPower:diff()}点力量和{DexterityPower:diff()}点敏捷，且其当前[gold]手牌[/gold]中的所有牌在本回合免费打出。",
+  "NINE_SOLS_MOD_CARD_LIVE_BETTER_LIFE.title": "托付未来"
 }

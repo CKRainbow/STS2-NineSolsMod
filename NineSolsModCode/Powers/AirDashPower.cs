@@ -6,12 +6,6 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace NineSolsMod.NineSolsModCode.Powers;
 
 [RegisterPower]
-public class AirDashPower : NineSolsModTemporaryPower
+public class AirDashPower : NineSolsModTemporaryDexterityPower<AirDash>
 {
-    public override AbstractModel OriginModel => ModelDb.Card<AirDash>();
-
-    protected override bool IsPositive => true;
-
-    public override PowerModel InternallyAppliedPower => ModelDb.Power<DexterityPower>();
-
 }

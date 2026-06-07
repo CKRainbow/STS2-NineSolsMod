@@ -6,10 +6,6 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace NineSolsMod.NineSolsModCode.Powers;
 
 [RegisterPower]
-public class SwiftRunPower : NineSolsModTemporaryPower
+public class SwiftRunPower : NineSolsModTemporaryDexterityPower<SwiftRun>
 {
-    public override AbstractModel OriginModel => ModelDb.Card<SwiftRun>();
-
-    public override PowerModel InternallyAppliedPower => ModelDb.Power<DexterityPower>();
-
 }

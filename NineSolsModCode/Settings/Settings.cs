@@ -24,7 +24,7 @@ public static class SettingsPage
     private static readonly I18N I18NText = RitsuLibFramework.CreateModLocalization(
         MainFile.ModId,
         instanceName: "settings",
-        pckFolders: [$"res://{MainFile.ModId}/localization/settings"]
+        pckFolders: [$"res://{MainFile.ModId}/localization"]
     );
 
     public static void Register()

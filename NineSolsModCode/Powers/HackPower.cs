@@ -6,9 +6,5 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace NineSolsMod.NineSolsModCode.Powers;
 
 [RegisterPower]
-public class HackPower : NineSolsModTemporaryPower
-{
-    public override AbstractModel OriginModel => ModelDb.Card<Hack>();
-
-    public override PowerModel InternallyAppliedPower => ModelDb.Power<StrengthPower>();
-}
+public class HackPower : NineSolsModTemporaryStrengthPower<Hack>
+{ }
