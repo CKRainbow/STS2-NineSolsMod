@@ -80,7 +80,7 @@
     <AdditionalFiles Include="mod_manifest.json" />
     <AdditionalFiles Include="NineSolsMod/localization/**/*.json" />
     <PackageReference Include="Nothing.STS2RitsuLib.ModAnalyzers" Version="0.8.1" />
-    <PackageReference Include="STS2.RitsuLib" Version="0.4.9" GeneratePathProperty="true" />
+    <PackageReference Include="STS2.RitsuLib" Version="0.4.11" GeneratePathProperty="true" />
   </ItemGroup>
 
   <ItemGroup>
@@ -145,9 +145,11 @@
     <Copy SourceFiles="$(TargetDir)$(TargetName).pdb" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/" Condition="Exists('$(TargetDir)$(TargetName).pdb')" />
     <Message Text="Copying RitsuLib to mods folder." Importance="high" />
     <ItemGroup>
-      <RitsuLibFiles Include="$(PkgSTS2_RitsuLib)/lib/**/STS2-RitsuLib.dll;$(PkgSTS2_RitsuLib)/contentFiles/any/any/mod_manifest.json" />
+      <RitsuLibDlls Include="$(PkgSTS2_RitsuLib)/lib/**/STS2-RitsuLib.dll" />
+      <RitsuLibContent Include="$(PkgSTS2_RitsuLib)/contentFiles/any/any/**/*.*" />
     </ItemGroup>
-    <Copy SourceFiles="@(RitsuLibFiles)" DestinationFolder="$(ModsPath)STS2-RitsuLib/" />
+    <Copy SourceFiles="@(RitsuLibDlls)" DestinationFolder="$(ModsPath)STS2-RitsuLib/" />
+    <Copy SourceFiles="@(RitsuLibContent)" DestinationFolder="$(ModsPath)STS2-RitsuLib/%(RecursiveDir)" />
   </Target>
 
   <Target Name="GodotPublish" AfterTargets="Publish" Condition="'$(GodotPath)' != '' and Exists('$(GodotPath)') and '$(IsInnerGodotExport)' != 'true'">

@@ -3,8 +3,10 @@ using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
 using NineSolsMod.NineSolsModCode.Cards;
+using NineSolsMod.NineSolsModCode.Settings;
 using STS2RitsuLib;
 using STS2RitsuLib.Interop;
+using STS2RitsuLib.Utils;
 
 namespace NineSolsMod;
 
@@ -28,6 +30,9 @@ public partial class MainFile : Node
         RitsuLibFramework.RegisterArchaicToothTranscendenceMapping<Tailsman, TailsmanQiBlast>();
         // 设置先古遗物升级
         // RitsuLibFramework.RegisterTouchOfOrobasRefinementMapping<TestRelic, Akabeko>();
+
+        // 注册设置
+        SettingsPage.Register();
 
         Harmony harmony = new(ModId);
 

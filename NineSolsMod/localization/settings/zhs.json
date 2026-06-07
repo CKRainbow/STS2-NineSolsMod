@@ -1,0 +1,7 @@
+{
+    "title": "设置",
+    "modDisplayName": "九日",
+    "gameplay.title": "游戏玩法",
+    "gameplay.manualParryEnabled.label": "手动格挡",
+    "gameplay.manualParryEnabled.description": "启用后，格挡将不再自动触发，而是需要玩家手动按下格挡键来进行格挡。"
+}
