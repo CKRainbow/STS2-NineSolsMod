@@ -10,7 +10,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(YiCardPool))]
-public class ClearInternalDamage() : NineSolsModCard(0, CardType.Skill,
+public class Meditation() : NineSolsModCard(0, CardType.Skill,
     CardRarity.Common, TargetType.Self)
 {
     protected override async Task OnPlay(
@@ -27,7 +27,7 @@ public class ClearInternalDamage() : NineSolsModCard(0, CardType.Skill,
 
     protected override void OnUpgrade()
     {
-        DynamicVars["RemoveAmount"].UpgradeValueBy(3m);
+        DynamicVars["RemoveAmount"].UpgradeValueBy(2m);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [

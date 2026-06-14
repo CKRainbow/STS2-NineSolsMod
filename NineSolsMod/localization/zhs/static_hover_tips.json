@@ -8,5 +8,7 @@
     "NINESOLSMOD-DEVIATION.description": "对自身造成{NineSolsMod-Deviation:diff()}层[gold]内伤[/gold]。",
     "NINESOLSMOD-DEVIATION.title": "内息紊乱",
     "NINESOLSMOD-OVERFLOW.description": "当手牌数大于等于{NineSolsMod-Overflow:diff()}时，触发额外效果。",
-    "NINESOLSMOD-OVERFLOW.title": "充盈"
+    "NINESOLSMOD-OVERFLOW.title": "充盈",
+    "NINE_SOLS_MOD_SECONDARY_RESOURCE_QI.title": "气",
+    "NINE_SOLS_MOD_SECONDARY_RESOURCE_QI.description": "部分卡牌需要[gold]气[/gold]才能打出。\n目前拥有{Amount}层[gold]气[/gold]。"
 }

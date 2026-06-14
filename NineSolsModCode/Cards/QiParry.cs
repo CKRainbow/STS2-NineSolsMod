@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
-using NineSolsMod.NineSolsModCode.Utils;
+using STS2RitsuLib.Combat.SecondaryResources;
 using STS2RitsuLib.Interop.AutoRegistration;
 using ParryPower = NineSolsMod.NineSolsModCode.Powers.ParryPower;
 
@@ -21,9 +21,9 @@ public class QiParry() : NineSolsModQiCard(1, CardType.Skill,
         CardPlay play)
     {
         await PowerCmd.Apply<ParryPower>(choiceContext, Owner.Creature, DynamicVars["ParryPower"].BaseValue, Owner.Creature, this, false);
-        if (HasEnoughQi)
+        var ledger = play.SecondaryResources();
+        if (ledger.Activated(QiResource.OptionalQiUseId))
         {
-            await NineSolsModCmd.CostQi(qiCost, this, choiceContext, true);
             await PowerCmd.Apply<DrawCardsNextTurnPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
         }
     }
@@ -43,6 +43,7 @@ public class QiParry() : NineSolsModQiCard(1, CardType.Skill,
     [
         HoverTipFactory.FromPower<ParryPower>(),
         HoverTipFactory.FromPower<InternalDamagePower>(),
-        HoverTipFactory.FromPower<QiPower>()
+        // TODO: 写个 extension，或者问问 OLC 要不要加到基础库里
+        HoverTipFactory.ForEnergy(this)
     ];
 }

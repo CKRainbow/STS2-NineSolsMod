@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using NineSolsMod.NineSolsModCode.Powers;
 using STS2RitsuLib.Cards.DynamicVars;
+using STS2RitsuLib.Combat.SecondaryResources;
 
 namespace NineSolsMod.NineSolsModCode.Variables;
 
@@ -14,6 +15,7 @@ public static class NineSolsModVarsFactory
     public const string FinishDamageKey = "NineSolsMod-FinishDamage";
     public const string OverflowKey = "NineSolsMod-Overflow";
     public const string QiCostKey = "NineSolsMod-QiCost";
+    public const string QiGainKey = "NineSolsMod-QiGain";
     public const string DeviationKey = "NineSolsMod-Deviation";
     public const string InternalDamageKey = "NineSolsMod-InternalDamage";
 
@@ -92,7 +94,12 @@ public static class NineSolsModVarsFactory
 
     public static DynamicVar QiCostVar(decimal amount)
     {
-        return ModCardVars.Int(QiCostKey, amount).WithSharedTooltip(QiCostKey.ToUpperInvariant());
+        return new SecondaryResourceVar(QiCostKey, QiResource.QiId, amount).WithSharedTooltip(QiCostKey.ToUpperInvariant());
+    }
+
+    public static DynamicVar QiGainVar(decimal amount)
+    {
+        return new SecondaryResourceVar(QiGainKey, QiResource.QiId, amount);
     }
 
 

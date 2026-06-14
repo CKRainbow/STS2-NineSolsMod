@@ -12,7 +12,7 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(YiCardPool))]
-public class WenWuBlock() : NineSolsModCard(1, CardType.Skill,
+public class Transportation() : NineSolsModCard(1, CardType.Skill,
     CardRarity.Common, TargetType.Self)
 {
     protected override async Task OnPlay(

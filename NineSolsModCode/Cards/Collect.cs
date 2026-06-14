@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 using NineSolsMod.NineSolsModCode.Character;
-using NineSolsMod.NineSolsModCode.Utils;
+using STS2RitsuLib.Combat.SecondaryResources;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
@@ -46,9 +46,9 @@ public class Collect() : NineSolsModQiCard(1, CardType.Skill,
             await Cmd.Wait(1f, false);
         }
 
-        if (HasEnoughQi)
+        var ledger = play.SecondaryResources();
+        if (ledger.Activated(QiResource.OptionalQiUseId))
         {
-            await NineSolsModCmd.CostQi(qiCost, this, choiceContext, true);
             await PowerCmd.Apply<DrawCardsNextTurnPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this);
         }
     }

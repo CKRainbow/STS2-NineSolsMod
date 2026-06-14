@@ -4,8 +4,10 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using NineSolsMod.NineSolsModCode.Character;
+using NineSolsMod.NineSolsModCode.HoverTips;
 using NineSolsMod.NineSolsModCode.Powers;
-using STS2RitsuLib.Cards.DynamicVars;
+using NineSolsMod.NineSolsModCode.Utils;
+using NineSolsMod.NineSolsModCode.Variables;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
@@ -26,18 +28,18 @@ public class FusangNourish() : NineSolsModCard(2, CardType.Skill,
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         await CreatureCmd.Heal(Owner.Creature, DynamicVars.Heal.BaseValue);
         await PowerCmd.Remove<InternalDamagePower>(Owner.Creature);
-        await PowerCmd.Apply<QiPower>(choiceContext, Owner.Creature, DynamicVars["QiGain"].BaseValue, Owner.Creature, this, false);
+        await NineSolsModCmd.GainQi(Owner, DynamicVars[NineSolsModVarsFactory.QiGainKey].IntValue);
     }
 
     protected override void OnUpgrade()
     {
         DynamicVars.Heal.UpgradeValueBy(3m);
-        DynamicVars["QiGain"].UpgradeValueBy(1);
+        DynamicVars[NineSolsModVarsFactory.QiGainKey].UpgradeValueBy(1);
     }
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new HealVar(5m),
-        ModCardVars.Int("QiGain", 1)
+        new HealVar(7m),
+        NineSolsModVarsFactory.QiGainVar(1)
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [
@@ -47,6 +49,6 @@ public class FusangNourish() : NineSolsModCard(2, CardType.Skill,
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
         HoverTipFactory.FromPower<InternalDamagePower>(),
-        HoverTipFactory.FromPower<QiPower>()
+        NineSolsModHoverTipFactory.Qi(this)
     ];
 }

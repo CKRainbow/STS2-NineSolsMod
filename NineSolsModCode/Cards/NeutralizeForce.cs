@@ -6,15 +6,14 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Character;
-using NineSolsMod.NineSolsModCode.Powers;
 using NineSolsMod.NineSolsModCode.Variables;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(YiCardPool))]
-public class AbundanceStrike() : NineSolsModCard(1, CardType.Attack,
-    CardRarity.Common, TargetType.AnyEnemy)
+public class NeutralizeForce() : NineSolsModCard(1, CardType.Skill,
+    CardRarity.Common, TargetType.Self)
 {
     protected override bool ShouldGlowGoldInternal => Owner.PlayerCombatState is not null && Owner.PlayerCombatState.Hand.Cards.Count >= DynamicVars[NineSolsModVarsFactory.OverflowKey].BaseValue;
 
@@ -22,39 +21,36 @@ public class AbundanceStrike() : NineSolsModCard(1, CardType.Attack,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        ArgumentNullException.ThrowIfNull(play.Target, "cardPlay.Target");
         if (Owner.PlayerCombatState is null)
         {
             return;
         }
-        // 包括了这张牌在内的手牌数量
-        int cardCount = Owner.PlayerCombatState.Hand.Cards.Count + 1;
-        await DamageCmd.Attack(DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
-            .WithHitFx("vfx/vfx_attack_slash", null, null)
-            .Execute(choiceContext);
+        var cardCount = Owner.PlayerCombatState.Hand.Cards.Count + 1;
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play, false);
 
         if (cardCount >= DynamicVars[NineSolsModVarsFactory.OverflowKey].BaseValue)
         {
-            await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target, DynamicVars["VulnerablePower"].BaseValue, Owner.Creature, this);
+            await PowerCmd.Apply<WeakPower>(choiceContext, CombatState!.HittableEnemies, DynamicVars["WeakPower"].BaseValue, Owner.Creature, this);
         }
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2m);
-        DynamicVars["VulnerablePower"].UpgradeValueBy(1m);
+        DynamicVars.Block.UpgradeValueBy(2m);
+        DynamicVars["WeakPower"].UpgradeValueBy(1m);
     }
+
+    public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7m, ValueProp.Move),
-        new DynamicVar("VulnerablePower", 1m),
+        new BlockVar(7m, ValueProp.Move),
+        new DynamicVar("WeakPower", 1m),
         NineSolsModVarsFactory.OverflowVar(6m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
-        HoverTipFactory.FromPower<QiPower>(),
-        HoverTipFactory.FromPower<VulnerablePower>()
+        HoverTipFactory.FromPower<WeakPower>()
     ];
 }

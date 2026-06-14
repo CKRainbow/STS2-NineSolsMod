@@ -1,5 +1,4 @@
-﻿using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Commands;
+﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -53,12 +52,9 @@ public class LiveBetterLife() : NineSolsModCard(1, CardType.Skill,
         new PowerVar<StrengthPower>(3m),
         new PowerVar<DexterityPower>(3m),
         ModCardVars.Int("HealthLossPercentage", 30m),
-        ModCardVars.Computed("TotalHealthLoss", 0m, (_) => {
-            if (Owner.Creature == null)
-            {
-                return 0m;
-            }
-            var maxHealth = Owner.Creature.MaxHp;
+        ModCardVars.Computed("TotalHealthLoss", 0m, (card) => {
+            if (card is null) return 0m;
+            var maxHealth = card.Owner.Creature.MaxHp;
             return maxHealth * DynamicVars["HealthLossPercentage"].IntValue / 100m;
         })
     ];

@@ -14,10 +14,6 @@ namespace NineSolsMod.NineSolsModCode.Cards;
 public class Tailsman() : NineSolsModCard(0, CardType.Skill,
     CardRarity.Basic, TargetType.AnyEnemy)
 {
-    // 只是颜色，并不影响能否被打出
-    // protected override bool ShouldGlowRedInternal => !Owner.Creature.HasPower<QiPower>();
-    // protected override bool IsPlayable => Owner.Creature.HasPower<QiPower>();
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)

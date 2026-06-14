@@ -10,13 +10,9 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(YiCardPool))]
-public class TailsmanFlowWater() : NineSolsModCard(1, CardType.Skill,
-    CardRarity.Uncommon, TargetType.AnyEnemy)
+public class TailsmanFlowWater() : NineSolsModQiCard(1, CardType.Skill,
+    CardRarity.Uncommon, TargetType.AnyEnemy, 1, qiRequired: true)
 {
-    // 只是颜色，并不影响能否被打出
-    protected override bool ShouldGlowRedInternal => !Owner.Creature.HasPower<QiPower>();
-    protected override bool IsPlayable => Owner.Creature.HasPower<QiPower>();
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
@@ -28,7 +24,6 @@ public class TailsmanFlowWater() : NineSolsModCard(1, CardType.Skill,
             return;
         }
         await NineSolsModCmd.Finish(0, this, play.Target, choiceContext);
-        await NineSolsModCmd.CostQi(1, this, choiceContext, true);
     }
 
     protected override PileType GetResultPileTypeForCardPlay()

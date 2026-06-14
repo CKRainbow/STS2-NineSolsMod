@@ -1,9 +1,11 @@
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using NineSolsMod.NineSolsModCode.Character;
-using NineSolsMod.NineSolsModCode.Powers;
+using NineSolsMod.NineSolsModCode.HoverTips;
 using NineSolsMod.NineSolsModCode.Utils;
+using NineSolsMod.NineSolsModCode.Variables;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
@@ -16,7 +18,7 @@ public class QiFlow() : NineSolsModCard(1, CardType.Skill,
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await NineSolsModCmd.GainQi(2, Owner.Creature, this);
+        await NineSolsModCmd.GainQi(Owner, DynamicVars[NineSolsModVarsFactory.QiGainKey].IntValue);
     }
 
     protected override void OnUpgrade()
@@ -24,8 +26,12 @@ public class QiFlow() : NineSolsModCard(1, CardType.Skill,
         EnergyCost.UpgradeBy(-1);
     }
 
+    protected override IEnumerable<DynamicVar> CanonicalVars => [
+        NineSolsModVarsFactory.QiGainVar(2)
+    ];
+
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
-        HoverTipFactory.FromPower<QiPower>()
+        NineSolsModHoverTipFactory.Qi(this)
     ];
 }

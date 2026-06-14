@@ -30,7 +30,7 @@ public class TransmuteUntoQi() : NineSolsModCard(0, CardType.Power, CardRarity.T
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
-        HoverTipFactory.FromPower<QiPower>(),
+        NineSolsModHoverTipFactory.Qi(this),
         NineSolsModHoverTipFactory.Finish()
     ];
 }

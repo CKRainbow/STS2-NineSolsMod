@@ -7,18 +7,16 @@ using NineSolsMod.NineSolsModCode.Powers;
 using NineSolsMod.NineSolsModCode.Utils;
 using NineSolsMod.NineSolsModCode.Variables;
 using STS2RitsuLib.Cards.DynamicVars;
+using STS2RitsuLib.Combat.SecondaryResources;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
+// FIXME: 暂时无法简单实现最高使用 3 费的效果
 [RegisterCard(typeof(YiCardPool))]
-public class TailsmanQiBlast() : NineSolsModCard(0, CardType.Skill,
-    CardRarity.Ancient, TargetType.AnyEnemy)
+public class TailsmanQiBlast() : NineSolsModQiCard(0, CardType.Skill,
+    CardRarity.Ancient, TargetType.AnyEnemy, 0, qiRequired: true), ISecondaryResourceHookListener
 {
-    // 只是颜色，并不影响能否被打出
-    protected override bool ShouldGlowRedInternal => !Owner.Creature.HasPower<QiPower>();
-    protected override bool IsPlayable => Owner.Creature.HasPower<QiPower>();
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
@@ -26,14 +24,34 @@ public class TailsmanQiBlast() : NineSolsModCard(0, CardType.Skill,
         ArgumentNullException.ThrowIfNull(play.Target);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner, false);
         await PowerCmd.Apply<InternalDamagePower>(choiceContext, play.Target, DynamicVars[NineSolsModVarsFactory.InternalDamageKey].BaseValue, Owner.Creature, this);
-        await NineSolsModCmd.CostQi(3, this, choiceContext, false);
-        await NineSolsModCmd.Finish(0, this, play.Target, choiceContext);
+        var ledger = play.SecondaryResources();
+        var qiValue = ledger.Value(QiResource.RequiredQiUseId);
+        await NineSolsModCmd.Finish(0, this, play.Target, choiceContext, inputFinishMult: CalcFinishMult(qiValue) / 100m);
     }
+
+    // public int ModifySecondaryResourceXValue(SecondaryResourceXContext context, int value)
+    // {
+    //     if (context.Card == this)
+    //     {
+    //         value = Math.Min(3, value);
+    //     }
+    //     return value;
+    // }
 
     protected override void OnUpgrade()
     {
         DynamicVars[NineSolsModVarsFactory.InternalDamageKey].UpgradeValueBy(6m);
         DynamicVars["MultiplierBonus"].UpgradeValueBy(10m);
+    }
+
+    private decimal CalcFinishMult(int qiAmount)
+    {
+        var value = 100m;
+        for (int i = 0; i < qiAmount; i++)
+        {
+            value *= 1 + DynamicVars["MultiplierBonus"].BaseValue / 100m;
+        }
+        return value;
     }
 
     // FIXME: 没有将一开始的 12 点内伤考虑进去
@@ -49,13 +67,8 @@ public class TailsmanQiBlast() : NineSolsModCard(0, CardType.Skill,
             (card) => {
                 if (card is null) return 100m;
                 if (!card.IsInCombat) return 100m;
-                var qiPowerAmount = Math.Min(3, card.Owner.Creature.GetPowerAmount<QiPower>());
-                var value = 100m;
-                for (int i = 0; i < qiPowerAmount; i++)
-                {
-                    value *= 1 + DynamicVars["MultiplierBonus"].BaseValue / 100m;
-                }
-                return value;
+                var qiAmount = Math.Min(5, SecondaryResourceCmd.Get(card.Owner, QiResource.QiId));
+                return CalcFinishMult(qiAmount);
             }),
     ];
 }

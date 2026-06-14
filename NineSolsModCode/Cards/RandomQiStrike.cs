@@ -5,8 +5,8 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Character;
-using NineSolsMod.NineSolsModCode.Powers;
-using NineSolsMod.NineSolsModCode.Utils;
+using NineSolsMod.NineSolsModCode.HoverTips;
+using STS2RitsuLib.Combat.SecondaryResources;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
@@ -25,9 +25,9 @@ public class RandomQiStrike() : NineSolsModQiCard(1, CardType.Attack,
         }
 
         int hitCount = DynamicVars.Repeat.IntValue;
-        if (HasEnoughQi)
+        var ledger = play.SecondaryResources();
+        if (ledger.Activated(QiResource.OptionalQiUseId))
         {
-            await NineSolsModCmd.CostQi(qiCost, this, choiceContext, true);
             hitCount += 1;
         }
 
@@ -51,6 +51,6 @@ public class RandomQiStrike() : NineSolsModQiCard(1, CardType.Attack,
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
-        HoverTipFactory.FromPower<QiPower>()
+        NineSolsModHoverTipFactory.Qi(this)
     ];
 }

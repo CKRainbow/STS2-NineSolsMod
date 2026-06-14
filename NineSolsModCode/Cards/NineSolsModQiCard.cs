@@ -1,7 +1,7 @@
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using NineSolsMod.NineSolsModCode.Variables;
-using NineSolsMod.NineSolsModCode.Powers;
+using STS2RitsuLib.Combat.SecondaryResources;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
@@ -14,25 +14,44 @@ namespace NineSolsMod.NineSolsModCode.Cards;
 /// <param name="target"></param>
 /// <param name="qiCost"></param> 为 0 时代表使用 X 气
 /// <param name="showInLibrary"></param>
-public abstract class NineSolsModQiCard(int cost, CardType type, CardRarity rarity, TargetType target, int qiCost, bool showInLibrary = true, bool qiOnly = false) :
-    NineSolsModCard(cost, type, rarity, target, showInLibrary)
+public abstract class NineSolsModQiCard :
+    NineSolsModCard
 {
-    protected int qiCost = qiCost;
+    protected int qiCost;
+    protected bool qiRequired;
 
-    protected bool HasEnoughQi
+    public NineSolsModQiCard(int cost, CardType type, CardRarity rarity, TargetType target, int qiCost, bool showInLibrary = true, bool qiRequired = false) :
+        base(cost, type, rarity, target, showInLibrary)
     {
-        get
+        this.qiCost = qiCost;
+        this.qiRequired = qiRequired;
+        if (qiRequired)
         {
-            if (qiCost == 0) return true;
-            return Owner.Creature.GetPower<QiPower>()?.Amount >= qiCost;
+            this.SecondaryResourceUses().Set(
+                "qi_required",
+                QiResource.QiId,
+                cost: new(
+                    Amount: qiCost,
+                    CostsX: qiCost == 0
+                ),
+                kind: SecondaryResourceUseKind.RequiredCost
+            );
+
         }
+        else
+        {
+            this.SecondaryResourceUses().Set(
+                "qi_optional",
+                QiResource.QiId,
+                cost: new(
+                    Amount: qiCost,
+                    CostsX: qiCost == 0
+                ),
+                kind: SecondaryResourceUseKind.OptionalSpend
+            );
+        }
+
     }
-
-    protected override bool ShouldGlowRedInternal => !HasEnoughQi && qiOnly;
-
-    protected override bool ShouldGlowGoldInternal => HasEnoughQi && !qiOnly;
-
-    protected override bool IsPlayable => (HasEnoughQi || !qiOnly) && base.IsPlayable;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         NineSolsModVarsFactory.QiCostVar(qiCost)

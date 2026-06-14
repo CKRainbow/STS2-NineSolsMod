@@ -3,39 +3,45 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
-using NineSolsMod.NineSolsModCode.Utils;
-using NineSolsMod.NineSolsModCode.Variables;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(YiCardPool))]
-public class DeviationStrike() : NineSolsModCard(1, CardType.Skill,
+public class CloudHands() : NineSolsModCard(0, CardType.Skill,
     CardRarity.Common, TargetType.Self)
 {
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await NineSolsModCmd.Deviation(this, Owner.Creature, choiceContext);
-        await PowerCmd.Apply<InternalDamagePower>(choiceContext, CombatState!.HittableEnemies, DynamicVars[NineSolsModVarsFactory.InternalDamageKey].BaseValue, Owner.Creature, this);
+        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play, false);
+        await PowerCmd.Apply<ParryPower>(choiceContext, Owner.Creature, DynamicVars["ParryPower"].BaseValue, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars[NineSolsModVarsFactory.InternalDamageKey].UpgradeValueBy(5m);
+        DynamicVars.Block.UpgradeValueBy(2m);
+        DynamicVars["ParryPower"].UpgradeValueBy(1m);
     }
 
-    protected override IEnumerable<DynamicVar> CanonicalVars =>
-    [
-        NineSolsModVarsFactory.DeviationVar(2m),
-        NineSolsModVarsFactory.InternalDamageVar(13m)
+    public override bool GainsBlock => true;
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [
+        CardKeyword.Retain
+    ];
+
+    protected override IEnumerable<DynamicVar> CanonicalVars => [
+        new BlockVar(2m, ValueProp.Move),
+        new PowerVar<ParryPower>(2m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
+        HoverTipFactory.FromPower<ParryPower>(),
         HoverTipFactory.FromPower<InternalDamagePower>()
     ];
 }

@@ -25,7 +25,7 @@ public class Parry() : NineSolsModCard(1, CardType.Skill,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(3m);
+        DynamicVars.Block.UpgradeValueBy(2m);
         // 结果还是要这样调用吗
         DynamicVars["ParryPower"].UpgradeValueBy(1m);
     }
@@ -33,7 +33,7 @@ public class Parry() : NineSolsModCard(1, CardType.Skill,
     public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new BlockVar(8m, ValueProp.Move),
+        new BlockVar(7m, ValueProp.Move),
         new PowerVar<ParryPower>(3m)
     ];
 

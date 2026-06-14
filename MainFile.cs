@@ -2,11 +2,11 @@ using System.Reflection;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
+using NineSolsMod.NineSolsModCode;
 using NineSolsMod.NineSolsModCode.Cards;
 using NineSolsMod.NineSolsModCode.Settings;
 using STS2RitsuLib;
 using STS2RitsuLib.Interop;
-using STS2RitsuLib.Utils;
 
 namespace NineSolsMod;
 
@@ -34,8 +34,10 @@ public partial class MainFile : Node
         // 注册设置
         SettingsPage.Register();
 
-        Harmony harmony = new(ModId);
+        // 注册次级资源
+        QiResource.Register();
 
+        Harmony harmony = new(ModId);
         harmony.PatchAll();
     }
 }

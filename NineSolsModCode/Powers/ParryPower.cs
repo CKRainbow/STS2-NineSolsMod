@@ -75,7 +75,10 @@ public class ParryPower : NineSolsModPower
             await PowerCmd.Apply<InternalDamagePower>(choiceContext, dealer, internalDamageAmount, target, null, false);
         }
 
-        await PowerCmd.Apply<QiPower>(choiceContext, target, 1, target, null, true);
+        if (target.IsPlayer && target.Player is not null)
+        {
+            await NineSolsModCmd.GainQi(target.Player, 1);
+        }
 
         await Hooks.ParryHook.AfterParry(CombatState, new AfterParryContext
         {

@@ -6,18 +6,15 @@ using NineSolsMod.NineSolsModCode.Powers;
 using NineSolsMod.NineSolsModCode.Utils;
 using NineSolsMod.NineSolsModCode.Variables;
 using STS2RitsuLib.Cards.DynamicVars;
+using STS2RitsuLib.Combat.SecondaryResources;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(YiCardPool))]
-public class TailsmanFullControl() : NineSolsModCard(0, CardType.Skill,
-    CardRarity.Rare, TargetType.AnyEnemy)
+public class TailsmanFullControl() : NineSolsModQiCard(0, CardType.Skill,
+    CardRarity.Rare, TargetType.AnyEnemy, 0, qiRequired: true)
 {
-    // 只是颜色，并不影响能否被打出
-    protected override bool ShouldGlowRedInternal => !Owner.Creature.HasPower<QiPower>();
-    protected override bool IsPlayable => Owner.Creature.HasPower<QiPower>();
-
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
@@ -29,7 +26,6 @@ public class TailsmanFullControl() : NineSolsModCard(0, CardType.Skill,
             return;
         }
         await NineSolsModCmd.Finish(0, this, play.Target, choiceContext);
-        await NineSolsModCmd.CostQi(5, this, choiceContext, false);
     }
 
     protected override void OnUpgrade()
@@ -46,8 +42,8 @@ public class TailsmanFullControl() : NineSolsModCard(0, CardType.Skill,
             {
                 if (card is null) return 100m;
                 if (!card.IsInCombat) return 100m;
-                var qiAmount = card.Owner.Creature.GetPowerAmount<QiPower>();
-                return qiAmount * DynamicVars["AdditionBonus"].BaseValue;
+                var qiAmount = SecondaryResourceCmd.Get(card.Owner, QiResource.QiId);
+                return qiAmount * DynamicVars["AdditionBonus"].BaseValue + 100m;
             }),
     ];
 }

@@ -3,7 +3,6 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
 using NineSolsMod.NineSolsModCode.Utils;
@@ -13,28 +12,26 @@ using STS2RitsuLib.Interop.AutoRegistration;
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(YiCardPool))]
-public class BigBlock() : NineSolsModCard(2, CardType.Skill,
+public class ZhouOfFiveThunders() : NineSolsModCard(1, CardType.Skill,
     CardRarity.Common, TargetType.Self)
 {
     protected override async Task OnPlay(
         PlayerChoiceContext choiceContext,
         CardPlay play)
     {
-        await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play, false);
         await NineSolsModCmd.Deviation(this, Owner.Creature, choiceContext);
+        await PowerCmd.Apply<InternalDamagePower>(choiceContext, CombatState!.HittableEnemies, DynamicVars[NineSolsModVarsFactory.InternalDamageKey].BaseValue, Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(6m);
+        DynamicVars[NineSolsModVarsFactory.InternalDamageKey].UpgradeValueBy(5m);
     }
-
-    public override bool GainsBlock => true;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(18m, ValueProp.Move),
-        NineSolsModVarsFactory.DeviationVar(3m)
+        NineSolsModVarsFactory.DeviationVar(2m),
+        NineSolsModVarsFactory.InternalDamageVar(13m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>

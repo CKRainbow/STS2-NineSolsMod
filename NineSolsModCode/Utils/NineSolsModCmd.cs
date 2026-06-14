@@ -7,6 +7,8 @@ using NineSolsMod.NineSolsModCode.Powers;
 using NineSolsMod.NineSolsModCode.Hooks;
 using NineSolsMod.NineSolsModCode.Variables;
 using STS2RitsuLib.Cards.DynamicVars;
+using STS2RitsuLib.Combat.SecondaryResources;
+using MegaCrit.Sts2.Core.Entities.Players;
 
 namespace NineSolsMod.NineSolsModCode.Utils;
 
@@ -20,19 +22,26 @@ public static class NineSolsModCmd
     /// <param name="target"></param>
     /// <param name="choiceContext"></param>
     /// <returns></returns>
-    public static async Task Finish(decimal baseAttack, CardModel model, Creature target, PlayerChoiceContext? choiceContext = null)
+    public static async Task Finish(decimal baseAttack, CardModel model, Creature target, PlayerChoiceContext? choiceContext = null, decimal? inputFinishMult = null)
     {
         var internalDamageAmount = target.GetPowerAmount<InternalDamagePower>();
 
         decimal finishMult;
-        var finishVar = model.DynamicVars[NineSolsModVarsFactory.FinishKey];
-        if (finishVar is ComputedDynamicVar calculatedFinishVar)
+        if (inputFinishMult is not null)
         {
-            finishMult = calculatedFinishVar.Calculate(target) / 100m;
+            finishMult = (int)inputFinishMult;
         }
         else
         {
-            finishMult = finishVar.BaseValue / 100m;
+            var finishVar = model.DynamicVars[NineSolsModVarsFactory.FinishKey];
+            if (finishVar is ComputedDynamicVar calculatedFinishVar)
+            {
+                finishMult = calculatedFinishVar.Calculate(target) / 100m;
+            }
+            else
+            {
+                finishMult = finishVar.BaseValue / 100m;
+            }
         }
 
         await PowerCmd.Remove<InternalDamagePower>(target);
@@ -100,34 +109,8 @@ public static class NineSolsModCmd
         await PowerCmd.Apply<InternalDamagePower>(context, target, amount, target, null, false);
     }
 
-    /// <summary>
-    /// 消耗气的统一方法
-    /// </summary>
-    /// <param name="cost"></param>
-    /// <param name="model"></param>
-    /// <param name="choiceContext"></param>
-    /// <returns>返回实际消耗的气的数值</returns>
-    public static async Task<decimal> CostQi(decimal cost, CardModel model, PlayerChoiceContext choiceContext, bool strict = true)
+    public static async Task GainQi(Player player, int amount)
     {
-        var qiPower = model.Owner.Creature.GetPower<QiPower>();
-        if (qiPower is null)
-        {
-            return 0;
-        }
-
-        if (strict && qiPower.Amount < cost)
-        {
-            return 0;
-        }
-
-        var finalCost = Math.Min(qiPower.Amount, cost);
-
-        await PowerCmd.ModifyAmount(choiceContext, qiPower, -finalCost, model.Owner.Creature, model);
-        return cost;
-    }
-
-    public static async Task GainQi(decimal amount, Creature source, CardModel? model = null)
-    {
-        await PowerCmd.Apply<QiPower>(new ThrowingPlayerChoiceContext(), source, amount, source, model, false);
+        await SecondaryResourceCmd.Gain(player, QiResource.QiId, amount);
     }
 }

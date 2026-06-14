@@ -1,7 +1,5 @@
 using Godot;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Powers;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using NineSolsMod.NineSolsModCode.Utils;
 using STS2RitsuLib.Interop.AutoRegistration;
 
@@ -19,6 +17,9 @@ public class TransmuteUntoQiPower : NineSolsModPower, IFinishListener
         if (Owner == null || context.SourceCard.Owner.Creature != Owner) return;
 
         Flash();
-        await PowerCmd.Apply<QiPower>(context.ChoiceContext ?? new ThrowingPlayerChoiceContext(), Owner, Amount, Owner, null, false);
+        if (Owner.IsPlayer && Owner.Player != null)
+        {
+            await NineSolsModCmd.GainQi(Owner.Player, Amount);
+        }
     }
 }

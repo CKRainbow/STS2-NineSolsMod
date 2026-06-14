@@ -6,12 +6,14 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using NineSolsMod.NineSolsModCode.Character;
 using NineSolsMod.NineSolsModCode.Powers;
+using NineSolsMod.NineSolsModCode.Utils;
+using NineSolsMod.NineSolsModCode.Variables;
 using STS2RitsuLib.Interop.AutoRegistration;
 
 namespace NineSolsMod.NineSolsModCode.Cards;
 
 [RegisterCard(typeof(YiCardPool))]
-public class ParryRetain() : NineSolsModCard(0, CardType.Skill,
+public class ZhouOfGoldenLight() : NineSolsModCard(2, CardType.Skill,
     CardRarity.Common, TargetType.Self)
 {
     protected override async Task OnPlay(
@@ -19,29 +21,24 @@ public class ParryRetain() : NineSolsModCard(0, CardType.Skill,
         CardPlay play)
     {
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block, play, false);
-        await PowerCmd.Apply<ParryPower>(choiceContext, Owner.Creature, DynamicVars["ParryPower"].BaseValue, Owner.Creature, this, false);
+        await NineSolsModCmd.Deviation(this, Owner.Creature, choiceContext);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(2m);
-        DynamicVars["ParryPower"].UpgradeValueBy(1m);
+        DynamicVars.Block.UpgradeValueBy(6m);
     }
 
     public override bool GainsBlock => true;
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [
-        CardKeyword.Retain
-    ];
-
-    protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new BlockVar(2m, ValueProp.Move),
-        new PowerVar<ParryPower>(2m)
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new BlockVar(18m, ValueProp.Move),
+        NineSolsModVarsFactory.DeviationVar(3m)
     ];
 
     protected override IEnumerable<IHoverTip> AdditionalHoverTips =>
     [
-        HoverTipFactory.FromPower<ParryPower>(),
         HoverTipFactory.FromPower<InternalDamagePower>()
     ];
 }
